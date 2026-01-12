@@ -1,0 +1,87 @@
+@use "../../styles/variables.scss" as var;
+
+.login-page{
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    .login-container{
+        padding: 20px;
+        max-width: 600px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        background-color: var.$secondary-color;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        .MuiDivider-root{
+            background-color: #fff;
+            opacity: 7%;
+        }
+        .login-container-sub{
+            padding: 30px;
+            .login-page-logo{
+                font-family: var.$logo-font;
+                display: flex;
+                flex-direction: column;
+                p{
+                    margin: 0;
+                    padding: 0;
+                    text-align: center;
+                    text-transform: uppercase;
+                    font-weight: 100;
+                    &.logo-title{
+                        letter-spacing: 8px;
+                        font-size: 100px;
+                    }
+                    &.logo-subtitle{
+                        font-size: 20px;
+                        color:#cccccc;
+                    }
+                }
+            }
+            .login-page-form{
+                display: flex;
+                flex-direction: column;
+                .login-page-form-field{
+                    margin: 10px 0px;
+                    .MuiFormControl-root{
+                        width: 100%;
+                        label{
+                            // font-size: 18px;
+                            color: #aaa;
+                        }
+                        .MuiInputBase-root{
+                            background-color: var.$input-primary-color;
+                            color: #fff;
+                            &:hover{
+                                fieldset{
+                                    border-color: var.$input-secondary-color;
+                                }
+                            }
+                            &.Mui-focused{
+                                fieldset{
+                                    border-color: var.$input-secondary-color;
+                                }
+                            }
+                            input{
+                                color: var.$primary-font-color;
+                                font-size: 18px;
+                            }
+                        }
+                    }
+                    button{
+                        margin: 20px 0px;
+                        font-size: 24px;
+                        color: #eeeeee;
+                        background-color: #27AE60;
+                        &:hover{
+                            background-color: #2fd072;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

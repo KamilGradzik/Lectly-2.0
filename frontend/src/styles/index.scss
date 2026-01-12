@@ -1,0 +1,12 @@
+@use './variables.scss';
+
+*{
+    box-sizing: border-box;
+}
+body{
+    margin:0;
+    padding: 0;
+    font-family: variables.$default-font;
+    background-color: variables.$primary-color;
+    color: variables.$primary-font-color;
+}
