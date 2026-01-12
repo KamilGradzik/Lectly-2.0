@@ -1,4 +1,4 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+##______________ FRONTEND ______________##
 
 # dependencies
 /frontend/node_modules
@@ -21,3 +21,11 @@
 /frontend/npm-debug.log*
 /frontend/yarn-debug.log*
 /frontend/yarn-error.log*
+
+
+##______________ BACKEND ______________##
+
+/backend/bin/
+/backend/obj/
+
+/backend/.vscode
