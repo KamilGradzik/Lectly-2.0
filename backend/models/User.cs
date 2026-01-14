@@ -9,10 +9,10 @@ namespace backend.models
     public class User
     {
         public Guid Id { get; private set; }
-        public string Email { get; private set; }
-        public string Password { get; private set; }
-        public string FirstName { get; private set; }
-        public string LastName { get; private set; }
+        public string Email { get; private set; } = null!;
+        public string Password { get; private set; } = null!;
+        public string FirstName { get; private set; } = null!;
+        public string LastName { get; private set; } = null!;
         public bool IsActive { get; private set; }
 
         private User() { }
@@ -30,10 +30,10 @@ namespace backend.models
         public void SetEmail(string email)
         {
             if(string.IsNullOrWhiteSpace(email))
-                throw new ArgumentException("Email cannot be empty!");
+                throw new ArgumentException("User's email cannot be empty!");
 
             if(!Regex.IsMatch(email, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"))
-                throw new ArgumentException ("Email format is wrong!");
+                throw new ArgumentException ("User's email format is invalid!");
 
             Email = email;
         }
@@ -41,7 +41,7 @@ namespace backend.models
         public void SetPassword(string password)
         {
             if (string.IsNullOrWhiteSpace(password))
-                throw new ArgumentException("Password cannot be empty!");
+                throw new ArgumentException("User's password cannot be empty!");
             
             Password = password;
         }
@@ -49,7 +49,7 @@ namespace backend.models
         public void SetFirstName(string firstName)
         {
             if(string.IsNullOrWhiteSpace(firstName))
-                throw new ArgumentException("First name cannot be empty!");
+                throw new ArgumentException("User's first name cannot be empty!");
             
             FirstName = firstName;
         }
@@ -57,7 +57,7 @@ namespace backend.models
         public void SetLastName(string lastName)
         {
             if(string.IsNullOrWhiteSpace(lastName))
-                throw new ArgumentException("Last name cannot be empty!");
+                throw new ArgumentException("User's last name cannot be empty!");
             
             LastName = lastName;
         }

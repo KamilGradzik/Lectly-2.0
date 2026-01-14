@@ -8,7 +8,7 @@ namespace backend.models
     public class Subject
     {
         public Guid Id { get; private set; }
-        public string Name { get; private set; }
+        public string Name { get; private set; } = null!;
         public string? Desc { get; private set; }
 
         private Subject() {}
@@ -16,14 +16,14 @@ namespace backend.models
         public Subject(string name, string? desc = null)
         {
             Id = Guid.NewGuid();
-            SetSubjectName(name);
+            SetName(name);
             Desc = desc;
         }
 
-        public void SetSubjectName(string subjectName)
+        public void SetName(string subjectName)
         {
             if(string.IsNullOrWhiteSpace(subjectName))
-                throw new ArgumentException("Subject name cannot be empty!");
+                throw new ArgumentException("Subject's name cannot be empty!");
             Name = subjectName;
         }
     }
