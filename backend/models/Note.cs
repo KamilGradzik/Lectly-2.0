@@ -12,25 +12,31 @@ namespace backend.models
         public string Name { get; private set; } = null!;
         public string Content { get; private set; } = null!;
         public DateTime CreatedAt { get; private set; }
+        public Guid OwnerUserId { get; private set; }
 
         private Note() {}
 
-        public Note( string name, string content, DateTime createdAt)
+        public Note( string name, string content, Guid ownerUserId)
         {
             Id = new Guid();
-            SetName(name);
-            SetContent(content);
-            CreatedAt = createdAt;
+            Rename(name);
+            UpdateContent(content);
+            CreatedAt = DateTime.Now;
+
+            if(ownerUserId == Guid.Empty)
+                throw new ArgumentException("Owner's Id cannot be empty!");
+            
+            OwnerUserId = ownerUserId;
         }
 
-        public void SetName(string name)
+        public void Rename(string name)
         {
             if(string.IsNullOrWhiteSpace(name))
                 throw new ArgumentException("Note's name cannot be empty!");
             Name = name;
         }
 
-        public void SetContent(string content)
+        public void UpdateContent(string content)
         {
             if(string.IsNullOrWhiteSpace(content))
                 throw new ArgumentException("Note's name cannot be empty!");

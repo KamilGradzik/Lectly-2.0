@@ -12,37 +12,52 @@ namespace backend.models
         public string FirstName { get; private set; } = null!;
         public string LastName { get; private set; } = null!;
         public string? AdditionalInfo { get; private set; }
+        public Guid GroupId { get; private set; }
 
         private Student() { }
 
-        public Student(string studentCode, string firstName, string lastName, string? additionalInfo = null)
+        public Student(string studentCode, string firstName, string lastName, Guid groupId, string? additionalInfo = null)
         {
             Id = new Guid();
-            SetStudentCode(studentCode);
-            SetStudentFirstName(firstName);
-            SetStudentLastName(lastName);
-            AdditionalInfo = additionalInfo;
+            AssignStudentCode(studentCode);
+            UpdateFirstName(firstName);
+            UpdateLastName(lastName);
+            UpdateAdditionalInfo(additionalInfo);
+            AssignGroup(groupId);
         }
 
-        public void SetStudentCode(string studentCode)
+        public void AssignStudentCode(string studentCode)
         {
             if(string.IsNullOrWhiteSpace(studentCode))
                 throw new ArgumentException("Student's code cannot be empty!");
             StudentCode = studentCode;
         } 
 
-        public void SetStudentFirstName(string firstName)
+        public void UpdateFirstName(string firstName)
         {
             if(string.IsNullOrWhiteSpace(firstName))
                 throw new ArgumentException("Student's first name cannot be empty!");
             FirstName = firstName;
         }
 
-        public void SetStudentLastName(string lastName)
+        public void UpdateLastName(string lastName)
         {
             if(string.IsNullOrWhiteSpace(lastName))
                 throw new ArgumentException("Student's last name cannet be empty!");
             LastName = lastName;
         } 
+
+        public void UpdateAdditionalInfo(string? additionalInfo = null)
+        {
+            AdditionalInfo = additionalInfo;
+        }
+
+        public void AssignGroup(Guid groupId)
+        {
+            if(groupId == Guid.Empty)
+                throw new ArgumentException("Group's Id cannot be empty!");
+            
+            GroupId = groupId;
+        }
     }
 }

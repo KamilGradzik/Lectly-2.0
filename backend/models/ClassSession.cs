@@ -12,19 +12,22 @@ namespace backend.models
         public TimeOnly StartTime { get; private set; }
         public TimeOnly EndTime { get; private set; }
         public string Classroom { get; private set; } = null!;
+        public Guid GroupId { get; private set; }
+        public Guid SubjectId { get; private set; }
 
         private ClassSession() { }
 
-        public ClassSession(DayOfWeek dayOfWeek, TimeOnly startTime, TimeOnly endTime, string classroom)
+        public ClassSession(DayOfWeek dayOfWeek, TimeOnly startTime, TimeOnly endTime, string classroom, Guid groupId, Guid subjectId)
         {
             Id = new Guid();
-            DayOfWeek = dayOfWeek;
-            SetClassTime(startTime, endTime);
-            SetClassroom(classroom);
-            
+            ChangeDayOfWeek(dayOfWeek);
+            UpdateClassTime(startTime, endTime);
+            UpdateClassroom(classroom);
+            AssignGroup(groupId);
+            AssignSubject(subjectId);
         }
 
-        public void SetClassTime(TimeOnly startTime, TimeOnly endTime)
+        public void UpdateClassTime(TimeOnly startTime, TimeOnly endTime)
         {
             if(startTime >= endTime)
                 throw new ArgumentException("Class cannot end before it starts!");
@@ -33,11 +36,31 @@ namespace backend.models
             EndTime = endTime;
         }
 
-        public void SetClassroom(string classroom)
+        public void UpdateClassroom(string classroom)
         {
             if(string.IsNullOrWhiteSpace(classroom))
                 throw new ArgumentException("Classroom cannot be empty!");
         }
         
+        public void ChangeDayOfWeek(DayOfWeek dayOfWeek)
+        {
+            DayOfWeek = dayOfWeek;
+        }
+
+        public void AssignGroup(Guid groupId)
+        {
+            if(groupId == Guid.Empty)
+                throw new ArgumentException("Group's Id cannot be empty!");
+            
+            GroupId = groupId;
+        }
+
+        public void AssignSubject(Guid subjectId)
+        {
+            if(subjectId == Guid.Empty)
+                throw new ArgumentException("Subject's Id cannot be empty!");
+            
+            SubjectId = subjectId;
+        }
     }
 }

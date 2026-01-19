@@ -10,21 +10,32 @@ namespace backend.models
         public Guid Id { get; private set; }
         public string Name { get; private set; } = null!;
         public string? Desc { get; private set; }
+        public Guid OwnerUserId { get; private set; }
 
         private ClassGroup() { }
 
-        public ClassGroup(string name, string? desc = null)
+        public ClassGroup(string name, Guid ownerUserId, string? desc = null)
         {
-            Id = new Guid();
-            SetClassGroupName(name);
-            Desc = desc;
+            Id = Guid.NewGuid();
+            Rename(name);
+            UpdateDescription(desc);
+
+            if(ownerUserId == Guid.Empty)
+                throw new ArgumentException("Owner's Id cannot be empty!");
+            
+            OwnerUserId = ownerUserId;
         }
         
-        public void SetClassGroupName(string name)
+        public void Rename(string name)
         {
             if(string.IsNullOrWhiteSpace(name))
-                throw new ArgumentException("Class group name cannot be empty!");
+                throw new ArgumentException("Class group's name cannot be empty!");
             Name = name;
+        }
+
+        public void UpdateDescription(string? desc = null)
+        {
+            Desc = desc;
         }
     }
 }
