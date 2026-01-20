@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace backend.models
+namespace backend.Entities
 {
     public class Note
     {
@@ -39,7 +39,7 @@ namespace backend.models
         public void UpdateContent(string content)
         {
             if(string.IsNullOrWhiteSpace(content))
-                throw new ArgumentException("Note's name cannot be empty!");
+                throw new ArgumentException("Note's content cannot be empty!");
             Content = content;
         }
     }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace backend.models
+namespace backend.Entities
 {
     public class User
     {
@@ -21,9 +21,9 @@ namespace backend.models
         {
             Id = Guid.NewGuid();
             SetEmail(email);
-            SetPassword(password);
-            SetFirstName(firstName);
-            SetLastName(lastName);
+            ChangePassword(password);
+            ChangeFirstName(firstName);
+            ChangeLastName(lastName);
             SetIsActive(isActive);
         }
 
@@ -38,7 +38,7 @@ namespace backend.models
             Email = email;
         }
 
-        public void SetPassword(string password)
+        public void ChangePassword(string password)
         {
             if (string.IsNullOrWhiteSpace(password))
                 throw new ArgumentException("User's password cannot be empty!");
@@ -46,7 +46,7 @@ namespace backend.models
             Password = password;
         }
 
-        public void SetFirstName(string firstName)
+        public void ChangeFirstName(string firstName)
         {
             if(string.IsNullOrWhiteSpace(firstName))
                 throw new ArgumentException("User's first name cannot be empty!");
@@ -54,7 +54,7 @@ namespace backend.models
             FirstName = firstName;
         }
 
-        public void SetLastName(string lastName)
+        public void ChangeLastName(string lastName)
         {
             if(string.IsNullOrWhiteSpace(lastName))
                 throw new ArgumentException("User's last name cannot be empty!");

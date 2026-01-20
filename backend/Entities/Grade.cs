@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace backend.models
+namespace backend.Entities
 {
     public class Grade
     {
@@ -11,13 +11,13 @@ namespace backend.models
         public int Value { get; private set; }
         public decimal Weight { get; private set; }
         public string Desc { get; private set; } = null!;
-        public DateOnly DateIssued { get; private set; }
+        public DateTime DateIssued { get; private set; }
         public Guid SubjectId { get; private set; }
         public Guid StudentId { get; private set; }
 
         private Grade() { } 
         
-        public Grade(int value, decimal weight, string desc, DateOnly dateIssued, Guid subjectId, Guid studentId)
+        public Grade(int value, decimal weight, string desc, Guid subjectId, Guid studentId)
         {
             Id = new Guid();
             SetValue(value);
@@ -25,21 +25,21 @@ namespace backend.models
             UpdateDescription(desc);
             AssignSubject(subjectId);
             AssignStudent(studentId);
-            DateIssued = dateIssued;
+            DateIssued = DateTime.Now;
         }
 
         public void SetValue(int value)
         {
-            if(value >=1 && value <=6)
+            if(value > 0)
                 Value = value;
-            else throw new ArgumentException("Grade's value must be between 1 and 6!");
+            else throw new ArgumentException("Grade's value must be greater than 0!");
         }
         
         public void SetWeight(decimal weight)
         {
             if(weight > 0)
                 Weight = weight;
-            else throw new ArgumentException("Grade's weight must be greater than 0!;");
+            else throw new ArgumentException("Grade's weight must be greater than 0!");
         }
 
         public void UpdateDescription(string desc)
