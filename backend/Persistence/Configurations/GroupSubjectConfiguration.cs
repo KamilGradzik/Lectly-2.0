@@ -17,7 +17,7 @@ namespace backend.Persistence.Configurations
             //Unique Id based on Group and Subject IDs.
             builder.HasKey(x => new {x.GroupId, x.SubjectId});
 
-            //Many to Many relation between subjects and  groups.
+            //Many to Many relation between subjects and groups.
             //Foreign Key referencing group.
             builder.HasOne<Group>()
                 .WithMany()
