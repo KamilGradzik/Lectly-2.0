@@ -18,7 +18,7 @@ namespace backend.Entities
 
         public Note( string name, string content, Guid ownerUserId)
         {
-            Id = new Guid();
+            Id = Guid.NewGuid();
             Rename(name);
             UpdateContent(content);
             CreatedAt = DateTime.Now;

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using backend.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -19,18 +18,18 @@ namespace backend.Persistence.Configurations
 
             //Many to Many relation between subjects and groups.
             //Foreign Key referencing group.
-            builder.HasOne<Group>()
+            builder.HasOne<ClassGroup>()
                 .WithMany()
                 .HasForeignKey(x => x.GroupId)
                 .IsRequired(true)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             //Foreign Key referencing subject.
             builder.HasOne<Subject>()
                 .WithMany()
                 .HasForeignKey(x => x.SubjectId)
                 .IsRequired(true)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

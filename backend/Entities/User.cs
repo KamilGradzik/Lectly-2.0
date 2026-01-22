@@ -17,7 +17,7 @@ namespace backend.Entities
 
         private User() { }
 
-        public User(string email, string password, string firstName, string lastName, bool isActive)
+        public User (string email, string password, string firstName, string lastName, bool isActive)
         {
             Id = Guid.NewGuid();
             SetEmail(email);

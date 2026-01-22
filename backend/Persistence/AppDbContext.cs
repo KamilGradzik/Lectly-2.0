@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using backend.Entities;
+using backend.Persistence.Configurations;
 using Microsoft.EntityFrameworkCore;
 
 namespace backend.Persistence
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext(DbContextOptions options) : DbContext(options)
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-
         public DbSet<User> Users => Set<User>();
         public DbSet<Subject> Subjects => Set<Subject>();
         public DbSet<Student> Students => Set<Student>();
@@ -23,8 +22,11 @@ namespace backend.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
-            base.OnModelCreating(modelBuilder); 
+            modelBuilder.ApplyConfigurationsFromAssembly(
+                typeof(AppDbContext).Assembly,
+                t => t.Namespace != null && t.Namespace.Contains("Persistence")
+            );
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

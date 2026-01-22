@@ -19,7 +19,7 @@ namespace backend.Entities
 
         public ClassSession(DayOfWeek dayOfWeek, TimeOnly startTime, TimeOnly endTime, string classroom, Guid groupId, Guid subjectId)
         {
-            Id = new Guid();
+            Id = Guid.NewGuid();
             ChangeDayOfWeek(dayOfWeek);
             UpdateClassTime(startTime, endTime);
             UpdateClassroom(classroom);

@@ -28,7 +28,7 @@ namespace backend.Persistence.Configurations
             builder.HasOne<User>()
                 .WithMany()
                 .HasForeignKey(x => x.OwnerUserId)
-                .IsRequired()
+                .IsRequired(true)
                 .OnDelete(DeleteBehavior.Cascade);
 
         }

@@ -18,7 +18,7 @@ namespace backend.Entities
 
         public Student(string studentCode, string firstName, string lastName, Guid groupId, string? additionalInfo = null)
         {
-            Id = new Guid();
+            Id = Guid.NewGuid();
             AssignStudentCode(studentCode);
             UpdateFirstName(firstName);
             UpdateLastName(lastName);

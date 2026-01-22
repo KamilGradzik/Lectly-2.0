@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using backend.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -31,10 +30,10 @@ namespace backend.Persistence.Configurations
                 .HasMaxLength(300);
             
             //Foreign key referencing group that student belongs to.
-            builder.HasOne<Group>()
+            builder.HasOne<ClassGroup>()
                 .WithMany()
                 .HasForeignKey(x => x.GroupId)
-                .IsRequired()
+                .IsRequired(true)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

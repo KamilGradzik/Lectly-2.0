@@ -26,8 +26,8 @@ namespace backend.Persistence.Configurations
                 .IsRequired(true);
             
             //Creation date.
-            builder.Property(x => x.CreatedAt)
-                .HasDefaultValue(DateTime.Now);
+            builder.Property(x => x.CreatedAt);
+                // .HasDefaultValue(DateTime.Now);
 
             //Foreign Key referencing on owner user.
             builder.HasOne<User>()

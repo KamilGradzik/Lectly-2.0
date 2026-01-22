@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using backend.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -39,14 +38,14 @@ namespace backend.Persistence.Configurations
                 .WithMany()
                 .HasForeignKey(x => x.SubjectId)
                 .IsRequired(true)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
             
             //Foreign key referencing group.
-            builder.HasOne<Group>()
+            builder.HasOne<ClassGroup>()
                 .WithMany()
                 .HasForeignKey(x => x.GroupId)
                 .IsRequired(true)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

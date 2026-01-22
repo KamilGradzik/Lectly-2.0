@@ -17,10 +17,12 @@ namespace backend.Persistence.Configurations
 
             //Value.
             builder.Property(x => x.Value)
+                .HasPrecision(3,2)
                 .IsRequired(true);
             
             //Weight.
             builder.Property(x => x.Weight)
+                .HasPrecision(4,2)
                 .IsRequired(true);
 
             //Description.
@@ -30,7 +32,6 @@ namespace backend.Persistence.Configurations
             
             //Date issued.
             builder.Property(x => x.DateIssued)
-                .HasDefaultValue(DateTime.Now)
                 .IsRequired(true);
             
             //Foreign key referencing subject.
@@ -38,14 +39,14 @@ namespace backend.Persistence.Configurations
                 .WithMany()
                 .HasForeignKey(x => x.SubjectId)
                 .IsRequired(true)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
             
             //Foreign key referencing student.
             builder.HasOne<Student>()
                 .WithMany()
                 .HasForeignKey(x => x.StudentId)
                 .IsRequired(true)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
