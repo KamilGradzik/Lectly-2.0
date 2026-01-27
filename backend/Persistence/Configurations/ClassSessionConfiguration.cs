@@ -44,7 +44,7 @@ namespace backend.Persistence.Configurations
             builder.HasOne<ClassGroup>()
                 .WithMany()
                 .HasForeignKey(x => x.GroupId)
-                .IsRequired(true)
+                .IsRequired(false)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }
