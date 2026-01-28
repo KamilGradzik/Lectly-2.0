@@ -18,18 +18,14 @@ namespace backend.Persistence.Repositories
             _context.Subjects.Add(subject);
         }
 
-        public async Task<Subject> GetSubjectAsync(Guid id)
+        public async Task<Subject?> GetSubjectAsync(Guid id)
         {
-            var subject = await _context.Subjects.FirstOrDefaultAsync(x => x.Id == id);
-            if(subject == null)
-                throw new ArgumentNullException("Cannot find Subject with specified id!");
-            return subject;
+            return await _context.Subjects.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<IReadOnlyList<Subject>> GetUserSubjectsAsync(Guid userId)
         {
-            var subjects = await _context.Subjects.Where(x => x.OwnerUserId == userId).ToListAsync();
-            return subjects;
+            return await _context.Subjects.Where(x => x.OwnerUserId == userId).ToListAsync();
         }
 
         public async Task RemoveAsync(Subject subject)

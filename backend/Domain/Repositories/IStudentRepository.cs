@@ -9,7 +9,7 @@ namespace backend.Domain.Repositories
     public interface IStudentRepository
     {
         Task AddAsync(Student student);
-        Task<Student> GetAsync(Guid id);
+        Task<Student?> GetAsync(Guid id);
         Task<IReadOnlyList<Student>> GetGroupStudentsAsync(Guid groupId);
         Task RemoveAsync(Student student);
     }

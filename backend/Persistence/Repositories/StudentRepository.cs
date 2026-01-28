@@ -18,18 +18,14 @@ namespace backend.Persistence.Repositories
             _context.Students.Add(student);
         }
 
-        public async Task<Student> GetAsync(Guid id)
+        public async Task<Student?> GetAsync(Guid id)
         {
-            var student = await _context.Students.FirstOrDefaultAsync(x => x.Id == id);
-            if(student == null)
-                throw new ArgumentNullException("Cannot find student with specified Id!");
-            return student;
+            return await _context.Students.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<IReadOnlyList<Student>> GetGroupStudentsAsync(Guid groupId)
         {
-            var students = await _context.Students.Where(x => x.GroupId == groupId).ToListAsync();
-            return students;
+            return await _context.Students.Where(x => x.GroupId == groupId).ToListAsync();
         }
 
         public async Task RemoveAsync(Student student)

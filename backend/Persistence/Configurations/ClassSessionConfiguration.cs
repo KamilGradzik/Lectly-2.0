@@ -46,6 +46,12 @@ namespace backend.Persistence.Configurations
                 .HasForeignKey(x => x.GroupId)
                 .IsRequired(false)
                 .OnDelete(DeleteBehavior.Restrict);
+            
+            builder.HasOne<User>()
+                .WithMany()
+                .HasForeignKey(x => x.OwnerUserId)
+                .IsRequired(true)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

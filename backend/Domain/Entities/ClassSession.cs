@@ -14,10 +14,11 @@ namespace backend.Entities
         public string Classroom { get; private set; } = null!;
         public Guid GroupId { get; private set; }
         public Guid SubjectId { get; private set; }
+        public Guid OwnerUserId { get; private set; }
 
         private ClassSession() { }
 
-        public ClassSession(DayOfWeek dayOfWeek, TimeOnly startTime, TimeOnly endTime, string classroom, Guid groupId, Guid subjectId)
+        public ClassSession(DayOfWeek dayOfWeek, TimeOnly startTime, TimeOnly endTime, string classroom, Guid groupId, Guid subjectId, Guid ownerUserId)
         {
             Id = Guid.NewGuid();
             ChangeDayOfWeek(dayOfWeek);
@@ -25,6 +26,11 @@ namespace backend.Entities
             UpdateClassroom(classroom);
             AssignGroup(groupId);
             AssignSubject(subjectId);
+
+            if(ownerUserId == Guid.Empty)
+                throw new ArgumentException("Owner's Id cannot be empty!");
+            
+            OwnerUserId = ownerUserId;
         }
 
         public void UpdateClassTime(TimeOnly startTime, TimeOnly endTime)

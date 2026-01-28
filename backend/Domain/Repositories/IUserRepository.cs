@@ -9,7 +9,7 @@ namespace backend.Domain.Repositories
     public interface IUserRepository
     {
         Task AddAsync(User user);
-        Task<User> GetAsync(Guid id);
+        Task<User?> GetAsync(Guid id);
         Task RemoveAsync(User user);
     }
 }
