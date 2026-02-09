@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace backend.Application.DTOs
+namespace backend.Application.DTOs.Auth
 {
     public class UserRegisterDto
     {
