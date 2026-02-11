@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using backend.Domain.Entities;
 using backend.Entities;
 using backend.Persistence.Configurations;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,7 @@ namespace backend.Persistence
         public DbSet<Student> Students => Set<Student>();
         public DbSet<Note> Notes => Set<Note>();
         public DbSet<GroupSubject> GroupsSubjects => Set<GroupSubject>();
+        public DbSet<GroupStudent> GroupsStudents => Set<GroupStudent>();
         public DbSet<Grade> Grades => Set<Grade>();
         public DbSet<ClassSession> ClassSessions => Set<ClassSession>();
         public DbSet<ClassGroup> ClassGroups => Set<ClassGroup>();

@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using backend.Application.Common;
 using backend.Application.DTOs.Student;
 using backend.Application.Interfaces;
 using backend.Domain.Repositories;
 using backend.Entities;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace backend.Application.Services
 {
@@ -24,39 +26,98 @@ namespace backend.Application.Services
 
         public async Task AddStudentAsync(CreateStudentDto dto, Guid userId)
         {
-            var group = await _classGroupRepo.GetAsync(dto.GroupId);
-            if(group == null)
-                throw new ArgumentException("Cannot find class group with specified Id!");
-            
-            if(group.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified class group!");
-            
-            await _studentRepo.AddAsync(
-                new Student(dto.StudentCode, dto.FirstName, dto.LastName, dto.GroupId, dto.AdditionalInfo));
+            await _studentRepo.AddAsync(new Student(dto.StudentCode, dto.FirstName, dto.LastName, userId, dto.AdditionalInfo));
+            await _unitRepo.SaveChangesAsync();
         }
 
-        public async Task<IReadOnlyList<StudentDto>> GetClassGroupStudentsAsync(Guid groupId, Guid userId)
+        public async Task<PagedResult<StudentDto>> GetUserStudentsAsync(Guid userId, int page, int pageSize)
         {
-            var group = await _classGroupRepo.GetAsync(groupId);
-            if(group == null)
-                throw new ArgumentException("Cannot find class group with specified Id!");
-            
-            if(group.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified class group!");
-            
-            var students = await _studentRepo.GetGroupStudentsAsync(groupId);
-            var studentsList = new List<StudentDto>();
-            foreach (var student in students)
+            var result = await _studentRepo.GetUserStudentsAsync(userId, page, pageSize);
+            var students = new List<StudentDto>();
+            foreach (var item in result.Items)
             {
-                studentsList.Add(new StudentDto{
-                    Id = student.Id,
-                    FirstName = student.FirstName,
-                    LastName = student.LastName,
-                    AdditionalInfo = student.AdditionalInfo
+                students.Add(new StudentDto
+                {
+                    Id = item.Id,
+                    FirstName = item.FirstName,
+                    LastName = item.LastName,
+                    AdditionalInfo = item.AdditionalInfo,
                 });
             }
+            
+            return new PagedResult<StudentDto>(students, page, pageSize, result.TotalCount);
+        }
+        
+        // public async Task<PagedResult<StudentDto>> GetClassGroupStudentsAsync(Guid studentId, Guid userId)
+        // {
+        //     var student = await _studentRepo.GetAsync(studentId);
+        //     if(student == null)
+        //         throw new ArgumentException("Cannot find class group with specified Id!");
+            
+        //     if(student.OwnerUserId != userId)
+        //         throw new UnauthorizedAccessException("Unauthorized access to specified student!");
+            
+        //     var students = await _studentRepo.GetGroupStudentsAsync(groupId);
+        //     var studentsList = new List<StudentDto>();
+        //     foreach (var student in students)
+        //     {
+        //         studentsList.Add(new StudentDto{
+        //             Id = student.Id,
+        //             FirstName = student.FirstName,
+        //             LastName = student.LastName,
+        //             AdditionalInfo = student.AdditionalInfo
+        //         });
+        //     }
 
-            return studentsList;
+        //     return studentsList;
+        // }
+
+        public async Task AttachToGroupAsync(Guid studentId, Guid groupId, Guid userId)
+        {
+            var student = await _studentRepo.GetAsync(studentId);
+            if(student == null)
+                throw new ArgumentException("Cannot find student with specified Id!");
+            
+            if(student.OwnerUserId != userId)
+                throw new UnauthorizedAccessException("Unauthorized access to specified student!");
+            
+            var group = await _classGroupRepo.GetAsync(groupId);
+            if(group == null)
+                throw new ArgumentException("Cannot find student with specified Id!");
+
+            if(group.OwnerUserId != userId)
+                throw new UnauthorizedAccessException("Unauthorized access to specified student!");
+
+            if(await _studentRepo.CheckForAttachmentAsync(studentId, groupId))
+                throw  new ArgumentException("Student Is already attached to the group!");
+            
+            await _studentRepo.AttachToGroupAsync(studentId, groupId);
+            await _unitRepo.SaveChangesAsync();
+
+        }
+
+        public async Task DetachToGroupAsync(Guid studentId, Guid groupId, Guid userId)
+        {
+            var student = await _studentRepo.GetAsync(studentId);
+            if(student == null)
+                throw new ArgumentException("Cannot find student with specified Id!");
+            
+            if(student.OwnerUserId != userId)
+                throw new UnauthorizedAccessException("Unauthorized access to specified student!");
+            
+            var group = await _classGroupRepo.GetAsync(groupId);
+            if(group == null)
+                throw new ArgumentException("Cannot find student with specified Id!");
+            
+            if(group.OwnerUserId != userId)
+                throw new UnauthorizedAccessException("Unauthorized access to specified student!");
+            
+            if(!await _studentRepo.CheckForAttachmentAsync(studentId, groupId))
+                throw  new ArgumentException("Student Is already detached to the group!");
+
+            await _studentRepo.DetachFromGroupAsync(studentId, groupId);
+            await _unitRepo.SaveChangesAsync();
+
         }
 
         public async Task UpdateStudentAsync(StudentDto dto, Guid userId)
@@ -65,12 +126,8 @@ namespace backend.Application.Services
             if(student == null)
                 throw new ArgumentException("Cannot find student with specified Id!");
             
-            var group = await _classGroupRepo.GetAsync(student.GroupId);
-            if(group == null)
-                throw new ArgumentException("Cannot find class group with specified Id!");
-            
-            if(group.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified class group!");
+            if(student.OwnerUserId != userId)
+                throw new UnauthorizedAccessException("Unauthorized access to specified student!");
             
             student.AssignStudentCode(dto.StudentCode);
             student.UpdateFirstName(dto.FirstName);
@@ -86,12 +143,8 @@ namespace backend.Application.Services
             if(student == null)
                 throw new ArgumentException("Cannot find student with specified Id!");
             
-            var group = await _classGroupRepo.GetAsync(student.GroupId);
-            if(group == null)
-                throw new ArgumentException("Cannot find class group with specified Id!");
-            
-            if(group.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified class group!");
+            if(student.OwnerUserId != userId)
+                throw new UnauthorizedAccessException("Unauthorized access to specified student!");
             
             await _studentRepo.RemoveAsync(student);
             await _unitRepo.SaveChangesAsync();

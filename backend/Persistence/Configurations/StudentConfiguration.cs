@@ -28,11 +28,11 @@ namespace backend.Persistence.Configurations
             //Additional informations.
             builder.Property(x => x.AdditionalInfo)
                 .HasMaxLength(300);
-            
-            //Foreign key referencing group that student belongs to.
-            builder.HasOne<ClassGroup>()
+    
+            //Foreign Key referencing on owner user.
+            builder.HasOne<User>()
                 .WithMany()
-                .HasForeignKey(x => x.GroupId)
+                .HasForeignKey(x => x.OwnerUserId)
                 .IsRequired(true)
                 .OnDelete(DeleteBehavior.Cascade);
         }

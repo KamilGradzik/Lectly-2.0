@@ -22,8 +22,7 @@ namespace backend.Application.Services
 
         public async Task AddSubjectAsync(CreateSubjectDto dto, Guid userId)
         {
-            await _subjectRepo.AddAsync(
-                new Subject(dto.Name, userId, dto.Desc));
+            await _subjectRepo.AddAsync(new Subject(dto.Name, userId, dto.Desc));
             await _unitRepo.SaveChangesAsync();
         }
 

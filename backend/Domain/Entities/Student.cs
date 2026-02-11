@@ -12,18 +12,22 @@ namespace backend.Entities
         public string FirstName { get; private set; } = null!;
         public string LastName { get; private set; } = null!;
         public string? AdditionalInfo { get; private set; }
-        public Guid GroupId { get; private set; }
+        public Guid OwnerUserId { get; private set;}
 
         private Student() { }
 
-        public Student(string studentCode, string firstName, string lastName, Guid groupId, string? additionalInfo = null)
+        public Student(string studentCode, string firstName, string lastName, Guid ownerUserId, string? additionalInfo = null)
         {
             Id = Guid.NewGuid();
             AssignStudentCode(studentCode);
             UpdateFirstName(firstName);
             UpdateLastName(lastName);
             UpdateAdditionalInfo(additionalInfo);
-            AssignGroup(groupId);
+
+            if(ownerUserId == Guid.Empty)
+                throw new ArgumentException("Owner's Id cannot be empty!");
+            
+            OwnerUserId = ownerUserId;
         }
 
         public void AssignStudentCode(string studentCode)
@@ -52,12 +56,5 @@ namespace backend.Entities
             AdditionalInfo = additionalInfo;
         }
 
-        public void AssignGroup(Guid groupId)
-        {
-            if(groupId == Guid.Empty)
-                throw new ArgumentException("Group's Id cannot be empty!");
-            
-            GroupId = groupId;
-        }
     }
 }

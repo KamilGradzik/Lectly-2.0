@@ -17,7 +17,7 @@ namespace backend.Entities
 
         private Grade() { } 
         
-        public Grade(decimal value, decimal weight, string desc, Guid subjectId, Guid studentId)
+        public Grade(decimal value, decimal weight, string desc, DateTime dateIssued, Guid subjectId, Guid studentId)
         {
             Id = Guid.NewGuid();
             SetValue(value);
@@ -25,7 +25,7 @@ namespace backend.Entities
             UpdateDescription(desc);
             AssignSubject(subjectId);
             AssignStudent(studentId);
-            DateIssued = DateTime.Now;
+            UpdateIssuedDate(dateIssued);
         }
 
         public void SetValue(decimal value)
@@ -63,6 +63,11 @@ namespace backend.Entities
                 throw new ArgumentException("Student's Id cannot be empty!");
             
             StudentId = studentId;
+        }
+
+        public void UpdateIssuedDate(DateTime dateIssued)
+        {
+            DateIssued = dateIssued;
         }
     }
 }

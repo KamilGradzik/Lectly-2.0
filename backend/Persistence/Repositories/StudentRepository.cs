@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using backend.Application.Common;
+using backend.Domain.Entities;
 using backend.Domain.Repositories;
 using backend.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -23,9 +25,33 @@ namespace backend.Persistence.Repositories
             return await _context.Students.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<IReadOnlyList<Student>> GetGroupStudentsAsync(Guid groupId)
+        public async Task<PagedResult<Student>> GetUserStudentsAsync(Guid userId, int page, int pageSize)
         {
-            return await _context.Students.Where(x => x.GroupId == groupId).ToListAsync();
+            var totalCount  = await _context.Students.Where(x => x.OwnerUserId == userId).CountAsync();
+            var students = await _context.Students.Where(x => x.OwnerUserId == userId).Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+            return new PagedResult<Student>(students, page, pageSize, totalCount);
+        }
+
+        public async Task<IReadOnlyList<ClassGroup>> GetStudentGroupsAsync(Guid studentId)
+        {
+            var groups = await _context.GroupsStudents.Where(x => x.StudentId == studentId).Select(x => x.GroupId).ToListAsync();
+            return await _context.ClassGroups.Where(x => groups.Contains(x.Id)).ToListAsync();
+        }
+        
+        public async Task AttachToGroupAsync(Guid groupId, Guid studentId)
+        {
+            _context.GroupsStudents.Add(new GroupStudent(groupId, studentId));
+        }
+
+        public async Task DetachFromGroupAsync(Guid groupId, Guid studentId)
+        {
+            var groupStudent = await _context.GroupsStudents.FirstOrDefaultAsync(x => x.GroupId == groupId && x.StudentId == studentId);
+            _context.GroupsStudents.Remove(groupStudent);
+        }
+
+        public async Task<bool> CheckForAttachmentAsync(Guid groupId, Guid StudentId)
+        {
+            return await _context.GroupsStudents.AnyAsync(x => x.GroupId == groupId && x.StudentId == StudentId);
         }
 
         public async Task RemoveAsync(Student student)

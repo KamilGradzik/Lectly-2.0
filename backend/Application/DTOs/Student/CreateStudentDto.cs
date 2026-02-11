@@ -11,6 +11,5 @@ namespace backend.Application.DTOs.Student
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
         public string? AdditionalInfo { get; set; }
-        public Guid GroupId { get; set; }
     }
 }
