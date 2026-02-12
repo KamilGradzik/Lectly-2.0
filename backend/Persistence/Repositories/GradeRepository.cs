@@ -23,7 +23,7 @@ namespace backend.Persistence.Repositories
             return await _context.Grades.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<IReadOnlyList<Grade>> GetStudentGrades(Guid studentId)
+        public async Task<IReadOnlyList<Grade>> GetStudentGradesAsync(Guid studentId)
         {
             return await _context.Grades.Where(x => x.StudentId == studentId).ToListAsync();
         }

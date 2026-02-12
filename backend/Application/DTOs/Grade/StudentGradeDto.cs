@@ -12,6 +12,7 @@ namespace backend.Application.DTOs.Grade
         public decimal Value { get; set; }
         public decimal Weight { get; set; }
         public string Desc { get; set; } = null!;
+        public DateTime DateIssued { get; set; }
         public SubjectDto Subject { get; set; } = null!;
     }
 }

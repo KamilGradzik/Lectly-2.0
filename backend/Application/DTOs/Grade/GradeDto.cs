@@ -11,7 +11,6 @@ namespace backend.Application.DTOs.Grade
         public decimal Value { get; set; }
         public decimal Weight { get; set; }
         public string Desc { get; set; } = null!;
-        public Guid subjectId { get; set; }
-        public Guid studentId { get; set; }
+        public Guid SubjectId { get; set; }
     }
 }

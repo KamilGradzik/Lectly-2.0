@@ -14,10 +14,11 @@ namespace backend.Entities
         public DateTime DateIssued { get; private set; }
         public Guid SubjectId { get; private set; }
         public Guid StudentId { get; private set; }
+        public Guid OwnerUserId { get; private set; }
 
         private Grade() { } 
         
-        public Grade(decimal value, decimal weight, string desc, DateTime dateIssued, Guid subjectId, Guid studentId)
+        public Grade(decimal value, decimal weight, string desc, DateTime dateIssued, Guid subjectId, Guid studentId, Guid ownerUserId)
         {
             Id = Guid.NewGuid();
             SetValue(value);
@@ -26,6 +27,11 @@ namespace backend.Entities
             AssignSubject(subjectId);
             AssignStudent(studentId);
             UpdateIssuedDate(dateIssued);
+
+            if(ownerUserId == Guid.Empty)
+                throw new ArgumentException("Owner's Id cannot be empty!");
+            
+            OwnerUserId = ownerUserId;
         }
 
         public void SetValue(decimal value)

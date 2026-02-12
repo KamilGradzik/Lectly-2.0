@@ -46,7 +46,7 @@ namespace backend.Application.Services
 
         public async Task UpdateSubjectAsync(SubjectDto dto, Guid userId)
         {
-            var subject = await _subjectRepo.GetSubjectAsync(dto.Id);
+            var subject = await _subjectRepo.GetAsync(dto.Id);
 
             if(subject == null)
                 throw new ArgumentException("Cannot find subject with specified Id!");
@@ -61,7 +61,7 @@ namespace backend.Application.Services
 
         public async Task RemoveSubjectAsync(Guid subjectId, Guid userId)
         {
-            var subject = await _subjectRepo.GetSubjectAsync(subjectId);
+            var subject = await _subjectRepo.GetAsync(subjectId);
 
             if(subject == null)
                 throw new ArgumentException("Cannot find subject with specified Id!");

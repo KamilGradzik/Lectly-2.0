@@ -10,7 +10,7 @@ namespace backend.Persistence.Repositories
     {
         Task AddAsync(Grade grade);
         Task<Grade?> GetAsync(Guid id);
-        Task<IReadOnlyList<Grade>> GetStudentGrades(Guid studentId);
+        Task<IReadOnlyList<Grade>> GetStudentGradesAsync(Guid studentId);
         Task RemoveAsync(Grade grade);
     }
 }

@@ -9,7 +9,7 @@ namespace backend.Application.Interfaces
     public interface IGradeService
     {
         Task AddGradeAsync(CreateGradeDto dto, Guid userId);
-        Task<IReadOnlyList<StudentGradeDto>> GetStudentGrades(Guid userId, Guid studentId);     
+        Task<IReadOnlyList<StudentGradeDto>> GetStudentGradesAsync(Guid studentId, Guid userId);     
         Task UpdateGradeAsync(GradeDto dto, Guid userId);
         Task RemoveGradeAsync(Guid gradeId, Guid userId);
     }

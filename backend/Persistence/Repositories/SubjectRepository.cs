@@ -18,7 +18,7 @@ namespace backend.Persistence.Repositories
             _context.Subjects.Add(subject);
         }
 
-        public async Task<Subject?> GetSubjectAsync(Guid id)
+        public async Task<Subject?> GetAsync(Guid id)
         {
             return await _context.Subjects.FirstOrDefaultAsync(x => x.Id == id);
         }
@@ -26,6 +26,12 @@ namespace backend.Persistence.Repositories
         public async Task<IReadOnlyList<Subject>> GetUserSubjectsAsync(Guid userId)
         {
             return await _context.Subjects.Where(x => x.OwnerUserId == userId).ToListAsync();
+        }
+
+        public async Task<IReadOnlyList<ClassGroup>> GetSubjectGroupsAsync(Guid subjectId)
+        {
+            var groupSubjects = await _context.GroupsSubjects.Where(x => x.SubjectId == subjectId).Select(x => x.GroupId).ToListAsync();
+            return await _context.ClassGroups.Where(x => groupSubjects.Contains(x.Id)).ToListAsync();
         }
 
         public async Task RemoveAsync(Subject subject)
