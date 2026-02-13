@@ -1,0 +1,17 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace backend.Application.DTOs.ClassSession
+{
+    public class CreateClassSessionDto
+    {
+        public DayOfWeek DayOfWeek { get; set; }
+        public TimeOnly StartTime { get; set; }
+        public TimeOnly EndTime { get; set; }
+        public string Classroom { get; set; } = null!;
+        public Guid ClassGroupId { get; set; }
+        public Guid SubjectId { get; set; }
+    }
+}

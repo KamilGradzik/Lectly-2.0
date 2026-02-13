@@ -66,22 +66,28 @@ namespace backend.Application.Services
             var studentGrades = new List<StudentGradeDto>();
             foreach (var grade in grades)
             {
-                var subject = await _subjectRepo.GetAsync(grade.SubjectId);
-                studentGrades.Add(new StudentGradeDto{
+                var subject = await _subjectRepo.GetAsync(grade.SubjectId); 
+                var studentGrade = new StudentGradeDto{
                     Id = grade.Id,
                     Value = grade.Value,
                     Weight = grade.Weight,
                     Desc = grade.Desc,
                     DateIssued = grade.DateIssued,
-                    Subject  = new SubjectDto
+                };
+            
+                if(subject != null)
+                {
+                    studentGrade.Subject = new SubjectDto
                     {
                         Id = subject.Id,
                         Name = subject.Name,
                         Desc = subject.Desc,
-                    }
-                });
+                    };
+                }   
+                else studentGrade.Subject = null;
+                
+                studentGrades.Add(studentGrade);
             }
-
             return studentGrades;
         }
 
@@ -107,6 +113,20 @@ namespace backend.Application.Services
             grade.AssignSubject(dto.SubjectId);
             grade.UpdateDescription(dto.Desc);
             
+            await _unitRepo.SaveChangesAsync();
+        }
+
+        public async Task RemoveGradeAsync(Guid gradeId, Guid userId)
+        {
+            var grade = await _gradeRepo.GetAsync(gradeId);
+            
+            if(grade == null)
+                throw new ArgumentException("Cannot find grade with specified Id!");
+            
+            if(grade.OwnerUserId != userId)
+                throw new UnauthorizedAccessException("Unauthorized access to specified grade!");
+
+            await _gradeRepo.RemoveAsync(grade);
             await _unitRepo.SaveChangesAsync();
         }
     }
