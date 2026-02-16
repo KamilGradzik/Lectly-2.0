@@ -46,7 +46,8 @@ namespace backend.Persistence.Repositories
         public async Task DetachFromGroupAsync(Guid groupId, Guid studentId)
         {
             var groupStudent = await _context.GroupsStudents.FirstOrDefaultAsync(x => x.GroupId == groupId && x.StudentId == studentId);
-            _context.GroupsStudents.Remove(groupStudent);
+            if(groupStudent != null)
+                _context.GroupsStudents.Remove(groupStudent);
         }
 
         public async Task<bool> CheckForAttachmentAsync(Guid groupId, Guid StudentId)
@@ -56,6 +57,18 @@ namespace backend.Persistence.Repositories
 
         public async Task RemoveAsync(Student student)
         {
+            var groupsStudents = await _context.GroupsStudents.Where(x => x.StudentId == student.Id).ToListAsync();
+            foreach(var item in groupsStudents)
+            {
+                _context.GroupsStudents.Remove(item);
+            }
+
+            var grades = await _context.Grades.Where(x => x.StudentId == student.Id).ToListAsync();
+            foreach(var item in grades)
+            {
+                _context.Grades.Remove(item);
+            }
+
             _context.Students.Remove(student);
         }
     }

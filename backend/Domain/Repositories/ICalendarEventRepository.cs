@@ -11,7 +11,7 @@ namespace backend.Domain.Repositories
     {
         Task AddAsync(CalendarEvent calendarEvent);
         Task<CalendarEvent?> GetAsync(Guid id);
-        Task<IReadOnlyList<CalendarEvent>> GetMonthlyCalendarEventsAsync(Guid userId, int month, int year);
+        Task<IReadOnlyList<CalendarEvent>> GetMonthlyCalendarEventsAsync(int month, int year, Guid userId);
         Task RemoveAsync(CalendarEvent calendarEvent);
     }
 }

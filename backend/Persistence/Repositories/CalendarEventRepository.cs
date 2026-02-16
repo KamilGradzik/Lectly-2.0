@@ -23,7 +23,7 @@ namespace backend.Persistence.Repositories
             return await _context.CalendarEvents.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<IReadOnlyList<CalendarEvent>> GetMonthlyCalendarEventsAsync(Guid userId, int month, int year)
+        public async Task<IReadOnlyList<CalendarEvent>> GetMonthlyCalendarEventsAsync(int month, int year, Guid userId)
         {
             return await _context.CalendarEvents.Where(x => x.BeginDate.Year == year && (x.BeginDate.Month == month || x.EndDate.Month == month)).ToListAsync();
         }

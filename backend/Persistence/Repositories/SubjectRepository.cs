@@ -36,6 +36,24 @@ namespace backend.Persistence.Repositories
 
         public async Task RemoveAsync(Subject subject)
         {
+            var groupsSubjects = await _context.GroupsSubjects.Where(x => x.SubjectId == subject.Id).ToListAsync();
+            foreach(var item in groupsSubjects)
+            {
+                _context.GroupsSubjects.Remove(item);
+            }
+            
+            var grades = await _context.Grades.Where(x => x.SubjectId == subject.Id).ToListAsync();
+            foreach(var item in grades)
+            {
+                _context.Grades.Remove(item);
+            }
+
+            var classSessions = await _context.ClassSessions.Where(x => x.SubjectId == subject.Id).ToListAsync();
+            foreach(var item in classSessions)
+            {
+                _context.ClassSessions.Remove(item);
+            }
+
             _context.Subjects.Remove(subject);
         }
     }

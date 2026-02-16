@@ -32,10 +32,10 @@ namespace backend.Application.Services
             var subject = await _subjectRepo.GetAsync(dto.SubjectId);
 
             if(group == null)
-                throw new ArgumentException("Cannot find student with specified Id!");
+                throw new ArgumentException("Cannot find class group with specified Id!");
 
             if(group.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified student!");
+                throw new UnauthorizedAccessException("Unauthorized access to specified class group!");
 
             if(subject == null)
                 throw new ArgumentException("Cannot find subject with specified Id!");
