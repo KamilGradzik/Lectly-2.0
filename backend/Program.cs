@@ -1,5 +1,5 @@
 
-using backend.Persistence;
+using backend.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 class Program

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using backend.Entities;
 
-namespace backend.Persistence.Repositories
+namespace backend.Domain.Repositories
 {
     public interface IGradeRepository
     {

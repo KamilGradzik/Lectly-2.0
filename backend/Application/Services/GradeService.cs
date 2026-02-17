@@ -7,7 +7,6 @@ using backend.Application.DTOs.Subject;
 using backend.Application.Interfaces;
 using backend.Domain.Repositories;
 using backend.Entities;
-using backend.Persistence.Repositories;
 
 namespace backend.Application.Services
 {
