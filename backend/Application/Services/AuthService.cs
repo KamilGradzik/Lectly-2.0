@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using backend.Application.Common;
 using backend.Application.DTOs.Auth;
 using backend.Application.Interfaces;
 using backend.Domain.Repositories;
@@ -15,25 +16,33 @@ namespace backend.Application.Services
         private readonly PasswordHasher<User> _passwordHasher = new();
         private readonly IUserRepository _userRepo;
         private readonly IUnitOfWork _unitRepo;
-        public AuthService(IUserRepository userRepo, IUnitOfWork unitRepo) 
+        private readonly IPasswordManager _passwordManager;
+        public AuthService(IUserRepository userRepo, IUnitOfWork unitRepo, IPasswordManager passwordManager) 
         { 
             _userRepo = userRepo; 
-            _unitRepo = unitRepo; 
+            _unitRepo = unitRepo;
+            _passwordManager = passwordManager; 
         }
 
         public async Task RegisterAsync(UserRegisterDto dto)
         {
-            var user = new User(dto.Email, dto.Password, dto.FirstName, dto.LastName, false);
-            var hashedPassword = _passwordHasher.HashPassword(user, dto.Password);
-            user.ChangePassword(hashedPassword);
+            var hashedPassword = _passwordManager.HashPassword(dto.Password);
+            var user = new User(dto.Email, hashedPassword, dto.FirstName, dto.LastName, true);
 
             await _userRepo.AddAsync(user);
             await _unitRepo.SaveChangesAsync();
         }
         
-        public async Task LoginAsync(UserLoginDto dto)
+        public async Task<string> LoginAsync(UserLoginDto dto)
         {
+            var user = await _userRepo.GetByEmailAsync(dto.Email);
+            if(user == null)
+                throw new Exception("Cannot find user with specified email");
             
+            if(!_passwordManager.VerifyPassword(dto.Password, user.Password))
+                throw new UnauthorizedAccessException("Invaild credentials, password or email are invalid!");
+            
+            return new string("JWT Token");
         }
     }
 }

@@ -10,6 +10,6 @@ namespace backend.Application.Interfaces
     public interface IAuthService
     {
         Task RegisterAsync(UserRegisterDto userRegisterDto);
-        Task LoginAsync(UserLoginDto userLoginDto);
+        Task<string> LoginAsync(UserLoginDto userLoginDto);
     }
 }

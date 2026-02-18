@@ -10,6 +10,7 @@ namespace backend.Domain.Repositories
     {
         Task AddAsync(User user);
         Task<User?> GetAsync(Guid id);
+        Task<User?> GetByEmailAsync(string email);
         Task RemoveAsync(User user);
     }
 }
