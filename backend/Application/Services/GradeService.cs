@@ -43,7 +43,7 @@ namespace backend.Application.Services
                 throw new UnauthorizedAccessException("Unauthorized access to specified student!");
 
             var subjectGroups = await _subjectRepo.GetSubjectGroupsAsync(dto.SubjectId);
-            var studentGroups = await _studentRepo.GetStudentGroupsAsync(dto.StudentId);
+            var studentGroups = await _studentRepo.GetStudentClassGroupsAsync(dto.StudentId);
 
             if(!subjectGroups.Any(x => studentGroups.Select(y => y.Id).ToList().Contains(x.Id)))
                 throw new ArgumentException("Specified subject Doesnt't belong to any group that student Does!");

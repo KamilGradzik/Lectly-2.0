@@ -7,6 +7,7 @@ using backend.Application.DTOs.Auth;
 using backend.Application.Interfaces;
 using backend.Domain.Repositories;
 using backend.Entities;
+using backend.Infrastructure.Security;
 using Microsoft.AspNetCore.Identity;
 
 namespace backend.Application.Services
@@ -17,11 +18,13 @@ namespace backend.Application.Services
         private readonly IUserRepository _userRepo;
         private readonly IUnitOfWork _unitRepo;
         private readonly IPasswordManager _passwordManager;
-        public AuthService(IUserRepository userRepo, IUnitOfWork unitRepo, IPasswordManager passwordManager) 
+        private readonly ITokenManager _tokenManager;
+        public AuthService(IUserRepository userRepo, IUnitOfWork unitRepo, IPasswordManager passwordManager, ITokenManager tokenManager) 
         { 
             _userRepo = userRepo; 
             _unitRepo = unitRepo;
-            _passwordManager = passwordManager; 
+            _passwordManager = passwordManager;
+            _tokenManager = tokenManager;
         }
 
         public async Task RegisterAsync(UserRegisterDto dto)
@@ -41,8 +44,8 @@ namespace backend.Application.Services
             
             if(!_passwordManager.VerifyPassword(dto.Password, user.Password))
                 throw new UnauthorizedAccessException("Invaild credentials, please try again!");
-            
-            return new string("JWT Token");
+
+            return _tokenManager.GenerateAccessToken(user);
         }
     }
 }
