@@ -32,7 +32,7 @@ namespace backend.Infrastructure.Persistence.Repositories
             return new PagedResult<Student>(students, page, pageSize, totalCount);
         }
 
-        public async Task<IReadOnlyList<ClassGroup>> GetStudentGroupsAsync(Guid studentId)
+        public async Task<IReadOnlyList<ClassGroup>> GetStudentClassGroupsAsync(Guid studentId)
         {
             var groups = await _context.GroupsStudents.Where(x => x.StudentId == studentId).Select(x => x.GroupId).ToListAsync();
             return await _context.ClassGroups.Where(x => groups.Contains(x.Id)).ToListAsync();

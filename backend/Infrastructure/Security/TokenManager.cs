@@ -7,6 +7,8 @@ using backend.Application.Common;
 using backend.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.JsonWebTokens;
+using Microsoft.IdentityModel.Tokens;
 
 namespace backend.Infrastructure.Security
 {

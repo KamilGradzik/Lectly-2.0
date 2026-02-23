@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using backend.Application.Common;
+using backend.Application.DTOs.ClassGroup;
 using backend.Application.DTOs.Student;
 using backend.Application.Interfaces;
 using backend.Domain.Repositories;
@@ -48,29 +49,28 @@ namespace backend.Application.Services
             return new PagedResult<StudentDto>(students, page, pageSize, result.TotalCount);
         }
         
-        // public async Task<PagedResult<StudentDto>> GetClassGroupStudentsAsync(Guid studentId, Guid userId)
-        // {
-        //     var student = await _studentRepo.GetAsync(studentId);
-        //     if(student == null)
-        //         throw new ArgumentException("Cannot find class group with specified Id!");
+        public async Task<IReadOnlyList<ClassGroupDto>> GetStudentClassGroupsAsync(Guid studentId, Guid userId)
+        {
+            var student = await _studentRepo.GetAsync(studentId);
+            if(student == null)
+                throw new ArgumentException("Cannot find class group with specified Id!");
             
-        //     if(student.OwnerUserId != userId)
-        //         throw new UnauthorizedAccessException("Unauthorized access to specified student!");
+            if(student.OwnerUserId != userId)
+                throw new UnauthorizedAccessException("Unauthorized access to specified student!");
             
-        //     var students = await _studentRepo.GetGroupStudentsAsync(groupId);
-        //     var studentsList = new List<StudentDto>();
-        //     foreach (var student in students)
-        //     {
-        //         studentsList.Add(new StudentDto{
-        //             Id = student.Id,
-        //             FirstName = student.FirstName,
-        //             LastName = student.LastName,
-        //             AdditionalInfo = student.AdditionalInfo
-        //         });
-        //     }
+            var classGroups = await _studentRepo.GetStudentClassGroupsAsync(student.Id);
+            var classGroupsList = new List<ClassGroupDto>();
+            foreach (var classGroup in classGroups)
+            {
+                classGroupsList.Add(new ClassGroupDto{
+                    Id = classGroup.Id,
+                    Name = classGroup.Name,
+                    Desc = classGroup.Desc,
+                });
+            }
 
-        //     return studentsList;
-        // }
+            return classGroupsList;
+        }
 
         public async Task AttachToGroupAsync(Guid studentId, Guid groupId, Guid userId)
         {
@@ -96,7 +96,7 @@ namespace backend.Application.Services
 
         }
 
-        public async Task DetachToGroupAsync(Guid studentId, Guid groupId, Guid userId)
+        public async Task DetachFromGroupAsync(Guid studentId, Guid groupId, Guid userId)
         {
             var student = await _studentRepo.GetAsync(studentId);
             if(student == null)

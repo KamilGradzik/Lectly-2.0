@@ -40,7 +40,7 @@ namespace backend.Application.Services
                 throw new Exception("Cannot find user with specified email");
             
             if(!_passwordManager.VerifyPassword(dto.Password, user.Password))
-                throw new UnauthorizedAccessException("Invaild credentials, password or email are invalid!");
+                throw new UnauthorizedAccessException("Invaild credentials, please try again!");
             
             return new string("JWT Token");
         }

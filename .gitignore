@@ -27,5 +27,7 @@
 
 /backend/bin/
 /backend/obj/
+/backend/appsettings.json
+/backend/appsettings.Development.json
 
 .vscode
