@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 
 class Program
 {
@@ -14,6 +15,7 @@ class Program
     {
         var builder = WebApplication.CreateBuilder(args);
         builder.Services.AddOpenApi();
+        builder.Services.AddControllers();
 
         //_____________ DB CONNECTION _____________
         builder.Services.AddDbContext<AppDbContext>(options =>
@@ -47,12 +49,25 @@ class Program
             };
         });
         
+        //_____________ SWAGGER CONFIG _____________
+        builder.Services.AddSwaggerGen(options =>
+        {
+            options.SwaggerDoc("v1", new OpenApiInfo
+            {
+                Title = "Lectly API",
+                Description = "All the API endpoints that exists in Lectly application",
+                Version = "v0.1",
+            });
+        });
+
 
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
-        {
+        {   
+            app.UseSwagger();
+            app.UseSwaggerUI();
             app.MapOpenApi();
         }
 
