@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using backend.Application.DTOs.Auth;
 using backend.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -22,6 +23,7 @@ namespace backend.API.Controllers
             _authService = authService;
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserLoginDto dto)
         {
@@ -36,6 +38,7 @@ namespace backend.API.Controllers
             }
         }  
 
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserRegisterDto dto)
         {

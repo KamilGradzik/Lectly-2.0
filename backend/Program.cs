@@ -1,6 +1,9 @@
 
 using System.Text;
 using backend.Application.Common;
+using backend.Application.Interfaces;
+using backend.Application.Services;
+using backend.Infrastructure;
 using backend.Infrastructure.Persistence;
 using backend.Infrastructure.Security;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -16,6 +19,7 @@ class Program
         var builder = WebApplication.CreateBuilder(args);
         builder.Services.AddOpenApi();
         builder.Services.AddControllers();
+        builder.Services.AddInfrastructure();
 
         //_____________ DB CONNECTION _____________
         builder.Services.AddDbContext<AppDbContext>(options =>
@@ -26,7 +30,6 @@ class Program
         //_____________ JWT CONFIG _____________
         builder.Services.Configure<IOptions<JwtSettings>>(
             builder.Configuration.GetSection("JwtSettings"));
-        builder.Services.AddScoped<ITokenManager, TokenManager>();
 
         builder.Services.AddAuthentication(options =>
         {
@@ -58,6 +61,31 @@ class Program
                 Description = "All the API endpoints that exists in Lectly application",
                 Version = "v0.1",
             });
+
+            options.AddSecurityDefinition("JWT Authorization", new OpenApiSecurityScheme
+            {
+                Name = "JWT Authorization",
+                Type = SecuritySchemeType.Http,
+                Scheme = "bearer",
+                BearerFormat = "JWT",
+                In = ParameterLocation.Header,
+                Description = "Please provide JWT token"
+            });
+
+            options.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {
+                {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        }
+                    },
+                    Array.Empty<string>()
+                }
+            });
         });
 
 
@@ -68,9 +96,10 @@ class Program
         {   
             app.UseSwagger();
             app.UseSwaggerUI();
-            app.MapOpenApi();
+            // app.MapOpenApi();
         }
 
+        app.MapControllers();
         app.UseHttpsRedirection();
         app.UseAuthentication();
         app.UseAuthorization();

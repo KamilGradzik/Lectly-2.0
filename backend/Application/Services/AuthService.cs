@@ -14,7 +14,6 @@ namespace backend.Application.Services
 {
     public class AuthService : IAuthService
     {
-        private readonly PasswordHasher<User> _passwordHasher = new();
         private readonly IUserRepository _userRepo;
         private readonly IUnitOfWork _unitRepo;
         private readonly IPasswordManager _passwordManager;
