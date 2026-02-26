@@ -7,9 +7,9 @@ namespace backend.Application.DTOs.Student
 {
     public class CreateStudentDto
     {
-        public string StudentCode { get; set; } = null!;
-        public string FirstName { get; set; } = null!;
-        public string LastName { get; set; } = null!;
+        public required string StudentCode { get; set; }
+        public required string FirstName { get; set; }
+        public required string LastName { get; set; }
         public string? AdditionalInfo { get; set; }
     }
 }

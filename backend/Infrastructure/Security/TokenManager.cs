@@ -29,12 +29,12 @@ namespace backend.Infrastructure.Security
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
-            
+
             var token = new JwtSecurityToken(
                 issuer: _options.Issuer,
                 audience: _options.Audience,
                 claims: claims,
-                expires: DateTime.Now.AddHours(_options.ExpiryMinutes),
+                expires: DateTime.UtcNow.AddMinutes(_options.ExpiryMinutes),
                 signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_options.Key)), SecurityAlgorithms.HmacSha256)
             );
 

@@ -40,6 +40,7 @@ namespace backend.Application.Services
                 students.Add(new StudentDto
                 {
                     Id = item.Id,
+                    StudentCode = item.StudentCode,
                     FirstName = item.FirstName,
                     LastName = item.LastName,
                     AdditionalInfo = item.AdditionalInfo,

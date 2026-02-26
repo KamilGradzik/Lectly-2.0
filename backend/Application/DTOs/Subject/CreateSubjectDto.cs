@@ -7,7 +7,7 @@ namespace backend.Application.DTOs.Subject
 {
     public class CreateSubjectDto
     {
-        public string Name { get; set; } = null!;
+        public required string Name { get; set; }
         public string? Desc { get; set; }
     }
 }

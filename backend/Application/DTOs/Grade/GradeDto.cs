@@ -10,7 +10,7 @@ namespace backend.Application.DTOs.Grade
         public Guid Id { get; set; }
         public decimal Value { get; set; }
         public decimal Weight { get; set; }
-        public string Desc { get; set; } = null!;
+        public required string Desc { get; set; }
         public Guid SubjectId { get; set; }
     }
 }

@@ -19,6 +19,7 @@ class Program
         var builder = WebApplication.CreateBuilder(args);
         builder.Services.AddOpenApi();
         builder.Services.AddControllers();
+        builder.Services.AddHttpContextAccessor();
         builder.Services.AddInfrastructure();
 
         //_____________ DB CONNECTION _____________
@@ -28,7 +29,7 @@ class Program
         });
 
         //_____________ JWT CONFIG _____________
-        builder.Services.Configure<IOptions<JwtSettings>>(
+        builder.Services.Configure<JwtSettings>(
             builder.Configuration.GetSection("JwtSettings"));
 
         builder.Services.AddAuthentication(options =>
@@ -40,6 +41,7 @@ class Program
         {
             var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
 
+            options.MapInboundClaims = false;
             options.TokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuer = true,
@@ -50,6 +52,7 @@ class Program
                 ValidAudience = jwtSettings.Audience,
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key))
             };
+            
         });
         
         //_____________ SWAGGER CONFIG _____________
@@ -62,7 +65,7 @@ class Program
                 Version = "v0.1",
             });
 
-            options.AddSecurityDefinition("JWT Authorization", new OpenApiSecurityScheme
+            options.AddSecurityDefinition("JWT", new OpenApiSecurityScheme
             {
                 Name = "JWT Authorization",
                 Type = SecuritySchemeType.Http,
@@ -80,7 +83,7 @@ class Program
                         Reference = new OpenApiReference
                         {
                             Type = ReferenceType.SecurityScheme,
-                            Id = "Bearer"
+                            Id = "JWT"
                         }
                     },
                     Array.Empty<string>()
@@ -96,13 +99,12 @@ class Program
         {   
             app.UseSwagger();
             app.UseSwaggerUI();
-            // app.MapOpenApi();
+            app.MapOpenApi();
         }
-
-        app.MapControllers();
         app.UseHttpsRedirection();
         app.UseAuthentication();
         app.UseAuthorization();
+        app.MapControllers();
         app.Run();
     }
     

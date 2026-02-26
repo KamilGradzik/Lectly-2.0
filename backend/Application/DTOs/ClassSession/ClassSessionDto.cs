@@ -13,7 +13,7 @@ namespace backend.Application.DTOs.ClassSession
         public DayOfWeek DayOfWeek { get; set; }
         public TimeOnly StartTime { get; set; }
         public TimeOnly EndTime { get; set; }
-        public string Classroom { get; set; } = null!;
+        public required string Classroom { get; set; }
         public SubjectDto? Subject { get; set; }
         public ClassGroupDto? ClassGroup { get; set; }
     }

@@ -10,7 +10,7 @@ namespace backend.Application.DTOs.ClassSession
         public DayOfWeek DayOfWeek { get; set; }
         public TimeOnly StartTime { get; set; }
         public TimeOnly EndTime { get; set; }
-        public string Classroom { get; set; } = null!;
+        public required string Classroom { get; set; }
         public Guid ClassGroupId { get; set; }
         public Guid SubjectId { get; set; }
     }

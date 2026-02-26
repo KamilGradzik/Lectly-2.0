@@ -8,7 +8,7 @@ namespace backend.Application.DTOs.ClassGroup
     public class ClassGroupDto
     {
         public Guid Id { get; set; }
-        public string Name { get; set; } = null!;
+        public required string Name { get; set; }
         public string? Desc { get; set; }
     }
 }

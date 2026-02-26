@@ -7,7 +7,7 @@ namespace backend.Application.DTOs.ClassGroup
 {
     public class CreateClassGroupDto
     {
-        public string Name { get; set; } = null!;
+        public required string Name { get; set; }
         public string? Desc { get; set; }
     }
 }

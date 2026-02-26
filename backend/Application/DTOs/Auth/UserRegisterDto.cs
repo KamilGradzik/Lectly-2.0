@@ -8,9 +8,9 @@ namespace backend.Application.DTOs.Auth
 {
     public class UserRegisterDto
     {
-        public string Email { get; set; } = null!;
-        public string Password { get; set; } = null!;
-        public string FirstName { get; set; } = null!;
-        public string LastName { get; set; } = null!;
+        public required string Email { get; set; }
+        public required string Password { get; set; }
+        public required string FirstName { get; set; }
+        public required string LastName { get; set; }
     }
 }

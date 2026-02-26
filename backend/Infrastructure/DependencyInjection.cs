@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using backend.API;
 using backend.Application.Common;
 using backend.Application.Interfaces;
 using backend.Application.Services;
@@ -39,6 +40,7 @@ namespace backend.Infrastructure
             //Security middleware register
             services.AddScoped<ITokenManager, TokenManager>();
             services.AddScoped<IPasswordManager, PasswordManager>();
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
 
             return services;
         }

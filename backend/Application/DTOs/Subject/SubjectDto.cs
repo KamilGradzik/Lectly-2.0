@@ -8,7 +8,7 @@ namespace backend.Application.DTOs.Subject
     public class SubjectDto
     {
         public Guid Id { get; set; }
-        public string Name { get; set; } = null!;
+        public required string Name { get; set; }
         public string? Desc { get; set; }
     }
 }

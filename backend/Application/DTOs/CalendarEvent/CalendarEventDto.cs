@@ -9,7 +9,7 @@ namespace backend.Application.DTOs.CalendarEvent
     public class CalendarEventDto
     {
         public Guid Id { get; set; }
-        public string Name { get; set; } = null!;
+        public required string Name { get; set; }
         public string? Desc { get; set; }
         public DateTime BeginDate { get; set; }
         public DateTime EndDate { get; set; }

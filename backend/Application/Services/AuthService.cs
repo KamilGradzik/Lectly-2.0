@@ -39,11 +39,14 @@ namespace backend.Application.Services
         {
             var user = await _userRepo.GetByEmailAsync(dto.Email);
             if(user == null)
-                throw new Exception("Cannot find user with specified email");
+                throw new ArgumentException("Cannot find user with specified email");
             
             if(!_passwordManager.VerifyPassword(dto.Password, user.Password))
                 throw new UnauthorizedAccessException("Invaild credentials, please try again!");
-
+            
+            if(!user.IsActive)
+                throw new UnauthorizedAccessException("Account is inactive, please activate with link sent in email!");
+                
             return _tokenManager.GenerateAccessToken(user);
         }
     }

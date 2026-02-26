@@ -11,22 +11,24 @@ namespace backend.Application.Services
 {
     public class CalendarEventService : ICalendarEventService
     {
+        private readonly ICurrentUserService _currentUser;
         private readonly ICalendarEventRepository _calendarEventRepo;
         private readonly IUnitOfWork _unitRepo;
 
-        public CalendarEventService(ICalendarEventRepository calendarEventRepo, IUnitOfWork unitRepo)
+        public CalendarEventService(ICalendarEventRepository calendarEventRepo, IUnitOfWork unitRepo, ICurrentUserService currentUser)
         {
             _calendarEventRepo = calendarEventRepo;
             _unitRepo = unitRepo;
+            _currentUser = currentUser;
         }
 
-        public async Task AddCalendarEventAsync(CreateCalendarEventDto dto, Guid userId)
+        public async Task AddCalendarEventAsync(CreateCalendarEventDto dto)
         {
-            await _calendarEventRepo.AddAsync(new CalendarEvent(dto.Name, dto.BeginDate, dto.EndDate, dto.Type, userId));
+            await _calendarEventRepo.AddAsync(new CalendarEvent(dto.Name, dto.BeginDate, dto.EndDate, dto.Type, _currentUser.UserId, dto.Desc));
             await _unitRepo.SaveChangesAsync();
         }
 
-        public async Task<IReadOnlyList<CalendarEventDto>> GetUserCalendarEventsAsync(int month, int year, Guid userId)
+        public async Task<IReadOnlyList<CalendarEventDto>> GetUserMonthlyCalendarEventsAsync(int month, int year, Guid userId)
         {
             var calendarEvents = await _calendarEventRepo.GetMonthlyCalendarEventsAsync(month, year, userId);
             var userCalendarEvents = new List<CalendarEventDto>();

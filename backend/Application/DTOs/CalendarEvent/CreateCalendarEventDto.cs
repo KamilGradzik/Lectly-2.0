@@ -8,7 +8,7 @@ namespace backend.Application.DTOs.CalendarEvent
 {
     public class CreateCalendarEventDto
     {
-        public string Name { get; set; } = null!;
+        public required string Name { get; set; }
         public string? Desc { get; set; }
         public DateTime BeginDate { get; set; }
         public DateTime EndDate { get; set; }
