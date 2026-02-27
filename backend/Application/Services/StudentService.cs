@@ -54,10 +54,10 @@ namespace backend.Application.Services
         {
             var student = await _studentRepo.GetAsync(studentId);
             if(student == null)
-                throw new ArgumentException("Cannot find class group with specified Id!");
+                throw new NotFoundException("Cannot find class group with specified Id!");
             
             if(student.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified student!");
+                throw new UnauthorizedException("Unauthorized access to specified student!");
             
             var classGroups = await _studentRepo.GetStudentClassGroupsAsync(student.Id);
             var classGroupsList = new List<ClassGroupDto>();
@@ -77,20 +77,20 @@ namespace backend.Application.Services
         {
             var student = await _studentRepo.GetAsync(studentId);
             if(student == null)
-                throw new ArgumentException("Cannot find student with specified Id!");
+                throw new NotFoundException("Cannot find student with specified Id!");
             
             if(student.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified student!");
+                throw new UnauthorizedException("Unauthorized access to specified student!");
             
             var group = await _classGroupRepo.GetAsync(groupId);
             if(group == null)
-                throw new ArgumentException("Cannot find student with specified Id!");
+                throw new NotFoundException("Cannot find class group with specified Id!");
 
             if(group.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified student!");
+                throw new UnauthorizedException("Unauthorized access to specified class group!");
 
             if(await _studentRepo.CheckForAttachmentAsync(studentId, groupId))
-                throw  new ArgumentException("Student Is already attached to the group!");
+                throw  new ValidationException("Student Is already attached to the group!");
             
             await _studentRepo.AttachToGroupAsync(studentId, groupId);
             await _unitRepo.SaveChangesAsync();
@@ -101,20 +101,20 @@ namespace backend.Application.Services
         {
             var student = await _studentRepo.GetAsync(studentId);
             if(student == null)
-                throw new ArgumentException("Cannot find student with specified Id!");
+                throw new NotFoundException("Cannot find student with specified Id!");
             
             if(student.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified student!");
+                throw new UnauthorizedException("Unauthorized access to specified student!");
             
             var group = await _classGroupRepo.GetAsync(groupId);
             if(group == null)
-                throw new ArgumentException("Cannot find student with specified Id!");
+                throw new NotFoundException("Cannot find student with specified Id!");
             
             if(group.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified student!");
+                throw new UnauthorizedException("Unauthorized access to specified student!");
             
             if(!await _studentRepo.CheckForAttachmentAsync(studentId, groupId))
-                throw  new ArgumentException("Student Is already detached to the group!");
+                throw  new ValidationException("Student Is already detached to the group!");
 
             await _studentRepo.DetachFromGroupAsync(studentId, groupId);
             await _unitRepo.SaveChangesAsync();
@@ -125,10 +125,10 @@ namespace backend.Application.Services
         {
             var student = await _studentRepo.GetAsync(dto.Id);
             if(student == null)
-                throw new ArgumentException("Cannot find student with specified Id!");
+                throw new NotFoundException("Cannot find student with specified Id!");
             
             if(student.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified student!");
+                throw new UnauthorizedException("Unauthorized access to specified student!");
             
             student.AssignStudentCode(dto.StudentCode);
             student.UpdateFirstName(dto.FirstName);
@@ -142,10 +142,10 @@ namespace backend.Application.Services
         {
             var student = await _studentRepo.GetAsync(studentId);
             if(student == null)
-                throw new ArgumentException("Cannot find student with specified Id!");
+                throw new NotFoundException("Cannot find student with specified Id!");
             
             if(student.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified student!");
+                throw new UnauthorizedException("Unauthorized access to specified student!");
             
             await _studentRepo.RemoveAsync(student);
             await _unitRepo.SaveChangesAsync();

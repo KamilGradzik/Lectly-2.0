@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using backend.Application.Common;
 using backend.Application.DTOs.Subject;
 using backend.Application.Interfaces;
 using backend.Domain.Repositories;
@@ -49,10 +50,10 @@ namespace backend.Application.Services
             var subject = await _subjectRepo.GetAsync(dto.Id);
 
             if(subject == null)
-                throw new ArgumentException("Cannot find subject with specified Id!");
+                throw new NotFoundException("Cannot find subject with specified Id!");
 
             if(subject.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified subject!");
+                throw new UnauthorizedException("Unauthorized access to specified subject!");
             
             subject.Rename(dto.Name);
             subject.UpdateDescription(dto.Desc);
@@ -64,10 +65,10 @@ namespace backend.Application.Services
             var subject = await _subjectRepo.GetAsync(subjectId);
 
             if(subject == null)
-                throw new ArgumentException("Cannot find subject with specified Id!");
+                throw new NotFoundException("Cannot find subject with specified Id!");
                 
             if(subject.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified subject!");
+                throw new UnauthorizedException("Unauthorized access to specified subject!");
 
             await _subjectRepo.RemoveAsync(subject);
             await _unitRepo.SaveChangesAsync();

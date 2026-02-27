@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using backend.Application.Common;
 
 namespace backend.Entities
 {
@@ -30,10 +31,10 @@ namespace backend.Entities
         public void SetEmail(string email)
         {
             if(string.IsNullOrWhiteSpace(email))
-                throw new ArgumentException("User's email cannot be empty!");
+                throw new ValidationException("User's email cannot be empty!");
 
             if(!Regex.IsMatch(email, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"))
-                throw new ArgumentException ("User's email format is invalid!");
+                throw new ValidationException("User's email format is invalid!");
 
             Email = email;
         }
@@ -41,7 +42,7 @@ namespace backend.Entities
         public void ChangePassword(string password)
         {
             if (string.IsNullOrWhiteSpace(password))
-                throw new ArgumentException("User's password cannot be empty!");
+                throw new ValidationException("User's password cannot be empty!");
             
             Password = password;
         }
@@ -49,7 +50,7 @@ namespace backend.Entities
         public void ChangeFirstName(string firstName)
         {
             if(string.IsNullOrWhiteSpace(firstName))
-                throw new ArgumentException("User's first name cannot be empty!");
+                throw new ValidationException("User's first name cannot be empty!");
             
             FirstName = firstName;
         }
@@ -57,7 +58,7 @@ namespace backend.Entities
         public void ChangeLastName(string lastName)
         {
             if(string.IsNullOrWhiteSpace(lastName))
-                throw new ArgumentException("User's last name cannot be empty!");
+                throw new ValidationException("User's last name cannot be empty!");
             
             LastName = lastName;
         }

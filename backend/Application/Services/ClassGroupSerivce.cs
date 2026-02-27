@@ -49,10 +49,10 @@ namespace backend.Application.Services
         {
             var classGroup = await _classGroupRepo.GetAsync(classGroupId);
             if(classGroup == null)
-                throw new ArgumentException("Cannot find class group with specified Id!");
+                throw new NotFoundException("Cannot find class group with specified Id!");
 
             if(classGroup.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified class group!");
+                throw new UnauthorizedException("Unauthorized access to specified class group!");
             
             var result = await _classGroupRepo.GetClassGroupStudentsAsync(page, pageSize, classGroupId);
             var classGroupStudents = new List<StudentDto>();
@@ -74,10 +74,10 @@ namespace backend.Application.Services
         {
             var classGroup = await _classGroupRepo.GetAsync(classGroupId);
             if(classGroup == null)
-                throw new ArgumentException("Cannot find class group with specified Id!");
+                throw new NotFoundException("Cannot find class group with specified Id!");
 
             if(classGroup.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified class group!");
+                throw new UnauthorizedException("Unauthorized access to specified class group!");
             
             var result = await _classGroupRepo.GetClassGroupSubjectsAsync(classGroupId);
             var classGroupSubjects = new List<SubjectDto>();
@@ -97,10 +97,10 @@ namespace backend.Application.Services
         {
             var classGroup = await _classGroupRepo.GetAsync(dto.Id);
             if(classGroup == null)
-                throw new ArgumentException("Cannot find class group with specified Id!");
+                throw new NotFoundException("Cannot find class group with specified Id!");
 
             if(classGroup.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified class group!");
+                throw new UnauthorizedException("Unauthorized access to specified class group!");
             
             classGroup.Rename(dto.Name);
             classGroup.UpdateDescription(dto.Desc);
@@ -112,10 +112,10 @@ namespace backend.Application.Services
         {
             var classGroup = await _classGroupRepo.GetAsync(classGroupId);
             if(classGroup == null)
-                throw new ArgumentException("Cannot find class group with specified Id!");
+                throw new NotFoundException("Cannot find class group with specified Id!");
 
             if(classGroup.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified class group!");
+                throw new UnauthorizedException("Unauthorized access to specified class group!");
 
             await _classGroupRepo.RemoveAsync(classGroup);
             await _unitRepo.SaveChangesAsync();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using backend.Application.Common;
 
 namespace backend.Entities
 {
@@ -24,7 +25,7 @@ namespace backend.Entities
             CreatedAt = DateTime.Now;
 
             if(ownerUserId == Guid.Empty)
-                throw new ArgumentException("Owner's Id cannot be empty!");
+                throw new ValidationException("Owner's Id cannot be empty!");
             
             OwnerUserId = ownerUserId;
         }
@@ -32,14 +33,14 @@ namespace backend.Entities
         public void Rename(string name)
         {
             if(string.IsNullOrWhiteSpace(name))
-                throw new ArgumentException("Note's name cannot be empty!");
+                throw new ValidationException("Note's name cannot be empty!");
             Name = name;
         }
 
         public void UpdateContent(string content)
         {
             if(string.IsNullOrWhiteSpace(content))
-                throw new ArgumentException("Note's content cannot be empty!");
+                throw new ValidationException("Note's content cannot be empty!");
             Content = content;
         }
     }

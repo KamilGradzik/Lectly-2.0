@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using backend.Application.Common;
 
 namespace backend.Entities
 {
@@ -28,7 +29,7 @@ namespace backend.Entities
             AssignSubject(subjectId);
 
             if(ownerUserId == Guid.Empty)
-                throw new ArgumentException("Owner's Id cannot be empty!");
+                throw new ValidationException("Owner's Id cannot be empty!");
             
             OwnerUserId = ownerUserId;
         }
@@ -36,7 +37,7 @@ namespace backend.Entities
         public void UpdateClassTime(TimeOnly startTime, TimeOnly endTime)
         {
             if(startTime >= endTime)
-                throw new ArgumentException("Class cannot end before it starts!");
+                throw new ValidationException("Class cannot end before it starts!");
 
             StartTime = startTime;
             EndTime = endTime;
@@ -45,7 +46,7 @@ namespace backend.Entities
         public void UpdateClassroom(string classroom)
         {
             if(string.IsNullOrWhiteSpace(classroom))
-                throw new ArgumentException("Classroom cannot be empty!");
+                throw new ValidationException("Classroom cannot be empty!");
         }
         
         public void ChangeDayOfWeek(DayOfWeek dayOfWeek)
@@ -56,7 +57,7 @@ namespace backend.Entities
         public void AssignGroup(Guid groupId)
         {
             if(groupId == Guid.Empty)
-                throw new ArgumentException("Group's Id cannot be empty!");
+                throw new ValidationException("Group's Id cannot be empty!");
             
             GroupId = groupId;
         }
@@ -64,7 +65,7 @@ namespace backend.Entities
         public void AssignSubject(Guid subjectId)
         {
             if(subjectId == Guid.Empty)
-                throw new ArgumentException("Subject's Id cannot be empty!");
+                throw new ValidationException("Subject's Id cannot be empty!");
             
             SubjectId = subjectId;
         }

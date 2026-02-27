@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using backend.Application.Common;
 
 namespace backend.Entities
 {
@@ -15,7 +16,7 @@ namespace backend.Entities
         public GroupSubject(Guid groupId, Guid subjectId)
         {
             if(groupId == Guid.Empty || subjectId == Guid.Empty)
-                throw new ArgumentException("Neither subject's Id or group's Id cannot be empty!");
+                throw new ValidationException("Neither subject's Id or group's Id cannot be empty!");
             
             GroupId = groupId;
             SubjectId = subjectId;

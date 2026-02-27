@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using backend.Application.Common;
 
 namespace backend.Entities
 {
@@ -21,7 +22,7 @@ namespace backend.Entities
             UpdateDescription(desc);
 
             if(ownerUserId == Guid.Empty)
-                throw new ArgumentException("Owner's Id cannot be empty!");
+                throw new ValidationException("Owner's Id cannot be empty!");
             
             OwnerUserId = ownerUserId;
         }
@@ -29,7 +30,7 @@ namespace backend.Entities
         public void Rename(string name)
         {
             if(string.IsNullOrWhiteSpace(name))
-                throw new ArgumentException("Class group's name cannot be empty!");
+                throw new ValidationException("Class group's name cannot be empty!");
             Name = name;
         }
 

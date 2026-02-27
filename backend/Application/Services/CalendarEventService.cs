@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using backend.Application.Common;
 using backend.Application.DTOs.CalendarEvent;
 using backend.Application.Interfaces;
 using backend.Domain.Repositories;
@@ -53,10 +54,10 @@ namespace backend.Application.Services
         {
             var calendarEvent = await _calendarEventRepo.GetAsync(dto.Id);
             if(calendarEvent == null)
-                throw new ArgumentException("Cannot find calendar event with specified Id!");
+                throw new NotFoundException("Cannot find calendar event with specified Id!");
 
             if(calendarEvent.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified calendar event!");
+                throw new UnauthorizedException("Unauthorized access to specified calendar event!");
             
             calendarEvent.Rename(dto.Name);
             calendarEvent.UpdateDescription(dto.Desc);
@@ -70,10 +71,10 @@ namespace backend.Application.Services
         {
             var calendarEvent = await _calendarEventRepo.GetAsync(calendarEventId);
             if(calendarEvent == null)
-                throw new ArgumentException("Cannot find calendar event with specified Id!");
+                throw new NotFoundException("Cannot find calendar event with specified Id!");
 
             if(calendarEvent.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified calendar event!");
+                throw new UnauthorizedException("Unauthorized access to specified calendar event!");
 
             await _calendarEventRepo.RemoveAsync(calendarEvent);
             await _unitRepo.SaveChangesAsync();

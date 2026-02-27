@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using backend.Application.Common;
 
 namespace backend.Entities
 {
@@ -25,7 +26,7 @@ namespace backend.Entities
             UpdateAdditionalInfo(additionalInfo);
 
             if(ownerUserId == Guid.Empty)
-                throw new ArgumentException("Owner's Id cannot be empty!");
+                throw new ValidationException("Owner's Id cannot be empty!");
             
             OwnerUserId = ownerUserId;
         }
@@ -33,21 +34,21 @@ namespace backend.Entities
         public void AssignStudentCode(string studentCode)
         {
             if(string.IsNullOrWhiteSpace(studentCode))
-                throw new ArgumentException("Student's code cannot be empty!");
+                throw new ValidationException("Student's code cannot be empty!");
             StudentCode = studentCode;
         } 
 
         public void UpdateFirstName(string firstName)
         {
             if(string.IsNullOrWhiteSpace(firstName))
-                throw new ArgumentException("Student's first name cannot be empty!");
+                throw new ValidationException("Student's first name cannot be empty!");
             FirstName = firstName;
         }
 
         public void UpdateLastName(string lastName)
         {
             if(string.IsNullOrWhiteSpace(lastName))
-                throw new ArgumentException("Student's last name cannet be empty!");
+                throw new ValidationException("Student's last name cannet be empty!");
             LastName = lastName;
         } 
 

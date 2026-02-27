@@ -1,5 +1,6 @@
 
 using System.Text;
+using backend.API;
 using backend.Application.Common;
 using backend.Application.Interfaces;
 using backend.Application.Services;
@@ -101,6 +102,7 @@ class Program
             app.UseSwaggerUI();
             app.MapOpenApi();
         }
+        app.UseMiddleware<ExceptionHandlerMiddleware>();
         app.UseHttpsRedirection();
         app.UseAuthentication();
         app.UseAuthorization();

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using backend.Application.Common;
 using backend.Application.DTOs.Grade;
 using backend.Application.DTOs.Subject;
 using backend.Application.Interfaces;
@@ -31,22 +32,22 @@ namespace backend.Application.Services
             var student = await _studentRepo.GetAsync(dto.StudentId);
             
             if(subject == null)
-                throw new ArgumentException("Cannot find subject with specified Id!");
+                throw new NotFoundException("Cannot find subject with specified Id!");
             
             if(subject.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified subject!");
+                throw new UnauthorizedException("Unauthorized access to specified subject!");
             
             if(student == null)
-                throw new ArgumentException("Cannot find student with specified Id!");
+                throw new NotFoundException("Cannot find student with specified Id!");
             
             if(student.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified student!");
+                throw new UnauthorizedException("Unauthorized access to specified student!");
 
             var subjectGroups = await _subjectRepo.GetSubjectGroupsAsync(dto.SubjectId);
             var studentGroups = await _studentRepo.GetStudentClassGroupsAsync(dto.StudentId);
 
             if(!subjectGroups.Any(x => studentGroups.Select(y => y.Id).ToList().Contains(x.Id)))
-                throw new ArgumentException("Specified subject Doesnt't belong to any group that student Does!");
+                throw new NotFoundException("Specified subject Doesnt't belong to any group that student Does!");
 
             await _gradeRepo.AddAsync(new Grade(dto.Value, dto.Weight, dto.Desc, dto.DateIssued, dto.SubjectId, dto.StudentId, userId));
             await _unitRepo.SaveChangesAsync();
@@ -56,10 +57,10 @@ namespace backend.Application.Services
         {
             var student = await _studentRepo.GetAsync(studentId);
             if(student == null)
-                throw new ArgumentException("Cannot find student with specified Id!");
+                throw new NotFoundException("Cannot find student with specified Id!");
             
             if(student.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified student!");
+                throw new UnauthorizedException("Unauthorized access to specified student!");
 
             var grades = await _gradeRepo.GetStudentGradesAsync(studentId);
             var studentGrades = new List<StudentGradeDto>();
@@ -96,16 +97,16 @@ namespace backend.Application.Services
             var grade = await _gradeRepo.GetAsync(dto.Id);
             
             if(subject == null)
-                throw new ArgumentException("Cannot find subject with specified Id!");
+                throw new NotFoundException("Cannot find subject with specified Id!");
             
             if(subject.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified subject!");
+                throw new UnauthorizedException("Unauthorized access to specified subject!");
 
             if(grade == null)
-                throw new ArgumentException("Cannot find grade with specified Id!");
+                throw new NotFoundException("Cannot find grade with specified Id!");
             
             if(grade.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified grade!");
+                throw new UnauthorizedException("Unauthorized access to specified grade!");
                 
             grade.SetValue(dto.Value);
             grade.SetWeight(dto.Weight);
@@ -120,10 +121,10 @@ namespace backend.Application.Services
             var grade = await _gradeRepo.GetAsync(gradeId);
             
             if(grade == null)
-                throw new ArgumentException("Cannot find grade with specified Id!");
+                throw new NotFoundException("Cannot find grade with specified Id!");
             
             if(grade.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified grade!");
+                throw new UnauthorizedException("Unauthorized access to specified grade!");
 
             await _gradeRepo.RemoveAsync(grade);
             await _unitRepo.SaveChangesAsync();

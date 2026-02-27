@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using backend.Application.Common;
 using backend.Domain.Enums;
 
 namespace backend.Entities
@@ -27,7 +28,7 @@ namespace backend.Entities
             ChangeType(type);
             
             if(ownerUserId == Guid.Empty)
-                throw new ArgumentException("Owner's Id cannot be empty!");
+                throw new ValidationException("Owner's Id cannot be empty!");
 
             OwnerUserId = ownerUserId;
         }
@@ -35,14 +36,14 @@ namespace backend.Entities
         public void Rename(string name)
         {
             if(string.IsNullOrWhiteSpace(name))
-                throw new ArgumentException("Calendar event's name cannot be empty!");
+                throw new ValidationException("Calendar event's name cannot be empty!");
             Name = name;
         }
 
         public void Reschedule(DateTime beginDate, DateTime endDate)
         {
             if(endDate < beginDate)
-                throw new ArgumentException("Calendar event cannot end before it starts!");
+                throw new ValidationException("Calendar event cannot end before it starts!");
             BeginDate = beginDate;
             EndDate = endDate;
         }

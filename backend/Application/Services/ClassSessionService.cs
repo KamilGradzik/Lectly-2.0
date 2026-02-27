@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using backend.Application.Common;
 using backend.Application.DTOs.ClassGroup;
 using backend.Application.DTOs.ClassSession;
 using backend.Application.DTOs.Subject;
@@ -32,22 +33,22 @@ namespace backend.Application.Services
             var subject = await _subjectRepo.GetAsync(dto.SubjectId);
 
             if(group == null)
-                throw new ArgumentException("Cannot find class group with specified Id!");
+                throw new NotFoundException("Cannot find class group with specified Id!");
 
             if(group.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified class group!");
+                throw new UnauthorizedException("Unauthorized access to specified class group!");
 
             if(subject == null)
-                throw new ArgumentException("Cannot find subject with specified Id!");
+                throw new NotFoundException("Cannot find subject with specified Id!");
             
             if(subject.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified subject!");
+                throw new UnauthorizedException("Unauthorized access to specified subject!");
 
             if(!await _classGroupRepo.CheckSubjectAttachmentAsync(dto.ClassGroupId, dto.SubjectId))
-                throw  new ArgumentException("Specified subject Isn't attached to the group!");
+                throw  new NotFoundException("Specified subject Isn't attached to the group!");
 
             if(await _classSessionRepo.CheckExistingAsync(userId, dto.DayOfWeek, dto.StartTime, dto.EndTime))
-                throw  new ArgumentException("There are already scheduled classes during specified period of time!");
+                throw  new ValidationException("There are already scheduled classes during specified period of time!");
             
             var classSession = new ClassSession(dto.DayOfWeek, dto.StartTime, dto.EndTime, dto.Classroom, dto.ClassGroupId, dto.SubjectId, userId);
 
@@ -108,28 +109,28 @@ namespace backend.Application.Services
             var classSession = await _classSessionRepo.GetAsync(dto.Id);
             
             if(classSession == null)
-                throw new ArgumentException("Cannot find class session with specified Id!");
+                throw new NotFoundException("Cannot find class session with specified Id!");
 
             if(classSession.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified class session!");
+                throw new UnauthorizedException("Unauthorized access to specified class session!");
 
             if(group == null)
-                throw new ArgumentException("Cannot find student with specified Id!");
+                throw new NotFoundException("Cannot find student with specified Id!");
 
             if(group.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified student!");
+                throw new UnauthorizedException("Unauthorized access to specified student!");
 
             if(subject == null)
-                throw new ArgumentException("Cannot find subject with specified Id!");
+                throw new NotFoundException("Cannot find subject with specified Id!");
             
             if(subject.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified subject!");
+                throw new UnauthorizedException("Unauthorized access to specified subject!");
 
             if(!await _classGroupRepo.CheckSubjectAttachmentAsync(dto.ClassGroupId, dto.SubjectId))
-                throw  new ArgumentException("Specified subject Isn't attached to the group!");
+                throw  new NotFoundException("Specified subject Isn't attached to the group!");
 
             if(await _classSessionRepo.CheckExistingAsync(userId, dto.DayOfWeek, dto.StartTime, dto.EndTime))
-                throw  new ArgumentException("There are already scheduled classes during specified period of time!");
+                throw  new ValidationException("There are already scheduled classes during specified period of time!");
             
             classSession.ChangeDayOfWeek(dto.DayOfWeek);
             classSession.UpdateClassroom(dto.Classroom);
@@ -145,10 +146,10 @@ namespace backend.Application.Services
             var classSession = await _classSessionRepo.GetAsync(classSessionId);
             
             if(classSession == null)
-                throw new ArgumentException("Cannot find class session with specified Id!");
+                throw new NotFoundException("Cannot find class session with specified Id!");
 
             if(classSession.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified class session!");
+                throw new UnauthorizedException("Unauthorized access to specified class session!");
             
             await _classSessionRepo.RemoveAsync(classSession);
             await _unitRepo.SaveChangesAsync();

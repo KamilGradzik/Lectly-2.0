@@ -50,10 +50,10 @@ namespace backend.Application.Services
         {
             var note = await _noteRepo.GetAsync(dto.Id);
             if(note == null)
-                throw  new ArgumentException("Cannot find note with specified Id!");
+                throw  new NotFoundException("Cannot find note with specified Id!");
             
             if(note.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified note!");
+                throw new UnauthorizedException("Unauthorized access to specified note!");
             
             note.Rename(dto.Name);
             note.UpdateContent(dto.Content);
@@ -65,10 +65,10 @@ namespace backend.Application.Services
         {
             var note = await _noteRepo.GetAsync(noteId);
             if(note == null)
-                throw  new ArgumentException("Cannot find note with specified Id!");
+                throw  new NotFoundException("Cannot find note with specified Id!");
             
             if(note.OwnerUserId != userId)
-                throw new UnauthorizedAccessException("Unauthorized access to specified note!");
+                throw new UnauthorizedException("Unauthorized access to specified note!");
 
             await _noteRepo.RemoveAsync(note);
             await _unitRepo.SaveChangesAsync();
