@@ -10,8 +10,8 @@ namespace backend.Application.Interfaces
     public interface ICalendarEventService
     {
         Task AddCalendarEventAsync(CreateCalendarEventDto dto);
-        Task <IReadOnlyList<CalendarEventDto>> GetUserMonthlyCalendarEventsAsync(int month, int year, Guid userId);
-        Task UpdateCalendarEventAsync(CalendarEventDto dto, Guid userId);
-        Task RemoveCalendarEventAsync(Guid clanedarEvnetId, Guid userId);
+        Task <IReadOnlyList<CalendarEventDto>> GetUserMonthlyCalendarEventsAsync(int month, int year);
+        Task UpdateCalendarEventAsync(CalendarEventDto dto);
+        Task RemoveCalendarEventAsync(Guid clanedarEvnetId);
     }
 }

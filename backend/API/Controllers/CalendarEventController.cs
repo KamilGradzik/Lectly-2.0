@@ -13,6 +13,7 @@ namespace backend.API.Controllers
 {   
     [ApiController]
     [Route("api/calendar-events")]
+    [Tags("Calendar Events")]
     public class CalendarEventController : ControllerBase
     {   
         private readonly ICalendarEventService _calendarEventService;
@@ -23,19 +24,38 @@ namespace backend.API.Controllers
         
         [Authorize]
         [Route("monthly-events")]
-        [HttpPost]
-        public async Task<IActionResult> GetMonthlyEventsAsync(CreateCalendarEventDto dto)
+        [HttpGet]
+        public async Task<IActionResult> GetMonthlyCalendarEventsAsync([FromQuery] int month, [FromQuery] int year)
         {
-            try
-            {
-                Console.WriteLine(dto.Name);
-                await _calendarEventService.AddCalendarEventAsync(dto);
-                return Ok("Event added sucessfuly!");
-            }
-            catch(Exception exp)
-            {
-                return BadRequest(exp.Message);
-            }
+            var eventDtos = await _calendarEventService.GetUserMonthlyCalendarEventsAsync(month, year);
+            return Ok(eventDtos);
+        }
+
+        [Authorize]
+        [Route("create")]
+        [HttpPost]
+        public async Task <IActionResult> AddCalendarEventAsync([FromBody] CreateCalendarEventDto dto)
+        {
+            await _calendarEventService.AddCalendarEventAsync(dto);
+            return Created();
+        }
+
+        [Authorize]
+        [Route("update")]
+        [HttpPatch]
+        public async Task<IActionResult> UpdateCalendarEventAsync([FromBody] CalendarEventDto dto)
+        {
+            await _calendarEventService.UpdateCalendarEventAsync(dto);
+            return Ok("Calendar evenet successfuly updated!");
+        }
+
+        [Authorize]
+        [Route("delete")]
+        [HttpDelete]
+        public async Task<IActionResult> RemoveCalendarEventAsync([FromQuery] Guid Id)
+        {
+            await _calendarEventService.RemoveCalendarEventAsync(Id);
+            return NoContent();
         }
     }
 }

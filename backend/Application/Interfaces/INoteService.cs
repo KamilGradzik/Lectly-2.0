@@ -9,10 +9,10 @@ namespace backend.Application.Interfaces
 {
     public interface INoteService
     {
-        Task AddNoteAsync(CreateNoteDto dto, Guid userId);
-        Task<PagedResult<NoteDto>> GetUserNotesAsync(Guid userId, int Page, int PageSize);
-        Task UpdateNoteAsync(UpdateNoteDto dto, Guid userId);
-        Task RemoveNoteAsync(Guid noteId, Guid userId);
+        Task AddNoteAsync(CreateNoteDto dto);
+        Task<PagedResult<NoteDto>> GetUserNotesAsync(int Page, int PageSize);
+        Task UpdateNoteAsync(UpdateNoteDto dto);
+        Task RemoveNoteAsync(Guid noteId);
 
     }
 }

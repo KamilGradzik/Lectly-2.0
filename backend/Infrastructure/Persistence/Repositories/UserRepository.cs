@@ -25,7 +25,7 @@ namespace backend.Infrastructure.Persistence.Repositories
 
         public async Task<User?> GetByEmailAsync(string email)
         {
-            return await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
+            return await _context.Users.FirstOrDefaultAsync(x => x.Email.ToUpper() == email.ToUpper());
         }
 
         public async Task RemoveAsync(User user)

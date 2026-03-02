@@ -15,6 +15,7 @@ namespace backend.API.Controllers
 {   
     [ApiController]
     [Route("/api/auth")]
+    [Tags("Authorization")]
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
@@ -27,30 +28,16 @@ namespace backend.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserLoginDto dto)
         {
-            try
-            {
-                var token = await _authService.LoginAsync(dto);
-                return Ok(token);
-            }
-            catch(Exception err)
-            {
-                return BadRequest(err.Message);
-            }
+            var token = await _authService.LoginAsync(dto);
+            return Ok(token);
         }  
 
         [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserRegisterDto dto)
         {
-            try
-            {
-                await _authService.RegisterAsync(dto);
-                return Ok("Account registered!");
-            }
-            catch(Exception err)
-            {
-                return BadRequest(err.Message);
-            }
+            await _authService.RegisterAsync(dto);
+            return Ok("Account registered!");
         }
     }
 }

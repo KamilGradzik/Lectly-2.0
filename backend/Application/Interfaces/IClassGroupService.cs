@@ -11,11 +11,11 @@ namespace backend.Application.Interfaces
 {
     public interface IClassGroupService
     {
-        Task AddClassGroupAsync(CreateClassGroupDto dto, Guid userId);
-        Task <IReadOnlyList<ClassGroupDto>> GetUserClassGroupsAsync(Guid userId);
-        Task <PagedResult<StudentDto>> GetClassGroupStudentsAsync(int page, int pageSize, Guid classGroupId, Guid userId);
-        Task <IReadOnlyList<SubjectDto>> GetClassGroupSubjectsAsync(Guid classGroupId, Guid userId);
-        Task UpdateClassGroupAsync(ClassGroupDto dto, Guid userId);
-        Task RemoveClassGroupAsync(Guid classGroupId, Guid userId);
+        Task AddClassGroupAsync(CreateClassGroupDto dto);
+        Task <IReadOnlyList<ClassGroupDto>> GetUserClassGroupsAsync();
+        Task <PagedResult<StudentDto>> GetClassGroupStudentsAsync(int page, int pageSize, Guid classGroupId);
+        Task <IReadOnlyList<SubjectDto>> GetClassGroupSubjectsAsync(Guid classGroupId);
+        Task UpdateClassGroupAsync(ClassGroupDto dto);
+        Task RemoveClassGroupAsync(Guid classGroupId);
     }
 }

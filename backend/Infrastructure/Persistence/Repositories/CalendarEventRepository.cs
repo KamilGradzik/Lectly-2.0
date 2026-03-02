@@ -25,7 +25,7 @@ namespace backend.Infrastructure.Persistence.Repositories
 
         public async Task<IReadOnlyList<CalendarEvent>> GetMonthlyCalendarEventsAsync(int month, int year, Guid userId)
         {
-            return await _context.CalendarEvents.Where(x => x.BeginDate.Year == year && (x.BeginDate.Month == month || x.EndDate.Month == month)).ToListAsync();
+            return await _context.CalendarEvents.Where(x => x.BeginDate.Year == year && x.BeginDate.Month <= month && x.EndDate.Month >= month).ToListAsync();
         }
 
         public async Task RemoveAsync(CalendarEvent calendarEvent)

@@ -34,7 +34,7 @@ namespace backend.Infrastructure.Security
                 issuer: _options.Issuer,
                 audience: _options.Audience,
                 claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(_options.ExpiryMinutes),
+                expires: DateTime.UtcNow.AddDays(_options.ExpiryDays),
                 signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_options.Key)), SecurityAlgorithms.HmacSha256)
             );
 

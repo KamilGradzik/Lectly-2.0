@@ -14,24 +14,26 @@ namespace backend.Application.Services
 {
     public class ClassGroupSerivce : IClassGroupService
     {
+        private readonly ICurrentUserService _currentUser;
         private readonly IClassGroupRepository _classGroupRepo;
         private readonly IUnitOfWork _unitRepo;
 
-        public ClassGroupSerivce(IClassGroupRepository classGroupRepo, IUnitOfWork unitRepo)
+        public ClassGroupSerivce(IClassGroupRepository classGroupRepo, IUnitOfWork unitRepo, ICurrentUserService currentUser)
         {
             _classGroupRepo = classGroupRepo;
             _unitRepo = unitRepo;
+            _currentUser = currentUser;
         }
 
-        public async Task AddClassGroupAsync(CreateClassGroupDto dto, Guid userId)
+        public async Task AddClassGroupAsync(CreateClassGroupDto dto)
         {
-            await _classGroupRepo.AddAsync(new ClassGroup(dto.Name, userId, dto.Desc));
+            await _classGroupRepo.AddAsync(new ClassGroup(dto.Name, _currentUser.UserId, dto.Desc));
             await _unitRepo.SaveChangesAsync();
         }
 
-        public async Task<IReadOnlyList<ClassGroupDto>> GetUserClassGroupsAsync(Guid userId)
+        public async Task<IReadOnlyList<ClassGroupDto>> GetUserClassGroupsAsync()
         {
-            var classGroups = await _classGroupRepo.GetUserClassGroupsAsync(userId);
+            var classGroups = await _classGroupRepo.GetUserClassGroupsAsync(_currentUser.UserId);
             var userClassGroups = new List<ClassGroupDto>();
             foreach(var classGroup in classGroups)
             {
@@ -45,13 +47,13 @@ namespace backend.Application.Services
             return userClassGroups;
         }
 
-        public async Task<PagedResult<StudentDto>> GetClassGroupStudentsAsync(int page, int pageSize, Guid classGroupId, Guid userId)
+        public async Task<PagedResult<StudentDto>> GetClassGroupStudentsAsync(int page, int pageSize, Guid classGroupId)
         {
             var classGroup = await _classGroupRepo.GetAsync(classGroupId);
             if(classGroup == null)
                 throw new NotFoundException("Cannot find class group with specified Id!");
 
-            if(classGroup.OwnerUserId != userId)
+            if(classGroup.OwnerUserId != _currentUser.UserId)
                 throw new UnauthorizedException("Unauthorized access to specified class group!");
             
             var result = await _classGroupRepo.GetClassGroupStudentsAsync(page, pageSize, classGroupId);
@@ -70,13 +72,13 @@ namespace backend.Application.Services
             return new PagedResult<StudentDto>(classGroupStudents, page, pageSize, result.TotalCount);
         }
 
-        public async Task<IReadOnlyList<SubjectDto>> GetClassGroupSubjectsAsync(Guid classGroupId, Guid userId)
+        public async Task<IReadOnlyList<SubjectDto>> GetClassGroupSubjectsAsync(Guid classGroupId)
         {
             var classGroup = await _classGroupRepo.GetAsync(classGroupId);
             if(classGroup == null)
                 throw new NotFoundException("Cannot find class group with specified Id!");
 
-            if(classGroup.OwnerUserId != userId)
+            if(classGroup.OwnerUserId != _currentUser.UserId)
                 throw new UnauthorizedException("Unauthorized access to specified class group!");
             
             var result = await _classGroupRepo.GetClassGroupSubjectsAsync(classGroupId);
@@ -93,13 +95,13 @@ namespace backend.Application.Services
             return classGroupSubjects;
         }
 
-        public async Task UpdateClassGroupAsync(ClassGroupDto dto, Guid userId)
+        public async Task UpdateClassGroupAsync(ClassGroupDto dto)
         {
             var classGroup = await _classGroupRepo.GetAsync(dto.Id);
             if(classGroup == null)
                 throw new NotFoundException("Cannot find class group with specified Id!");
 
-            if(classGroup.OwnerUserId != userId)
+            if(classGroup.OwnerUserId != _currentUser.UserId)
                 throw new UnauthorizedException("Unauthorized access to specified class group!");
             
             classGroup.Rename(dto.Name);
@@ -108,13 +110,13 @@ namespace backend.Application.Services
             await _unitRepo.SaveChangesAsync();
         }
 
-        public async Task RemoveClassGroupAsync(Guid classGroupId, Guid userId)
+        public async Task RemoveClassGroupAsync(Guid classGroupId)
         {
             var classGroup = await _classGroupRepo.GetAsync(classGroupId);
             if(classGroup == null)
                 throw new NotFoundException("Cannot find class group with specified Id!");
 
-            if(classGroup.OwnerUserId != userId)
+            if(classGroup.OwnerUserId != _currentUser.UserId)
                 throw new UnauthorizedException("Unauthorized access to specified class group!");
 
             await _classGroupRepo.RemoveAsync(classGroup);

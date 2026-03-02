@@ -29,9 +29,9 @@ namespace backend.Application.Services
             await _unitRepo.SaveChangesAsync();
         }
 
-        public async Task<IReadOnlyList<CalendarEventDto>> GetUserMonthlyCalendarEventsAsync(int month, int year, Guid userId)
-        {
-            var calendarEvents = await _calendarEventRepo.GetMonthlyCalendarEventsAsync(month, year, userId);
+        public async Task<IReadOnlyList<CalendarEventDto>> GetUserMonthlyCalendarEventsAsync(int month, int year)
+        {   
+            var calendarEvents = await _calendarEventRepo.GetMonthlyCalendarEventsAsync(month, year, _currentUser.UserId);
             var userCalendarEvents = new List<CalendarEventDto>();
 
             foreach(var calendarEvent in calendarEvents)
@@ -50,13 +50,13 @@ namespace backend.Application.Services
             return userCalendarEvents;
         }
         
-        public async Task UpdateCalendarEventAsync(CalendarEventDto dto, Guid userId)
+        public async Task UpdateCalendarEventAsync(CalendarEventDto dto)
         {
             var calendarEvent = await _calendarEventRepo.GetAsync(dto.Id);
             if(calendarEvent == null)
                 throw new NotFoundException("Cannot find calendar event with specified Id!");
 
-            if(calendarEvent.OwnerUserId != userId)
+            if(calendarEvent.OwnerUserId != _currentUser.UserId)
                 throw new UnauthorizedException("Unauthorized access to specified calendar event!");
             
             calendarEvent.Rename(dto.Name);
@@ -67,13 +67,13 @@ namespace backend.Application.Services
             await _unitRepo.SaveChangesAsync();
         }
 
-        public async Task RemoveCalendarEventAsync(Guid calendarEventId, Guid userId)
+        public async Task RemoveCalendarEventAsync(Guid calendarEventId)
         {
             var calendarEvent = await _calendarEventRepo.GetAsync(calendarEventId);
             if(calendarEvent == null)
                 throw new NotFoundException("Cannot find calendar event with specified Id!");
 
-            if(calendarEvent.OwnerUserId != userId)
+            if(calendarEvent.OwnerUserId != _currentUser.UserId)
                 throw new UnauthorizedException("Unauthorized access to specified calendar event!");
 
             await _calendarEventRepo.RemoveAsync(calendarEvent);
