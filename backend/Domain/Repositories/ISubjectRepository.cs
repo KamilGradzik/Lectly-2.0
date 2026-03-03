@@ -12,6 +12,9 @@ namespace backend.Domain.Repositories
         Task<Subject?> GetAsync(Guid id);
         Task<IReadOnlyList<Subject>> GetUserSubjectsAsync(Guid userId);
         Task<IReadOnlyList<ClassGroup>> GetSubjectGroupsAsync(Guid subjectId);
+        Task AttachToClassGroupAsync(Guid groupId, Guid subjectId);
+        Task DetachFromClassGroupAsync(Guid groupId, Guid subjectId);
+        Task<bool> CheckForAttachmentAsync(Guid groupId, Guid subjectId);
         Task RemoveAsync(Subject subject);
     }
 }

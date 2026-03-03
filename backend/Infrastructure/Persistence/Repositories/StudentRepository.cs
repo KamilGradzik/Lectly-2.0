@@ -38,12 +38,12 @@ namespace backend.Infrastructure.Persistence.Repositories
             return await _context.ClassGroups.Where(x => groups.Contains(x.Id)).ToListAsync();
         }
         
-        public async Task AttachToGroupAsync(Guid groupId, Guid studentId)
+        public async Task AttachToClassGroupAsync(Guid groupId, Guid studentId)
         {
             _context.GroupsStudents.Add(new GroupStudent(groupId, studentId));
         }
 
-        public async Task DetachFromGroupAsync(Guid groupId, Guid studentId)
+        public async Task DetachFromClassGroupAsync(Guid groupId, Guid studentId)
         {
             var groupStudent = await _context.GroupsStudents.FirstOrDefaultAsync(x => x.GroupId == groupId && x.StudentId == studentId);
             if(groupStudent != null)

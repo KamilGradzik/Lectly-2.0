@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 namespace backend.API.Controllers
 {   
     [ApiController]
-    [Route("api/class-groups")]
+    [Route("api/class-group")]
     [Tags("Class groups")]
     public class ClassGroupController : ControllerBase
     {
@@ -33,18 +33,18 @@ namespace backend.API.Controllers
         [Authorize]
         [HttpGet]
         [Route("students")]
-        public async Task<IActionResult> GetClassGroupStudentsAsync([FromQuery] int page, [FromQuery] int pageSize, [FromQuery] Guid Id)
+        public async Task<IActionResult> GetClassGroupStudentsAsync([FromQuery] int page, [FromQuery] int pageSize, [FromQuery] Guid classGroupId)
         {
-            var groups = await _classGroupService.GetClassGroupStudentsAsync(page, pageSize, Id);
+            var groups = await _classGroupService.GetClassGroupStudentsAsync(page, pageSize, classGroupId);
             return Ok(groups);
         }
 
         [Authorize]
         [HttpGet]
         [Route("subjects")]
-        public async Task<IActionResult> GetClassGroupSubjectsAsync([FromQuery] Guid Id)
+        public async Task<IActionResult> GetClassGroupSubjectsAsync([FromQuery] Guid classGroupId)
         {
-            var groups = await _classGroupService.GetClassGroupSubjectsAsync(Id);
+            var groups = await _classGroupService.GetClassGroupSubjectsAsync(classGroupId);
             return Ok(groups);
         }
 
@@ -69,9 +69,9 @@ namespace backend.API.Controllers
         [Authorize]
         [HttpDelete]
         [Route("delete")]
-        public async Task<IActionResult> RemoveClassGroupAsync([FromQuery] Guid Id)
+        public async Task<IActionResult> RemoveClassGroupAsync([FromQuery] Guid id)
         {
-            await _classGroupService.RemoveClassGroupAsync(Id);
+            await _classGroupService.RemoveClassGroupAsync(id);
             return NoContent();
         }
     }

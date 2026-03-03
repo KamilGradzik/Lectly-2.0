@@ -83,7 +83,7 @@ namespace backend.Application.Services
             
             var result = await _classGroupRepo.GetClassGroupSubjectsAsync(classGroupId);
             var classGroupSubjects = new List<SubjectDto>();
-            foreach (var subject in classGroupSubjects)
+            foreach (var subject in result)
             {
                 classGroupSubjects.Add(new SubjectDto
                 {

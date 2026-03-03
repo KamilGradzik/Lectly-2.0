@@ -43,21 +43,7 @@ namespace backend.Infrastructure.Persistence.Repositories
 
             return new PagedResult<Student>(students, page, pageSize, total);
         }
-
-        public async Task AttachSubjectAsync(Guid groupId, Guid subjectId)
-        {
-            _context.GroupsSubjects.Add(new GroupSubject(groupId, subjectId));
-        }
-        public async Task DetachSubjectAsync(Guid groupId, Guid subjectId)
-        {
-            var groupSubject = await _context.GroupsSubjects.FirstOrDefaultAsync(x => x.GroupId == groupId && x.SubjectId == subjectId);
-            if(groupSubject != null)
-                _context.GroupsSubjects.Remove(groupSubject);
-        }
-        public async Task<bool> CheckSubjectAttachmentAsync(Guid groupId, Guid subjectId)
-        {
-            return await _context.GroupsSubjects.AnyAsync(x => x.GroupId == groupId && x.SubjectId == subjectId);
-        }
+        
         public async Task RemoveAsync(ClassGroup classGroup)
         {
             var groupsSubjects = await _context.GroupsSubjects.Where(x => x.GroupId == classGroup.Id).ToListAsync();

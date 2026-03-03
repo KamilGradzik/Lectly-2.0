@@ -44,7 +44,7 @@ namespace backend.Application.Services
             if(subject.OwnerUserId != userId)
                 throw new UnauthorizedException("Unauthorized access to specified subject!");
 
-            if(!await _classGroupRepo.CheckSubjectAttachmentAsync(dto.ClassGroupId, dto.SubjectId))
+            if(!await _subjectRepo.CheckForAttachmentAsync(dto.ClassGroupId, dto.SubjectId))
                 throw  new NotFoundException("Specified subject Isn't attached to the group!");
 
             if(await _classSessionRepo.CheckExistingAsync(userId, dto.DayOfWeek, dto.StartTime, dto.EndTime))
@@ -126,7 +126,7 @@ namespace backend.Application.Services
             if(subject.OwnerUserId != userId)
                 throw new UnauthorizedException("Unauthorized access to specified subject!");
 
-            if(!await _classGroupRepo.CheckSubjectAttachmentAsync(dto.ClassGroupId, dto.SubjectId))
+            if(!await _subjectRepo.CheckForAttachmentAsync(dto.ClassGroupId, dto.SubjectId))
                 throw  new NotFoundException("Specified subject Isn't attached to the group!");
 
             if(await _classSessionRepo.CheckExistingAsync(userId, dto.DayOfWeek, dto.StartTime, dto.EndTime))

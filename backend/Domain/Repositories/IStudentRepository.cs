@@ -13,8 +13,8 @@ namespace backend.Domain.Repositories
         Task<Student?> GetAsync(Guid id);
         Task<PagedResult<Student>> GetUserStudentsAsync(Guid userId, int page, int pageSize);
         Task<IReadOnlyList<ClassGroup>> GetStudentClassGroupsAsync(Guid studentId);
-        Task AttachToGroupAsync(Guid studentId, Guid groupId);
-        Task DetachFromGroupAsync(Guid studentId, Guid groupId);
+        Task AttachToClassGroupAsync(Guid studentId, Guid groupId);
+        Task DetachFromClassGroupAsync(Guid studentId, Guid groupId);
         Task<bool> CheckForAttachmentAsync(Guid studentId, Guid groupId);
         Task RemoveAsync(Student student);
     }

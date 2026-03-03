@@ -9,9 +9,11 @@ namespace backend.Application.Interfaces
 {
     public interface ISubjectService
     {
-        Task AddSubjectAsync(CreateSubjectDto dto, Guid userId);
-        Task<IReadOnlyList<SubjectDto>> GetUserSubjectsAsync(Guid userId);
-        Task UpdateSubjectAsync(SubjectDto dto, Guid userId);
-        Task RemoveSubjectAsync(Guid subjectId, Guid userId);
+        Task AddSubjectAsync(CreateSubjectDto dto);
+        Task<IReadOnlyList<SubjectDto>> GetUserSubjectsAsync();
+        Task AttachToClassGroupAsync(SubjectAttachmentDto dto);
+        Task DetachFromClassGroupAsync(SubjectAttachmentDto dto);
+        Task UpdateSubjectAsync(SubjectDto dto);
+        Task RemoveSubjectAsync(Guid subjectId);
     }
 }

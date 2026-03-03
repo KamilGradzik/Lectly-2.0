@@ -49,9 +49,9 @@ namespace backend.API.Controllers
         [Authorize]
         [HttpDelete]
         [Route("delete")]
-        public async Task<IActionResult> RemoveNoteAsync([FromQuery] Guid Id)
+        public async Task<IActionResult> RemoveNoteAsync([FromQuery] Guid id)
         {
-            await _noteService.RemoveNoteAsync(Id);
+            await _noteService.RemoveNoteAsync(id);
             return NoContent();
         }
     }

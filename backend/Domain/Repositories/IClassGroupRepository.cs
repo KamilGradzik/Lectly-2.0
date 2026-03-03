@@ -15,9 +15,6 @@ namespace backend.Domain.Repositories
         Task<IReadOnlyList<ClassGroup>>GetUserClassGroupsAsync(Guid userId);
         Task<IReadOnlyList<Subject>>GetClassGroupSubjectsAsync(Guid groupId);
         Task<PagedResult<Student>>GetClassGroupStudentsAsync(int page, int pageSize, Guid groupId);
-        Task AttachSubjectAsync(Guid groupId, Guid subjectId);
-        Task DetachSubjectAsync(Guid groupId, Guid subjectId);
-        Task<bool> CheckSubjectAttachmentAsync(Guid groupId, Guid subjectId);
         Task RemoveAsync(ClassGroup classGroup);
     }
 }

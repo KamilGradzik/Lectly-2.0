@@ -52,9 +52,9 @@ namespace backend.API.Controllers
         [Authorize]
         [Route("delete")]
         [HttpDelete]
-        public async Task<IActionResult> RemoveCalendarEventAsync([FromQuery] Guid Id)
+        public async Task<IActionResult> RemoveCalendarEventAsync([FromQuery] Guid id)
         {
-            await _calendarEventService.RemoveCalendarEventAsync(Id);
+            await _calendarEventService.RemoveCalendarEventAsync(id);
             return NoContent();
         }
     }

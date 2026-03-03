@@ -34,6 +34,21 @@ namespace backend.Infrastructure.Persistence.Repositories
             return await _context.ClassGroups.Where(x => groupSubjects.Contains(x.Id)).ToListAsync();
         }
 
+        public async Task AttachToClassGroupAsync(Guid groupId, Guid subjectId)
+        {
+            _context.GroupsSubjects.Add(new GroupSubject(groupId, subjectId));
+        }
+        public async Task DetachFromClassGroupAsync(Guid groupId, Guid subjectId)
+        {
+            var groupSubject = await _context.GroupsSubjects.FirstOrDefaultAsync(x => x.GroupId == groupId && x.SubjectId == subjectId);
+            if(groupSubject != null)
+                _context.GroupsSubjects.Remove(groupSubject);
+        }
+        public async Task<bool> CheckForAttachmentAsync(Guid groupId, Guid subjectId)
+        {
+            return await _context.GroupsSubjects.AnyAsync(x => x.GroupId == groupId && x.SubjectId == subjectId);
+        }
+
         public async Task RemoveAsync(Subject subject)
         {
             var groupsSubjects = await _context.GroupsSubjects.Where(x => x.SubjectId == subject.Id).ToListAsync();
