@@ -47,6 +47,7 @@ namespace backend.Entities
         {
             if(string.IsNullOrWhiteSpace(classroom))
                 throw new ValidationException("Classroom cannot be empty!");
+            Classroom = classroom;
         }
         
         public void ChangeDayOfWeek(DayOfWeek dayOfWeek)

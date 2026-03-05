@@ -9,9 +9,9 @@ namespace backend.Application.Interfaces
 {
     public interface IClassSessionService
     {
-        Task AddClassSessionAsync(CreateClassSessionDto dto, Guid userId);
-        Task<IReadOnlyList<ClassSessionDto>>GetUserClassSessionsAsync(Guid userId);
-        Task UpdateClassSessionAsync(UpdateClassSessionDto dto, Guid userId);
-        Task RemoveClassSessionAsync(Guid classSessionId, Guid userId);
+        Task AddClassSessionAsync(CreateClassSessionDto dto);
+        Task<IReadOnlyList<ClassSessionDto>>GetUserClassSessionsAsync();
+        Task UpdateClassSessionAsync(UpdateClassSessionDto dto);
+        Task RemoveClassSessionAsync(Guid classSessionId);
     }
 }

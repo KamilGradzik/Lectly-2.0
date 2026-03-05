@@ -100,6 +100,7 @@ class Program
         {   
             app.UseSwagger();
             app.UseSwaggerUI();
+            app.MapGet("/", () => Results.Redirect("/swagger")).ExcludeFromDescription();
             app.MapOpenApi();
         }
         app.UseMiddleware<ExceptionHandlerMiddleware>();

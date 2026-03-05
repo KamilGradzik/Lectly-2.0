@@ -30,7 +30,8 @@ namespace backend.Infrastructure.Persistence.Repositories
 
         public async Task<bool> CheckExistingAsync(Guid userId, DayOfWeek dayOfWeek, TimeOnly startTime, TimeOnly endTime)
         {
-            return await _context.ClassSessions.AnyAsync(x => x.OwnerUserId == userId && x.DayOfWeek == dayOfWeek && x.StartTime <= startTime && x.EndTime >= endTime);
+            return await _context.ClassSessions.AnyAsync(x => x.OwnerUserId == userId && x.DayOfWeek == dayOfWeek && 
+                ((startTime > x.StartTime && startTime < x.EndTime) || (endTime > x.StartTime && endTime < x.EndTime) || (startTime <= x.StartTime && endTime >= x.EndTime)));
         }
 
         public async Task  RemoveAsync(ClassSession classSession)
