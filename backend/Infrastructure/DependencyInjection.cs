@@ -25,6 +25,7 @@ namespace backend.Infrastructure
             services.AddScoped<INoteService, NoteService>();
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<ISubjectService, SubjectService>();
+            services.AddScoped<IUserService, UserService>();
 
             //Infrastructure repositories register
             services.AddScoped<ICalendarEventRepository, CalendarEventRepository>();
