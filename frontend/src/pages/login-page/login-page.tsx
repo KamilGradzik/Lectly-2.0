@@ -1,4 +1,4 @@
-import { Button, Divider, FormControl, Link, TextField } from "@mui/material"
+import { Button, FormControl, Link, TextField } from "@mui/material"
 import { JSX } from "react"
 import "./login-page.scss"
 
@@ -12,7 +12,6 @@ const LoginPage = ():JSX.Element => {
                         <p className="logo-subtitle">Supports teachers work!</p>
                     </div>
                 </div>
-                <Divider />
                 <div className="login-container-sub">
                     <div className="login-page-form">
                         <FormControl className="login-page-form-field">
