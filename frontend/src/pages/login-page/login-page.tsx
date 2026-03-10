@@ -1,6 +1,7 @@
-import { Button, FormControl, Link, TextField } from "@mui/material"
+import { Button, FormControl, TextField } from "@mui/material"
 import { JSX } from "react"
 import "./login-page.scss"
+import { Link } from "react-router"
 
 const LoginPage = ():JSX.Element => {
     return(
@@ -20,10 +21,13 @@ const LoginPage = ():JSX.Element => {
                         <FormControl className="login-page-form-field">
                             <TextField variant="outlined"  label="Password" type="password" />
                         </FormControl>
-                        <Link href="#">Forgot password</Link>
                         <FormControl className="login-page-form-field">
-                            <Button variant={"contained"} type={"submit"} >LOG IN</Button>
+                            <Button variant={"contained"} type={"submit"} >sign in</Button>
                         </FormControl>
+                    </div>
+                    <div className="login-page-utils">
+                        <Link to="/sign-up">Create Account</Link>
+                        <a href="#">Forgot password</a>
                     </div>
                 </div>
             </div>

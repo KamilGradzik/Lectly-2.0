@@ -1,12 +1,12 @@
 @use "../../styles/variables.scss" as var;
 
-.login-page{
+.register-page{
     display: flex;
     height: 100vh;
     width: 100%;
     justify-content: center;
     align-items: center;
-    .login-container{
+    .register-container{
         padding: 20px;
         max-width: 600px;
         width: 100%;
@@ -18,9 +18,9 @@
             background-color: #000;
             opacity: 7%;
         }
-        .login-container-sub{
+        .register-container-sub{
             padding: 15px 30px;
-            .login-page-logo{
+            .register-page-logo{
                 font-family: var.$logo-font;
                 color: var.$secondary-color;
                 display: flex;
@@ -42,10 +42,10 @@
                     }
                 }
             }
-            .login-page-form{
+            .register-page-form{
                 display: flex;
                 flex-direction: column;
-                .login-page-form-field{
+                .register-page-form-field{
                     margin: 10px 0px;
                     .MuiFormControl-root{
                         width: 100%;
@@ -86,13 +86,14 @@
                     }
                 }
             }
-            .login-page-utils{
+            .register-page-utils{
                 display: flex;
                 align-items: center;
-                justify-content: space-around;
+                justify-content: center;
+                font-size: 16px;
+                color: #999;
                 a{
                     color: #999;
-                    font-size: 16px;
                     &:hover{
                         color: var.$secondary-color;
                     }

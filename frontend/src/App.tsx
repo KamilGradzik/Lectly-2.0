@@ -1,10 +1,12 @@
 import React, { JSX } from 'react';
-import LoginPage from './pages/login-page/login-page';
-
+import { Outlet, redirect, RouterProvider } from 'react-router';
+import Routing from './utils/routing';
+const token = "";
 const App = ():JSX.Element => {
+
   return (
     <div className="App">
-      <LoginPage />
+      <Outlet />
     </div>
   );
 }
