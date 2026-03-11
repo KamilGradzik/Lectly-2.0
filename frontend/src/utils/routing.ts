@@ -17,6 +17,7 @@ const Routing = createBrowserRouter([
                 {path: "sign-up", Component: RegisterPage},
             ]},
             {Component:AppLayout, children:[
+                {path: "dashboard"}
             ]}
         ]
     }

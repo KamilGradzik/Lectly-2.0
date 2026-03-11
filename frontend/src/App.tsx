@@ -5,9 +5,9 @@ const token = "";
 const App = ():JSX.Element => {
 
   return (
-    <div className="App">
+    <>
       <Outlet />
-    </div>
+    </>
   );
 }
 

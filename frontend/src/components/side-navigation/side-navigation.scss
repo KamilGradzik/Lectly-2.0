@@ -1,0 +1,46 @@
+@use "../../styles/variables.scss" as var;
+
+.side-nav-container{
+    .side-nav-header{
+        
+    }
+    .side-nav-body{
+        .nav-links{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            li{
+                display: flex;
+                align-items: center;
+                vertical-align: center;
+                font-size: 24px;
+                padding: 10px 0px;
+                box-sizing: border-box;
+                text-transform: uppercase;
+                font-weight: 500;
+                a{
+                    text-decoration: none;
+                    padding: 10px;
+                    &:visited{
+                        color: unset;
+                    }
+                }
+                &:hover{
+                    color: var.$secondary-color;
+                    ::after{
+                        content: "";
+                        width: calc(100% + 10px);
+                        height: 5px;
+                        display: block;
+                        left: -10px;
+                        background-color: var.$secondary-color;
+                        position: absolute;
+                    }
+                }
+            }
+        }
+    }
+    .side-nav-footer{
+        text-transform: uppercase;
+    }
+}
