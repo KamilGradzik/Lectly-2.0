@@ -1,107 +1,100 @@
 @use "../../styles/variables.scss" as var;
 
-.login-page{
-    display: flex;
-    height: 100vh;
+.login-container{
+    padding: 20px;
+    max-width: 600px;
     width: 100%;
-    justify-content: center;
-    align-items: center;
-    .login-container{
-        padding: 20px;
-        max-width: 600px;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        // border-radius: 10px;
-        // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        .MuiDivider-root{
-            background-color: #000;
-            opacity: 7%;
+    display: flex;
+    flex-direction: column;
+    // border-radius: 10px;
+    // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    .MuiDivider-root{
+        background-color: #000;
+        opacity: 7%;
+    }
+    .login-container-sub{
+        padding: 15px 30px;
+        .login-page-logo{
+            font-family: var.$logo-font;
+            color: var.$secondary-color;
+            display: flex;
+            flex-direction: column;
+            p{
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                text-transform: uppercase;
+                font-weight: 100;
+                &.logo-title{
+                    letter-spacing: 10px;
+                    font-size: 100px;
+                    color: var.$primary-font-color;
+                }
+                &.logo-subtitle{
+                    font-size: 20px;
+                    color: var.$secondary-font-color;
+                }
+            }
         }
-        .login-container-sub{
-            padding: 15px 30px;
-            .login-page-logo{
-                font-family: var.$logo-font;
-                color: var.$secondary-color;
-                display: flex;
-                flex-direction: column;
-                p{
-                    margin: 0;
-                    padding: 0;
-                    text-align: center;
-                    text-transform: uppercase;
-                    font-weight: 100;
-                    &.logo-title{
-                        letter-spacing: 10px;
-                        font-size: 100px;
-                        color: var.$primary-font-color;
+        .login-page-form{
+            display: flex;
+            flex-direction: column;
+            .login-page-form-field{
+                margin: 10px 0px;
+                .MuiFormControl-root{
+                    width: 100%;
+                    label{
+                        color: #aaa;
                     }
-                    &.logo-subtitle{
-                        font-size: 20px;
-                        color: var.$secondary-font-color;
-                    }
-                }
-            }
-            .login-page-form{
-                display: flex;
-                flex-direction: column;
-                .login-page-form-field{
-                    margin: 10px 0px;
-                    .MuiFormControl-root{
-                        width: 100%;
-                        label{
-                            color: #aaa;
-                        }
-                        .MuiInputBase-root{  
-                            background-color: #fff;       
-                            fieldset{
-                                border-color: #aaa;
-                            }                   
-                            &:hover{
-                                fieldset{
-                                    border-color: var.$secondary-color;
-                                }
-                            }
-                            &.Mui-focused{
-                                fieldset{
-                                    border-color: var.$secondary-color;
-                                    border-width: 2px;
-                                }
-                            }
-                            input{
-                                color: var.$primary-font-color;
-                                font-size: 18px;
-                            }
-                        }
-                    }
-                    button{
-                        margin: 20px 0px;
-                        font-size: 24px;
-                        color: var.$primary-color;
-                        background-color: var.$secondary-color;
-                        text-transform: uppercase;
+                    .MuiInputBase-root{  
+                        background-color: #fff;       
+                        fieldset{
+                            border-color: #aaa;
+                        }                   
                         &:hover{
-                            background-color: var.$secondary-color-accent;
+                            fieldset{
+                                border-color: var.$secondary-color;
+                            }
+                        }
+                        &.Mui-focused{
+                            fieldset{
+                                border-color: var.$secondary-color;
+                                border-width: 2px;
+                            }
+                        }
+                        input{
+                            color: var.$primary-font-color;
+                            font-size: 18px;
                         }
                     }
                 }
-            }
-            .login-page-utils{
-                display: flex;
-                align-items: center;
-                justify-content: space-around;
-                a{
-                    color: #999;
-                    font-size: 16px;
+                button{
+                    margin: 20px 0px;
+                    font-size: 24px;
+                    color: var.$primary-color;
+                    background-color: var.$secondary-color;
+                    text-transform: uppercase;
                     &:hover{
-                        color: var.$secondary-color;
-                    }
-                    &:active{
-                        color: var.$secondary-color-accent;
+                        background-color: var.$secondary-color-accent;
                     }
                 }
-                
             }
+        }
+        .login-page-utils{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            a{
+                color: #999;
+                font-size: 16px;
+                &:hover{
+                    color: var.$secondary-color;
+                }
+                &:active{
+                    color: var.$secondary-color-accent;
+                }
+            }
+            
         }
     }
 }

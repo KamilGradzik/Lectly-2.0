@@ -5,7 +5,7 @@ import { Link } from "react-router"
 
 const RegisterPage = ():JSX.Element => {
     return(
-        <div className="register-page">
+        <>
             <div className="register-container">
                 <div className="register-container-sub">
                     <div className="register-page-logo">
@@ -36,7 +36,7 @@ const RegisterPage = ():JSX.Element => {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

@@ -1,46 +1,83 @@
 @use "../../styles/variables.scss" as var;
 
 .side-nav-container{
+    height: 100%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
     .side-nav-header{
-        
+        font-size: 24px;
+        font-weight: 600;
+        padding: 30px 0px 15px 15px;
+        a{
+            &:visited{
+                color: unset;
+            }
+            &:hover{
+                color: var.$secondary-color;
+
+            }
+        }
     }
     .side-nav-body{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 15px 0px;
         .nav-links{
             list-style: none;
             margin: 0;
             padding: 0;
             li{
-                display: flex;
-                align-items: center;
-                vertical-align: center;
                 font-size: 24px;
-                padding: 10px 0px;
-                box-sizing: border-box;
+                padding: 15px 0px;
                 text-transform: uppercase;
-                font-weight: 500;
+                font-weight: 400;
+                color: #999;
                 a{
                     text-decoration: none;
-                    padding: 10px;
+                    display: inline-flex;
+                    align-items: center;
+                    svg{
+                        padding: 0;
+                        margin: 0px 15px;
+                    }
                     &:visited{
                         color: unset;
                     }
                 }
                 &:hover{
                     color: var.$secondary-color;
-                    ::after{
+                    &::after{
                         content: "";
-                        width: calc(100% + 10px);
+                        width: calc(20% - 5px);    
                         height: 5px;
                         display: block;
-                        left: -10px;
                         background-color: var.$secondary-color;
                         position: absolute;
                     }
                 }
             }
         }
-    }
-    .side-nav-footer{
-        text-transform: uppercase;
+        .side-nav-footer{
+            align-self: center;
+            span{
+                font-size: 18px;
+                text-transform: uppercase;
+                display: flex;
+                align-items: center;
+                color: #999;
+                user-select: none;
+                svg{
+                    margin: 0px 10px;
+                }
+                &:hover{
+                    cursor: pointer;
+                    color: #333;
+                }
+            }
+        }
     }
 }
