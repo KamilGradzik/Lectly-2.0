@@ -17,7 +17,13 @@ const Routing = createBrowserRouter([
                 {path: "sign-up", Component: RegisterPage},
             ]},
             {Component:AppLayout, children:[
-                {path: "dashboard"}
+                {path: "dashboard"},
+                {path: "class-schedule"},
+                {path: "calendar"},
+                {path: "class-groups"},
+                {path: "students"},
+                {path: "subjects"},
+                {path: "notes"}
             ]}
         ]
     }

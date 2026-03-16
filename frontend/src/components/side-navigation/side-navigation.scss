@@ -5,6 +5,7 @@
     width: 20%;
     display: flex;
     flex-direction: column;
+    background-color: var.$secondary-color;
     .side-nav-header{
         font-size: 24px;
         font-weight: 600;
@@ -25,39 +26,42 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding: 15px 0px;
         .nav-links{
             list-style: none;
             margin: 0;
-            padding: 0;
-            li{
+            padding-left: 20px;
+            .nav-link{
+                width: 100%;
+                text-decoration: none;
+                display: block;
                 font-size: 24px;
-                padding: 15px 0px;
                 text-transform: uppercase;
                 font-weight: 400;
-                color: #999;
-                a{
-                    text-decoration: none;
+                color: var.$primary-color;
+                position: relative;
+                // margin: 10px 0px;
+                user-select: none;
+                span{
+                    width: 100%;
                     display: inline-flex;
                     align-items: center;
+                    padding: 15px;
+                    padding-left: 0;
                     svg{
                         padding: 0;
                         margin: 0px 15px;
                     }
-                    &:visited{
-                        color: unset;
-                    }
+                }
+                &:visited{
+                    color: none;
                 }
                 &:hover{
-                    color: var.$secondary-color;
-                    &::after{
-                        content: "";
-                        width: calc(20% - 5px);    
-                        height: 5px;
-                        display: block;
-                        background-color: var.$secondary-color;
-                        position: absolute;
-                    }
+                    cursor: pointer;
+                    background-color: lighten(var.$secondary-color, 3%);
+                }
+                &.nav-link-active{
+                    background-color: darken(var.$secondary-color, 3%);
+                    border-right: solid 8px darken(var.$secondary-color, 6%);
                 }
             }
         }
@@ -68,16 +72,27 @@
                 text-transform: uppercase;
                 display: flex;
                 align-items: center;
-                color: #999;
+                color: #aaa;
                 user-select: none;
+                padding: 25px;
                 svg{
                     margin: 0px 10px;
                 }
                 &:hover{
                     cursor: pointer;
-                    color: #333;
+                    color: var.$primary-color;
+                    text-decoration: underline;
                 }
             }
         }
+    }
+}
+
+@keyframes nav-link-underline-anim {
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 100%;
     }
 }
