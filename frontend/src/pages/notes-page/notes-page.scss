@@ -1,0 +1,66 @@
+@use '../../styles/variables.scss' as var;
+
+.notes-page{
+    .notes-page-header{
+        height: 60px;
+        display: flex;
+        width: 100%;
+        .MuiFormControl-root{
+            width: 100%;
+            
+            label{
+                color: #aaa;
+            }
+            .MuiInputBase-root{  
+                background-color: #fff;      
+                fieldset{
+                    border-color: #aaa;
+                }                   
+                &:hover{
+                    fieldset{
+                        border-color: var.$secondary-color;
+                    }
+                }
+                &.Mui-focused{
+                    fieldset{
+                        border-color: var.$secondary-color;
+                        border-width: 2px;
+                    }
+                }
+                input{
+                    color: var.$primary-font-color;
+                    font-size: 18px;
+                }
+            }
+        }
+        span{
+            width: fit-content;
+            display: flex;
+            button{
+                margin-left: 15px;
+                height: 100%;
+                svg{
+                    margin-left: 5px;
+                }
+                &#create-btn{
+                    background: var.$secondary-color;
+                    &:hover{
+                        background-color: var.$secondary-color-accent;
+                    }
+                }
+                &#filters-btn{
+                    background-color: #fff;
+                    color: #333;
+                    border-color: #aaa;
+                }
+            }
+        }
+    }
+    .notes-page-content{
+        padding: 15px 0px;
+        display: grid;
+        column-gap: 30px;
+        row-gap: 30px;
+        grid-template-columns: auto auto auto auto auto;
+    }
+}

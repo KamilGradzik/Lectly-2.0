@@ -1,0 +1,26 @@
+@use "../../styles/variables.scss";
+
+.note-card{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    .note-card-header{
+        .note-card-title{
+            color: #000;
+            font-weight: 400;
+        }
+        .note-card-subtitle{
+            color: #666;
+            font-weight: 300;
+        }
+    }
+    .note-card-content{
+        color: #666;
+        font-weight: 300;
+    }
+    .note-card-footer{
+
+    }
+}

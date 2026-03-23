@@ -9,14 +9,14 @@
     .side-nav-header{
         font-size: 24px;
         font-weight: 600;
-        padding: 30px 0px 15px 15px;
+        padding: 40px 20px;
+        color: var.$primary-color;
         a{
             &:visited{
                 color: unset;
             }
             &:hover{
-                color: var.$secondary-color;
-
+                color: #aaa;
             }
         }
     }
@@ -29,27 +29,27 @@
         .nav-links{
             list-style: none;
             margin: 0;
-            padding-left: 20px;
+            padding: 0px 20px;
             .nav-link{
                 width: 100%;
                 text-decoration: none;
                 display: block;
-                font-size: 24px;
+                font-size: 20px;
                 text-transform: uppercase;
                 font-weight: 400;
                 color: var.$primary-color;
                 position: relative;
-                // margin: 10px 0px;
+                padding: 15px;
+                margin: 15px 0px;
                 user-select: none;
+                border-radius: 4px;
                 span{
                     width: 100%;
                     display: inline-flex;
                     align-items: center;
-                    padding: 15px;
-                    padding-left: 0;
                     svg{
                         padding: 0;
-                        margin: 0px 15px;
+                        margin-right: 20px;
                     }
                 }
                 &:visited{
@@ -57,18 +57,18 @@
                 }
                 &:hover{
                     cursor: pointer;
-                    background-color: lighten(var.$secondary-color, 3%);
+                    background-color: lighten(var.$secondary-color, 4%);
                 }
                 &.nav-link-active{
-                    background-color: darken(var.$secondary-color, 3%);
-                    border-right: solid 8px darken(var.$secondary-color, 6%);
+                    background-color: var.$primary-color;
+                    color: var.$secondary-color;
                 }
             }
         }
         .side-nav-footer{
             align-self: center;
             span{
-                font-size: 18px;
+                font-size: 20px;
                 text-transform: uppercase;
                 display: flex;
                 align-items: center;

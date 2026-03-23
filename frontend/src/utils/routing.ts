@@ -4,6 +4,7 @@ import RegisterPage from "../pages/register-page/register-page";
 import App from "../App";
 import AuthLayout from "../layouts/auth-layout";
 import AppLayout from "../layouts/app-layout";
+import NotesPage from "../pages/notes-page/notes-page";
 
 
 
@@ -23,7 +24,8 @@ const Routing = createBrowserRouter([
                 {path: "class-groups"},
                 {path: "students"},
                 {path: "subjects"},
-                {path: "notes"}
+                {path: "notes", Component: NotesPage},
+                {path: "profile"}
             ]}
         ]
     }
