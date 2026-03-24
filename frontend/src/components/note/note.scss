@@ -6,21 +6,69 @@
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
+    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
     .note-card-header{
-        .note-card-title{
+        p{
+            margin: 0;
+            padding: 15px 0px;
+            font-size: 18px;
             color: #000;
             font-weight: 400;
         }
-        .note-card-subtitle{
-            color: #666;
-            font-weight: 300;
-        }
     }
-    .note-card-content{
+    .note-card-body{
+        font-size: 18px;
         color: #666;
         font-weight: 300;
-    }
-    .note-card-footer{
-
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        .note-card-content{
+            padding: 15px 0px;
+        }
+        .note-card-footer{
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 15px 0px;
+            border-top: solid 1px rgba(0, 0, 0, 0.25);
+            .note-card-action-buttons{
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                button{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: none;
+                    border: none;
+                    padding: 0;
+                    margin: 0;
+                    padding-left: 15px;
+                    font-size: 18px;
+                    color: #666;
+                    align-items: center;
+                    justify-content: center;
+                    &.favourite-btn{
+                        &:hover{
+                            color: gold;
+                        }
+                    }
+                    &.edit-btn{
+                        &:hover{
+                            color: green;
+                        }
+                    }
+                    &.remove-btn{
+                        &:hover{
+                            color: red;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

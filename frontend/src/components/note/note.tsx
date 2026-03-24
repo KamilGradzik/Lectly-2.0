@@ -1,8 +1,8 @@
 import { JSX } from "react"
 import "./note.scss"
-import { Button } from "@mui/material"
-import { FaStar, FaTrash } from "react-icons/fa6"
+import { FaTrash } from "react-icons/fa6"
 import { FaEdit } from "react-icons/fa"
+import moment from "moment"
 
 interface props{
     title:string,
@@ -10,18 +10,29 @@ interface props{
     createdAt:string
 }
 
+
 const Note = ({title,content,createdAt}:props):JSX.Element => {
+
+    const formatedDate = moment(new Date(createdAt)).format("Do MMM YYYY");
+
     return(
         <div className="note-card">
             <div className="note-card-header">
-                <p className="note-card-title">{title}</p>
-                <p className="note-card-subtitle">{createdAt}</p>
+                <p>{title}</p>
             </div>
-            <div className="note-card-content">{content}</div>
-            <div className="note-card-footer">
-                <Button><FaStar /></Button>
-                <Button><FaEdit /></Button>
-                <Button><FaTrash /></Button>
+            <div className="note-card-body">
+                <div className="note-card-content">
+                    {content}
+                </div>
+                <div className="note-card-footer">
+                    <span className="note-card-date">
+                        {formatedDate}
+                    </span>
+                    <span className="note-card-action-buttons">
+                        <button className="edit-btn"><FaEdit /></button>
+                        <button className="remove-btn"><FaTrash /></button>
+                    </span>
+                </div>
             </div>
         </div>
     )

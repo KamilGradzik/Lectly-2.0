@@ -61,6 +61,7 @@
         display: grid;
         column-gap: 30px;
         row-gap: 30px;
-        grid-template-columns: auto auto auto auto auto;
+        overflow-y: visible;
+        grid-template-columns: auto auto auto auto;
     }
 }
