@@ -1,5 +1,5 @@
 import { JSX } from "react"
-import "./note.scss"
+import "./note-card.scss"
 import { FaTrash } from "react-icons/fa6"
 import { FaEdit } from "react-icons/fa"
 import moment from "moment"
@@ -11,14 +11,14 @@ interface props{
 }
 
 
-const Note = ({title,content,createdAt}:props):JSX.Element => {
+const NoteCard = ({title,content,createdAt}:props):JSX.Element => {
 
-    const formatedDate = moment(new Date(createdAt)).format("Do MMM YYYY");
+    const formatedDate:string = moment(new Date(createdAt)).format("Do MMM YYYY");
 
     return(
         <div className="note-card">
             <div className="note-card-header">
-                <p>{title}</p>
+                <h1>{title}</h1>
             </div>
             <div className="note-card-body">
                 <div className="note-card-content">
@@ -38,4 +38,4 @@ const Note = ({title,content,createdAt}:props):JSX.Element => {
     )
 }
 
-export default Note
+export default NoteCard

@@ -1,4 +1,4 @@
-@use "../../styles/variables.scss";
+@use "../../styles/variables.scss" as var;
 
 .note-card{
     display: flex;
@@ -8,7 +8,7 @@
     border-radius: 10px;
     box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
     .note-card-header{
-        p{
+        h1{
             margin: 0;
             padding: 15px 0px;
             font-size: 18px;
@@ -52,19 +52,20 @@
                     color: #666;
                     align-items: center;
                     justify-content: center;
-                    &.favourite-btn{
-                        &:hover{
-                            color: gold;
-                        }
-                    }
                     &.edit-btn{
                         &:hover{
-                            color: green;
+                            color: var.$success-color;
+                        }
+                        &:active{
+                            color: darken(var.$success-color, 10%);
                         }
                     }
                     &.remove-btn{
                         &:hover{
-                            color: red;
+                            color: var.$danger-color;
+                        }
+                        &:active{
+                            color: darken(var.$danger-color, 10%);
                         }
                     }
                 }

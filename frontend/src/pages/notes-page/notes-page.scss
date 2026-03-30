@@ -1,6 +1,9 @@
 @use '../../styles/variables.scss' as var;
 
 .notes-page{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     .notes-page-header{
         height: 60px;
         display: flex;
@@ -57,11 +60,23 @@
         }
     }
     .notes-page-content{
-        padding: 15px 0px;
-        display: grid;
-        column-gap: 30px;
-        row-gap: 30px;
-        overflow-y: visible;
-        grid-template-columns: auto auto auto auto;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        height: 100%;
+        .notes-container{
+            padding: 15px 0px;
+            display: grid;
+            column-gap: 30px;
+            row-gap: 30px;
+            overflow-y: visible;
+            grid-template-columns: auto auto auto auto;
+        }
+        .notes-paggination{
+            display: flex;
+            // align-items: center;
+            padding: 15px;
+            justify-content: center;
+        }
     }
 }
