@@ -1,2 +1,36 @@
 @use "../../styles/variables.scss" as var;
 
+.subject-card{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
+    height: 250px;
+    .subject-card-header{
+        h1{
+            padding: 0;
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+        }
+    }
+    .subject-card-body{
+        .subject-card-footer{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 16px;
+            .subject-card-actions{
+                margin-left: 10px;
+                color: #666;
+                // display: flex;
+                // flex-direction: row;
+                // align-items: center;
+                // justify-content: space-around;
+        }
+        }
+        
+    }
+}

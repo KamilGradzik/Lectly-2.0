@@ -1,5 +1,29 @@
 @use "../../styles//variables.scss" as var;
 
-h1{
-    color: red;
+.subjects-page{
+    height: 100%;
+    .subjects-page-content{
+        display: grid;
+        column-gap: 30px;
+        row-gap: 30px;
+        overflow-y: visible;
+        grid-template-columns: auto auto auto auto;
+        .subject-add{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+            border-radius: 10px;
+            width: 100%;
+            height: 250px;
+            border: dashed 2px rgba(0, 0, 0, .3);
+            color: rgba(0, 0, 0, .3);
+            font-size: 50px;
+            &:hover{
+                color: #333;
+                border-color: #333;
+                cursor: pointer;
+            }
+        }
+    }
 }

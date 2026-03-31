@@ -2,16 +2,27 @@ import { JSX } from "react"
 import "./subjects-page.scss"
 import MockData from "../../assets/mock-data"
 import SubjectCard from "../../components/subject-card/subject-card"
+import { FaPlus } from "react-icons/fa6"
 
 const SubjectsPage = ():JSX.Element => {
+    const test = () => {
+        console.log("DADAD");
+    }
     return(
-        <>
-        {MockData.MockSubjects.map(x => {
-            return(
-                <SubjectCard title={x.nazwa} desc={x.opis} groupsCount={x.liczba_grup} studensCount={x.liczba_studentow} closest={x.najblizsze_zajecia} />
-            )
-        })}
-        </>
+        <div className="subjects-page">
+            <div className="subjects-page-content">
+                {MockData.MockSubjects.map(x => {
+                    return(
+                        <SubjectCard title={x.nazwa} desc={x.opis} groupsCount={x.liczba_grup} studensCount={x.liczba_studentow} closest={x.najblizsze_zajecia} />
+                    )
+                })}
+                <div className="subject-add">
+                    <div className="subject-add-icon">
+                        <FaPlus />
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
 
