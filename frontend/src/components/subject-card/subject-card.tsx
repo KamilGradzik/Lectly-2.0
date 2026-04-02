@@ -1,7 +1,7 @@
 import { JSX, MouseEventHandler } from "react"
 import "./subject-card.scss"
 import { FaEdit, FaInfoCircle } from "react-icons/fa"
-import { FaBars, FaInfo, FaTrash } from "react-icons/fa6"
+import { FaBars, FaClock, FaGraduationCap, FaInfo, FaTrash, FaUsers } from "react-icons/fa6"
 import { Button } from "@mui/material"
 
 interface props{
@@ -9,28 +9,32 @@ interface props{
     desc:string,
     groupsCount:number,
     studensCount:number,
-    closest:string,
+    nextClass:string,
     onClick?:MouseEventHandler,
 }
 
-const SubjectCard = ({title, desc, groupsCount, studensCount, closest, onClick}:props):JSX.Element => {
+const SubjectCard = ({title, desc, groupsCount, studensCount, nextClass, onClick}:props):JSX.Element => {
     return(
         <div className="subject-card" onClick={onClick}>   
             <div className="subject-card-header">
                 <h1>{title}</h1>
             </div>
             <div className="subject-card-body">
-                <div className="subject-descirption">
-                    <div>
-
+                <div className="subject-info">
+                    <div className="subject-numbers">
+                        <span title="Class groups"><FaUsers /> {groupsCount}</span>
+                        <span title="Students"><FaGraduationCap /> {studensCount}</span>
                     </div>
-                    <p>{closest}</p>
+                    <div className="subject-next-classes">
+                        <p title="Next classes"><FaClock />{nextClass}</p>
+                    </div>
+                    
                 </div>
                 <div className="subject-card-footer">
                     <Button>details</Button>
                     <div className="subject-card-actions">
-                        <FaEdit className="edit-btn"/>
-                        <FaTrash className="remove-btn"/>
+                        <FaEdit title="Edit subject" className="edit-btn"/>
+                        <FaTrash title="Remove subject" className="remove-btn"/>
                     </div>
                 </div>
             </div>
