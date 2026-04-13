@@ -4,10 +4,7 @@ import MockData from "../../assets/mock-data"
 import SubjectCard from "../../components/subject-card/subject-card"
 import { FaPlus } from "react-icons/fa6"
 
-const SubjectsPage = ():JSX.Element => {
-    const test = () => {
-        console.log("DADAD");
-    }
+const SubjectsPage = ():JSX.Element => {    
     return(
         <div className="subjects-page">
             <div className="subjects-page-content">

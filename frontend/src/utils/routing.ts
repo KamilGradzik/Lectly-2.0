@@ -6,6 +6,7 @@ import AuthLayout from "../layouts/auth-layout";
 import AppLayout from "../layouts/app-layout";
 import NotesPage from "../pages/notes-page/notes-page";
 import SubjectsPage from "../pages/subjects-page/subjects-page";
+import StudentsPage from "../pages/students-page/students-page";
 
 
 
@@ -23,7 +24,7 @@ const Routing = createBrowserRouter([
                 {path: "class-schedule"},
                 {path: "calendar"},
                 {path: "class-groups"},
-                {path: "students"},
+                {path: "students", Component: StudentsPage},
                 {path: "subjects", Component: SubjectsPage},
                 {path: "notes", Component: NotesPage},
                 {path: "profile"}

@@ -133,6 +133,98 @@ const MockData = {
             "liczba_studentow": 38,
             "najblizsze_zajecia": "Środa 14:00"
         }
+    ],
+    "MockStudents":[
+        {
+            "studentCode": "STU001",
+            "firstName": "Jan",
+            "lastName": "Kowalski",
+            "additionalInfo": "Student informatyki, zainteresowany frontendem i Reactem."
+        },
+        {
+            "studentCode": "STU002",
+            "firstName": "Anna",
+            "lastName": "Nowak",
+            "additionalInfo": "Specjalizuje się w analizie danych i Pythonie."
+        },
+        {
+            "studentCode": "STU003",
+            "firstName": "Piotr",
+            "lastName": "Wiśniewski",
+            "additionalInfo": "Interesuje się sztuczną inteligencją oraz machine learning."
+        },
+        {
+            "studentCode": "STU004",
+            "firstName": "Katarzyna",
+            "lastName": "Wójcik",
+            "additionalInfo": "Członkini koła naukowego, pasjonatka UX/UI."
+        },
+        {
+            "studentCode": "STU005",
+            "firstName": "Tomasz",
+            "lastName": "Kamiński",
+            "additionalInfo": "Programuje w Javie, pracuje nad aplikacjami backendowymi."
+        },
+        {
+            "studentCode": "STU006",
+            "firstName": "Magdalena",
+            "lastName": "Lewandowska",
+            "additionalInfo": "Zainteresowana cyberbezpieczeństwem i sieciami komputerowymi."
+        },
+        {
+            "studentCode": "STU007",
+            "firstName": "Paweł",
+            "lastName": "Zieliński",
+            "additionalInfo": "Tworzy aplikacje mobilne w Flutterze."
+        },
+        {
+            "studentCode": "STU008",
+            "firstName": "Agnieszka",
+            "lastName": "Szymańska",
+            "additionalInfo": "Specjalizuje się w testowaniu oprogramowania."
+        },
+        {
+            "studentCode": "STU009",
+            "firstName": "Michał",
+            "lastName": "Dąbrowski",
+            "additionalInfo": "Pasjonat DevOps i automatyzacji procesów."
+        },
+        {
+            "studentCode": "STU010",
+            "firstName": "Karolina",
+            "lastName": "Kozłowska",
+            "additionalInfo": "Interesuje się projektowaniem graficznym i brandingiem."
+        },
+        {
+            "studentCode": "STU011",
+            "firstName": "Łukasz",
+            "lastName": "Jankowski",
+            "additionalInfo": "Zajmuje się tworzeniem gier komputerowych."
+        },
+        {
+            "studentCode": "STU012",
+            "firstName": "Natalia",
+            "lastName": "Mazur",
+            "additionalInfo": "Specjalizuje się w bazach danych i SQL."
+        },
+        {
+            "studentCode": "STU013",
+            "firstName": "Krzysztof",
+            "lastName": "Krawczyk",
+            "additionalInfo": "Interesuje się systemami embedded i elektroniką."
+        },
+        {
+            "studentCode": "STU014",
+            "firstName": "Monika",
+            "lastName": "Piotrowska",
+            "additionalInfo": "Aktywna w projektach open source."
+        },
+        {
+            "studentCode": "STU015",
+            "firstName": "Adam",
+            "lastName": "Grabowski",
+            "additionalInfo": "Zainteresowany chmurą obliczeniową i AWS."
+        }
     ]
 } 
 

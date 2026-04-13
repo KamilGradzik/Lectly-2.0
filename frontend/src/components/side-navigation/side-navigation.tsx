@@ -1,7 +1,7 @@
 import { JSX } from "react"
 import "./side-navigation.scss"
 import { Link, matchPath, Navigate, NavLink, redirect, replace, useLocation } from "react-router";
-import { FaRightFromBracket, FaCalendar, FaNoteSticky, FaUsers, FaClock, FaGaugeHigh, FaGraduationCap, FaPenRuler } from "react-icons/fa6";
+import { FaRightFromBracket, FaCalendar, FaNoteSticky, FaUsers, FaClock, FaGaugeHigh, FaGraduationCap, FaPenRuler, FaUser } from "react-icons/fa6";
 
 
 
@@ -12,7 +12,7 @@ const SideNavigation = ():JSX.Element => {
     return(
         <div className="side-nav-container">
             <div className="side-nav-header">
-                <span>Hello&nbsp;<Link to="profile">USER_PLACEHOLDER</Link></span>
+                <p>Lectly</p>
             </div>
             <div className="side-nav-body">
                 <div className="nav-links">
@@ -25,6 +25,7 @@ const SideNavigation = ():JSX.Element => {
                     <NavLink className={({isActive}) => (isActive ? "nav-link nav-link-active" : "nav-link")}to="/notes"><span><FaNoteSticky />notes</span></NavLink>
                 </div>
                 <div className="side-nav-footer">
+                    <span>profile <FaUser /></span>
                     <span>sign out <FaRightFromBracket /></span>
                 </div>
             </div>
