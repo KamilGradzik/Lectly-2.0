@@ -41,7 +41,7 @@ const StudentsPage = ():JSX.Element => {
                 <div className="students-container">
                     {MockData.MockStudents.map((x) => {
                         return(
-                            <StudentCard firstName={x.firstName} lastName={x.lastName} studentCode={x.studentCode} additionalInfo={x.additionalInfo} />
+                            <StudentCard firstName={x.firstName} lastName={x.lastName} studentCode={x.studentCode} additionalInfo={x.additionalInfo} studentGroups={x.studentGroups}/>
                         )
                     })}
                 </div>

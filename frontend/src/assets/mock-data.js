@@ -139,91 +139,106 @@ const MockData = {
             "studentCode": "STU001",
             "firstName": "Jan",
             "lastName": "Kowalski",
-            "additionalInfo": "Student informatyki, zainteresowany frontendem i Reactem."
+            "additionalInfo": "Student informatyki, zainteresowany frontendem i Reactem.",
+            "studentGroups":["Cyberbezpieczeństwo", "Analiza Danych"]
         },
         {
             "studentCode": "STU002",
             "firstName": "Anna",
             "lastName": "Nowak",
-            "additionalInfo": "Specjalizuje się w analizie danych i Pythonie."
+            "additionalInfo": "Specjalizuje się w analizie danych i Pythonie.",
+            "studentGroups":["Cyberbezpieczeństwo", "Analiza Danych", "Sztuczna Inteligencja", "Matematyka Stosowana"]
         },
         {
             "studentCode": "STU003",
             "firstName": "Piotr",
             "lastName": "Wiśniewski",
-            "additionalInfo": "Interesuje się sztuczną inteligencją oraz machine learning."
+            "additionalInfo": "Interesuje się sztuczną inteligencją oraz machine learning.",
+            "studentGroups":["Cyberbezpieczeństwo", "Analiza Danych", "Sztuczna Inteligencja", "Sieci Komputerowe", "Plastyka", "Kulturoznawstwo"]
         },
         {
             "studentCode": "STU004",
             "firstName": "Katarzyna",
             "lastName": "Wójcik",
-            "additionalInfo": "Członkini koła naukowego, pasjonatka UX/UI."
+            "additionalInfo": "Członkini koła naukowego, pasjonatka UX/UI.",
+            "studentGroups":["Cyberbezpieczeństwo", "Analiza Danych", "Sztuczna Inteligencja", "Sieci Komputerowe"]
         },
         {
             "studentCode": "STU005",
             "firstName": "Tomasz",
             "lastName": "Kamiński",
-            "additionalInfo": "Programuje w Javie, pracuje nad aplikacjami backendowymi."
+            "additionalInfo": "Programuje w Javie, pracuje nad aplikacjami backendowymi.", 
+            "studentGroups":["Cyberbezpieczeństwo", "Analiza Danych", "Sztuczna Inteligencja", "Sieci Komputerowe"]
         },
         {
             "studentCode": "STU006",
             "firstName": "Magdalena",
             "lastName": "Lewandowska",
-            "additionalInfo": "Zainteresowana cyberbezpieczeństwem i sieciami komputerowymi."
+            "additionalInfo": "Zainteresowana cyberbezpieczeństwem i sieciami komputerowymi.",
+            "studentGroups":["Cyberbezpieczeństwo", "Analiza Danych", "Sztuczna Inteligencja", "Sieci Komputerowe"]
         },
         {
             "studentCode": "STU007",
             "firstName": "Paweł",
             "lastName": "Zieliński",
-            "additionalInfo": "Tworzy aplikacje mobilne w Flutterze."
+            "additionalInfo": "Tworzy aplikacje mobilne w Flutterze.",
+            "studentGroups":["Cyberbezpieczeństwo", "Analiza Danych", "Sztuczna Inteligencja", "Sieci Komputerowe"]
         },
         {
             "studentCode": "STU008",
             "firstName": "Agnieszka",
             "lastName": "Szymańska",
-            "additionalInfo": "Specjalizuje się w testowaniu oprogramowania."
+            "additionalInfo": "Specjalizuje się w testowaniu oprogramowania.",
+            "studentGroups":["Cyberbezpieczeństwo", "Analiza Danych", "Sztuczna Inteligencja", "Sieci Komputerowe"]
         },
         {
             "studentCode": "STU009",
             "firstName": "Michał",
             "lastName": "Dąbrowski",
-            "additionalInfo": "Pasjonat DevOps i automatyzacji procesów."
+            "additionalInfo": "Pasjonat DevOps i automatyzacji procesów.",
+            "studentGroups":["Cyberbezpieczeństwo", "Analiza Danych", "Sztuczna Inteligencja", "Sieci Komputerowe"]
         },
         {
             "studentCode": "STU010",
             "firstName": "Karolina",
             "lastName": "Kozłowska",
-            "additionalInfo": "Interesuje się projektowaniem graficznym i brandingiem."
+            "additionalInfo": "Interesuje się projektowaniem graficznym i brandingiem.",
+            "studentGroups":["Cyberbezpieczeństwo", "Analiza Danych", "Sztuczna Inteligencja", "Sieci Komputerowe"]
         },
         {
             "studentCode": "STU011",
             "firstName": "Łukasz",
             "lastName": "Jankowski",
-            "additionalInfo": "Zajmuje się tworzeniem gier komputerowych."
+            "additionalInfo": "Zajmuje się tworzeniem gier komputerowych.",
+            "studentGroups":["Cyberbezpieczeństwo", "Analiza Danych", "Sztuczna Inteligencja", "Sieci Komputerowe"]
         },
         {
             "studentCode": "STU012",
             "firstName": "Natalia",
             "lastName": "Mazur",
-            "additionalInfo": "Specjalizuje się w bazach danych i SQL."
+            "additionalInfo": "Specjalizuje się w bazach danych i SQL.",
+            "studentGroups":["Cyberbezpieczeństwo", "Analiza Danych", "Sieci Komputerowe"]
         },
         {
             "studentCode": "STU013",
             "firstName": "Krzysztof",
             "lastName": "Krawczyk",
-            "additionalInfo": "Interesuje się systemami embedded i elektroniką."
+            "additionalInfo": "Interesuje się systemami embedded i elektroniką.",
+            "studentGroups":["Cyberbezpieczeństwo", "Analiza Danych", "Sztuczna Inteligencja", "Sieci Komputerowe"]
         },
         {
             "studentCode": "STU014",
             "firstName": "Monika",
             "lastName": "Piotrowska",
-            "additionalInfo": "Aktywna w projektach open source."
+            "additionalInfo": "Aktywna w projektach open source.",
+            "studentGroups":["Cyberbezpieczeństwo", "Analiza Danych", "Sztuczna Inteligencja", "Sieci Komputerowe"]
         },
         {
             "studentCode": "STU015",
             "firstName": "Adam",
             "lastName": "Grabowski",
-            "additionalInfo": "Zainteresowany chmurą obliczeniową i AWS."
+            "additionalInfo": "Zainteresowany chmurą obliczeniową i AWS.",
+            "studentGroups":["Cyberbezpieczeństwo", "Analiza Danych", "Sztuczna Inteligencja", "Sieci Komputerowe"]
         }
     ]
 } 
