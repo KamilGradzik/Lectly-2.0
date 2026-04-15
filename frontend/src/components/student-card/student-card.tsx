@@ -1,5 +1,8 @@
 import { JSX } from "react";
 import "./student-card.scss";
+import { Tooltip } from "@mui/material";
+import { FaCircleInfo, FaEllipsisVertical, FaInfo, FaTrash } from "react-icons/fa6";
+import { FaEdit } from "react-icons/fa";
 
 interface props{
     studentCode:string,
@@ -10,32 +13,36 @@ interface props{
 }
 
 const StudentCard = ({studentCode, firstName, lastName, additionalInfo, studentGroups}:props):JSX.Element => {
-
-
+    
     return(
         <div className="student-card">
-            <div className="student-info">
-                <h1 className="student-fullname">{firstName}&nbsp;{lastName}</h1>
-                <h2 className="student-code">{studentCode}</h2>
-            </div>
-            <div className="student-desc">
-                <p>{additionalInfo}</p>
+            <div className="student-data">
+                <div className="student-info">
+                    <h1 className="student-fullname">{firstName}&nbsp;{lastName}</h1>
+                    <h2 className="student-code">{studentCode}</h2>
+                </div>
+                <div className="student-desc">
+                    <p>{additionalInfo}</p>
+                </div>
             </div>  
             <div className="student-groups">
                 {studentGroups.map((x, i) => {
-                    if(i < 3)
-                        return(
-                            <span className="group-badge">{x}</span>
-                        )
-                    else if(i == studentGroups.length - 1)
-                        return(
-                            <span>{studentGroups.length - 3} more...</span>
+                    return(
+                        <span className="group-badge">{x}</span>
                     )
                 })}
             </div>
-            <div>
-
-            </div>
+            {/* <div className="student-actions">
+                <Tooltip title="Student details">
+                    <FaCircleInfo className="details-btn"/>
+                </Tooltip>
+                <Tooltip title="Edit student">
+                    <FaEdit className="edit-btn"/>
+                </Tooltip> 
+                <Tooltip title="Remove student">
+                    <FaTrash className="remove-btn"/>
+                </Tooltip>
+            </div> */}
         </div>
     )
 }
