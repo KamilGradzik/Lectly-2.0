@@ -32,7 +32,7 @@ const StudentCard = ({studentCode, firstName, lastName, additionalInfo, studentG
                     )
                 })}
             </div>
-            {/* <div className="student-actions">
+            <div className="student-actions">
                 <Tooltip title="Student details">
                     <FaCircleInfo className="details-btn"/>
                 </Tooltip>
@@ -42,7 +42,7 @@ const StudentCard = ({studentCode, firstName, lastName, additionalInfo, studentG
                 <Tooltip title="Remove student">
                     <FaTrash className="remove-btn"/>
                 </Tooltip>
-            </div> */}
+            </div>
         </div>
     )
 }

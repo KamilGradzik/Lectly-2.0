@@ -240,7 +240,69 @@ const MockData = {
             "additionalInfo": "Zainteresowany chmurą obliczeniową i AWS.",
             "studentGroups":["Cyberbezpieczeństwo", "Analiza Danych", "Sztuczna Inteligencja", "Sieci Komputerowe"]
         }
+    ],
+    "MockGroups":[
+        {
+            "nazwa": "Informatyka Stosowana – Grupa A",
+            "liczba_przedmiotow": 5,
+            "liczba_studentow": 28,
+            "najblizsze_zajecia": "Wtorek 8:30"
+        },
+        {
+            "nazwa": "Programowanie Webowe – Grupa B",
+            "liczba_przedmiotow": 4,
+            "liczba_studentow": 24,
+            "najblizsze_zajecia": "Wtorek 10:00"
+        },
+        {
+            "nazwa": "Bazy Danych – Grupa C",
+            "liczba_przedmiotow": 3,
+            "liczba_studentow": 30,
+            "najblizsze_zajecia": "Poniedziałek 12:30"
+        },
+        {
+            "nazwa": "Sieci Komputerowe – Grupa D",
+            "liczba_przedmiotow": 4,
+            "liczba_studentow": 26,
+            "najblizsze_zajecia": "Czwartek 9:30"
+        },
+        {
+            "nazwa": "Sztuczna Inteligencja – Grupa E",
+            "liczba_przedmiotow": 5,
+            "liczba_studentow": 22,
+            "najblizsze_zajecia": "Czwartek 13:00"
+        },
+        {
+            "nazwa": "Inżynieria Oprogramowania – Grupa F",
+            "liczba_przedmiotow": 6,
+            "liczba_studentow": 27,
+            "najblizsze_zajecia": "Piątek 8:00"
+        },
+        {
+            "nazwa": "Systemy Operacyjne – Grupa G",
+            "liczba_przedmiotow": 3,
+            "liczba_studentow": 25,
+            "najblizsze_zajecia": "Poniedziałek 10:00"
+        },
+        {
+            "nazwa": "Analiza Danych – Grupa H",
+            "liczba_przedmiotow": 4,
+            "liczba_studentow": 23,
+            "najblizsze_zajecia": "Piątek 10:00"
+        },
+        {
+            "nazwa": "Cyberbezpieczeństwo – Grupa I",
+            "liczba_przedmiotow": 5,
+            "liczba_studentow": 21,
+            "najblizsze_zajecia": "Czwartek 9:30"
+        },
+        {
+            "nazwa": "Grafika Komputerowa – Grupa J",
+            "liczba_przedmiotow": 4,
+            "liczba_studentow": 20,
+            "najblizsze_zajecia": "Środa 11:30"
+        }
     ]
-} 
+}   
 
 export default MockData;

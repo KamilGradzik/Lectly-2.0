@@ -1,14 +1,14 @@
 @use "../../styles/variables.scss" as var;
 
-.subject-card{
+.group-card{
     display: flex;
     flex-direction: column;
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
-    min-height: 250px;
-    .subject-card-header{
+    height: 250px;
+    .group-card-header{
         h1{
             padding: 10px 0px;
             margin: 0;
@@ -17,20 +17,20 @@
             color: var.$secondary-color;
         }
     }
-    .subject-card-body{
+    .group-card-body{
         height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         font-weight: 300;
-        .subject-info{
+        .group-info{
             height: 100%;
             font-size: 24px;
             padding: 10px 0px;
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
-            .subject-next-classes{
+            .group-next-classes{
                 p{
                     display: flex;
                     align-items: center;
@@ -44,7 +44,7 @@
                     }
                 }
             }
-            .subject-numbers{
+            .group-numbers{
                 display: flex;
                 // padding: 15px 0px;
                 span{
@@ -59,14 +59,14 @@
                 }
             }
         }
-        .subject-card-footer{
+        .group-card-footer{
             display: flex;
             align-items: center;
             justify-content: space-between;
             font-size: 18px;
             border-top: solid 1px rgba(0, 0, 0, 0.25);
             padding-top: 10px;
-            .subject-card-actions{
+            .group-card-actions{
                 margin-left: 10px;
                 color: #999;
                 svg{

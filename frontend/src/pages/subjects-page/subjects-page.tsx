@@ -10,7 +10,7 @@ const SubjectsPage = ():JSX.Element => {
             <div className="subjects-page-content">
                 {MockData.MockSubjects.map(x => {
                     return(
-                        <SubjectCard title={x.nazwa} desc={x.opis} groupsCount={x.liczba_grup} studensCount={x.liczba_studentow} nextClass={x.najblizsze_zajecia} />
+                        <SubjectCard title={x.nazwa} groupsCount={x.liczba_grup} studentsCount={x.liczba_studentow} nextClass={x.najblizsze_zajecia} />
                     )
                 })}
                 <div className="subject-add">

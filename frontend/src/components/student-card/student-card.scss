@@ -58,7 +58,7 @@
     .student-groups{
         display: flex;
         flex-wrap: wrap;
-        padding: 5px 10px;
+        padding: 0px 10px 10px;
         span{
             height: fit-content;
             font-size: 12px;
@@ -76,11 +76,10 @@
     .student-actions{
         display: flex;
         flex-direction: row;
-        justify-content: center;
         align-items: center;
         font-size: 20px;
+        padding: 0px 10px;
         svg{
-            margin: 0px 5px;
             color: #999;
             &.details-btn{
                 &:hover{
@@ -92,6 +91,7 @@
                 }
             }
             &.edit-btn{
+                margin: 0px 10px;
                 &:hover{
                     cursor: pointer;
                     color: var.$success-color;

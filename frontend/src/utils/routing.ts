@@ -7,6 +7,7 @@ import AppLayout from "../layouts/app-layout";
 import NotesPage from "../pages/notes-page/notes-page";
 import SubjectsPage from "../pages/subjects-page/subjects-page";
 import StudentsPage from "../pages/students-page/students-page";
+import GroupsPage from "../pages/groups-page/groups-page";
 
 
 
@@ -23,7 +24,7 @@ const Routing = createBrowserRouter([
                 {path: "dashboard"},
                 {path: "class-schedule"},
                 {path: "calendar"},
-                {path: "class-groups"},
+                {path: "class-groups", Component: GroupsPage},
                 {path: "students", Component: StudentsPage},
                 {path: "subjects", Component: SubjectsPage},
                 {path: "notes", Component: NotesPage},

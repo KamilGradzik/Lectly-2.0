@@ -1,14 +1,14 @@
 @use "../../styles//variables.scss" as var;
 
-.subjects-page{
+.groups-page{
     height: 100%;
-    .subjects-page-content{
+    .groups-page-content{
         display: grid;
         column-gap: 30px;
         row-gap: 30px;
         overflow-y: visible;
-        grid-template-columns: auto auto auto auto;
-        .subject-add{
+        // grid-template-columns: auto auto auto auto;
+        .group-add{
             display: flex;
             align-items: center;
             justify-content: center;
