@@ -7,7 +7,7 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
-    height: 250px;
+    // height: 250px;
     .group-card-header{
         h1{
             padding: 10px 0px;
@@ -55,6 +55,39 @@
                     }
                     &:first-child{
                         margin-right: 30px;
+                    }
+                }
+            }
+        }
+        .group-content{
+            .MuiAccordion-root{
+                box-shadow: none;
+                &::before{
+                    display: none;
+                }
+                &:first-child{
+                    border-bottom: solid 1px rgba(0, 0, 0, 0.25);
+                }
+                .MuiAccordion-heading{
+                    .MuiAccordionSummary-root{
+                        padding: 0;
+                        flex-direction: row-reverse;
+                        .MuiAccordionSummary-expandIconWrapper{
+                            margin-right: 5px;
+                            &.Mui-expanded{
+                                transform: rotate(90deg);
+                            }
+                        }
+                    }
+                    .MuiAccordionSummary-content{
+                        font-family: var.$default-font;
+                        text-transform: uppercase;
+                        font-weight: 500;
+                        .MuiBadge-root{
+                            .MuiBadge-badge{
+                                translate: (15px 0px);
+                            }
+                        }
                     }
                 }
             }

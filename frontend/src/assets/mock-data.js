@@ -246,61 +246,71 @@ const MockData = {
             "nazwa": "Informatyka Stosowana – Grupa A",
             "liczba_przedmiotow": 5,
             "liczba_studentow": 28,
-            "najblizsze_zajecia": "Wtorek 8:30"
+            "najblizsze_zajecia": "Poniedziałek 8:00",
+            "opis": "Grupa skupia się na praktycznych aspektach programowania oraz tworzeniu aplikacji webowych i desktopowych."
         },
         {
             "nazwa": "Programowanie Webowe – Grupa B",
             "liczba_przedmiotow": 4,
             "liczba_studentow": 24,
-            "najblizsze_zajecia": "Wtorek 10:00"
+            "najblizsze_zajecia": "Wtorek 10:15",
+            "opis": "Zajęcia obejmują HTML, CSS, JavaScript oraz nowoczesne frameworki frontendowe i backendowe."
         },
         {
             "nazwa": "Bazy Danych – Grupa C",
             "liczba_przedmiotow": 3,
-            "liczba_studentow": 30,
-            "najblizsze_zajecia": "Poniedziałek 12:30"
+            "liczba_studentow": 22,
+            "najblizsze_zajecia": "Środa 12:00",
+            "opis": "Studenci uczą się projektowania i optymalizacji baz danych oraz języka SQL."
         },
         {
             "nazwa": "Sieci Komputerowe – Grupa D",
             "liczba_przedmiotow": 4,
-            "liczba_studentow": 26,
-            "najblizsze_zajecia": "Czwartek 9:30"
+            "liczba_studentow": 20,
+            "najblizsze_zajecia": "Czwartek 9:45",
+            "opis": "Program obejmuje konfigurację sieci, protokoły komunikacyjne oraz podstawy bezpieczeństwa."
         },
         {
             "nazwa": "Sztuczna Inteligencja – Grupa E",
             "liczba_przedmiotow": 5,
-            "liczba_studentow": 22,
-            "najblizsze_zajecia": "Czwartek 13:00"
+            "liczba_studentow": 18,
+            "najblizsze_zajecia": "Piątek 11:30",
+            "opis": "Grupa zajmuje się algorytmami uczenia maszynowego i analizą danych."
         },
         {
             "nazwa": "Inżynieria Oprogramowania – Grupa F",
             "liczba_przedmiotow": 6,
-            "liczba_studentow": 27,
-            "najblizsze_zajecia": "Piątek 8:00"
+            "liczba_studentow": 26,
+            "najblizsze_zajecia": "Poniedziałek 13:15",
+            "opis": "Zajęcia koncentrują się na procesie tworzenia oprogramowania, testowaniu i zarządzaniu projektami."
         },
         {
             "nazwa": "Systemy Operacyjne – Grupa G",
             "liczba_przedmiotow": 3,
-            "liczba_studentow": 25,
-            "najblizsze_zajecia": "Poniedziałek 10:00"
+            "liczba_studentow": 21,
+            "najblizsze_zajecia": "Wtorek 8:30",
+            "opis": "Studenci poznają budowę systemów operacyjnych oraz zarządzanie zasobami komputera."
         },
         {
             "nazwa": "Analiza Danych – Grupa H",
             "liczba_przedmiotow": 4,
             "liczba_studentow": 23,
-            "najblizsze_zajecia": "Piątek 10:00"
+            "najblizsze_zajecia": "Środa 14:00",
+            "opis": "Grupa skupia się na przetwarzaniu i wizualizacji danych oraz pracy z narzędziami analitycznymi."
         },
         {
             "nazwa": "Cyberbezpieczeństwo – Grupa I",
             "liczba_przedmiotow": 5,
-            "liczba_studentow": 21,
-            "najblizsze_zajecia": "Czwartek 9:30"
+            "liczba_studentow": 19,
+            "najblizsze_zajecia": "Czwartek 16:20",
+            "opis": "Zajęcia obejmują ochronę systemów informatycznych oraz analizę zagrożeń i ataków."
         },
         {
             "nazwa": "Grafika Komputerowa – Grupa J",
-            "liczba_przedmiotow": 4,
-            "liczba_studentow": 20,
-            "najblizsze_zajecia": "Środa 11:30"
+            "liczba_przedmiotow": 3,
+            "liczba_studentow": 17,
+            "najblizsze_zajecia": "Piątek 9:00",
+            "opis": "Studenci uczą się projektowania graficznego, modelowania 3D oraz pracy z narzędziami graficznymi."
         }
     ]
 }   

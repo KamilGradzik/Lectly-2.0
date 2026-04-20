@@ -1,17 +1,21 @@
 import { JSX } from "react"
 import "./group-card.scss"
 import { FaEdit, } from "react-icons/fa"
-import { FaClock, FaGraduationCap, FaPenRuler, FaTrash, FaUsers } from "react-icons/fa6"
-import { Button, Tooltip } from "@mui/material"
+import AddIcon from '@mui/icons-material/Add';
+import { FaAngleRight, FaClock, FaGraduationCap, FaPenRuler, FaPlus, FaTrash, FaUsers } from "react-icons/fa6"
+import { Accordion, AccordionDetails, AccordionSummary, Badge, Button, Chip, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Tooltip } from "@mui/material"
+import MockData from "../../assets/mock-data"
 
 interface props{
     title:string,
+    desc:string,
     subjectsCount:number,
     studentsCount:number,
     nextClass:string,
+    
 }
 
-const GroupCard = ({title, subjectsCount, studentsCount, nextClass}:props):JSX.Element => {
+const GroupCard = ({title, desc, subjectsCount, studentsCount, nextClass}:props):JSX.Element => {
     return(
         <div className="group-card">   
             <div className="group-card-header">
@@ -19,23 +23,40 @@ const GroupCard = ({title, subjectsCount, studentsCount, nextClass}:props):JSX.E
             </div>
             <div className="group-card-body">
                 <div className="group-info">
-                    <div className="group-numbers">
-                        <Tooltip title="Subjects">
-                            <span><FaPenRuler /> {subjectsCount}</span>
-                        </Tooltip>
-                        <Tooltip title="Students">
-                            <span><FaGraduationCap /> {studentsCount}</span>
-                        </Tooltip>
-                        
+                    <div className="group-desc">
+                        <p>{desc}</p>                        
                     </div>
                     <div className="group-next-classes">
-                        <Tooltip title="Next classes">
-                            <p><FaClock />{nextClass}</p>
-                        </Tooltip>
+                        <p><FaClock />{nextClass}</p>
                     </div>
-                    
                 </div>
-                <div className="group-card-footer">
+                <div className="group-content">
+                    <Accordion disableGutters>
+                        <AccordionSummary expandIcon={<FaAngleRight />}>
+                            <span>Students</span>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <List>
+                                {MockData.MockStudents.map((x, i) => {
+                                return(
+                                    <ListItemButton>
+                                        <ListItemText>{`${x.firstName} ${x.lastName}`}</ListItemText>
+                                    </ListItemButton>
+                                )
+                                })}
+                            </List>
+                        </AccordionDetails>
+                    </Accordion>
+                    <Accordion disableGutters>
+                        <AccordionSummary expandIcon={<FaAngleRight />}>
+                            <span>Subjects</span>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            
+                        </AccordionDetails>
+                    </Accordion>
+                </div>
+                {/* <div className="group-card-footer">
                     <Button>details</Button>
                     <div className="group-card-actions">
                         <Tooltip title="Edit group">
@@ -46,7 +67,7 @@ const GroupCard = ({title, subjectsCount, studentsCount, nextClass}:props):JSX.E
                         </Tooltip>
                         
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     )

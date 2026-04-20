@@ -20,11 +20,15 @@ const SubjectCard = ({title, groupsCount, studentsCount, nextClass}:props):JSX.E
             <div className="subject-card-body">
                 <div className="subject-info">
                     <div className="subject-numbers">
-                        <span title="Class groups"><FaUsers /> {groupsCount}</span>
-                        <span title="Students"><FaGraduationCap /> {studentsCount}</span>
+                        <Tooltip title="Class groups">
+                            <span><FaUsers /> {groupsCount}</span>
+                        </Tooltip>
+                        <Tooltip title="Students">
+                            <span><FaGraduationCap /> {studentsCount}</span>
+                        </Tooltip>
                     </div>
                     <div className="subject-next-classes">
-                        <p title="Next classes"><FaClock />{nextClass}</p>
+                        <p><FaClock />{nextClass}</p>
                     </div>
                     
                 </div>

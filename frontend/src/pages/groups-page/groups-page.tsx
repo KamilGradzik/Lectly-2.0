@@ -10,12 +10,9 @@ const GroupsPage = ():JSX.Element => {
             <div className="groups-page-content">
                 {MockData.MockGroups.map(x => {
                     return(
-                        <GroupCard title={x.nazwa} subjectsCount={x.liczba_przedmiotow} studentsCount={x.liczba_studentow} nextClass={x.najblizsze_zajecia} />
+                        <GroupCard title={x.nazwa} desc={x.opis} subjectsCount={x.liczba_przedmiotow} studentsCount={x.liczba_studentow} nextClass={x.najblizsze_zajecia} />
                     )
                 })}
-                <div className="group-add">
-                    <FaPlus />
-                </div>
             </div>
         </div>
     )

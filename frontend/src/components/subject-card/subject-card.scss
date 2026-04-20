@@ -30,8 +30,24 @@
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
+            .subject-numbers{
+                display: flex;
+                // padding: 15px 0px;
+                span{
+                    display: flex;
+                    align-items: center;
+                    cursor: context-menu;
+                    svg{
+                        margin-right: 5px;
+                    }
+                    &:first-child{
+                        margin-right: 30px;
+                    }
+                }
+            }
             .subject-next-classes{
                 p{
+                    cursor: context-menu;
                     display: flex;
                     align-items: center;
                     margin: 0;
@@ -41,20 +57,6 @@
                     font-size: 20px;
                     svg{
                         margin-right: 5px;
-                    }
-                }
-            }
-            .subject-numbers{
-                display: flex;
-                // padding: 15px 0px;
-                span{
-                    display: flex;
-                    align-items: center;
-                    svg{
-                        margin-right: 5px;
-                    }
-                    &:first-child{
-                        margin-right: 30px;
                     }
                 }
             }
