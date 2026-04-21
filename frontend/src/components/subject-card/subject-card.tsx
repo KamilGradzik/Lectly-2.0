@@ -20,7 +20,7 @@ const SubjectCard = ({title, groupsCount, studentsCount, nextClass}:props):JSX.E
             <div className="subject-card-body">
                 <div className="subject-info">
                     <div className="subject-numbers">
-                        <Tooltip title="Class groups">
+                        <Tooltip title="Class Groups">
                             <span><FaUsers /> {groupsCount}</span>
                         </Tooltip>
                         <Tooltip title="Students">
@@ -35,10 +35,10 @@ const SubjectCard = ({title, groupsCount, studentsCount, nextClass}:props):JSX.E
                 <div className="subject-card-footer">
                     <Button>details</Button>
                     <div className="subject-card-actions">
-                        <Tooltip title="Edit subject">
+                        <Tooltip title="Edit Subject">
                             <FaEdit className="edit-btn"/>
                         </Tooltip>
-                        <Tooltip title="Remove subject" >
+                        <Tooltip title="Remove Subject" >
                             <FaTrash className="remove-btn"/>
                         </Tooltip>
                         

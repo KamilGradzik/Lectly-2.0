@@ -33,13 +33,13 @@ const StudentCard = ({studentCode, firstName, lastName, additionalInfo, studentG
                 })}
             </div>
             <div className="student-actions">
-                <Tooltip title="Student details">
+                <Tooltip title="Student Details">
                     <FaCircleInfo className="details-btn"/>
                 </Tooltip>
-                <Tooltip title="Edit student">
+                <Tooltip title="Edit Student">
                     <FaEdit className="edit-btn"/>
                 </Tooltip> 
-                <Tooltip title="Remove student">
+                <Tooltip title="Remove Student">
                     <FaTrash className="remove-btn"/>
                 </Tooltip>
             </div>

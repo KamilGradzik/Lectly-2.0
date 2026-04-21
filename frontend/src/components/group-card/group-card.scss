@@ -8,7 +8,12 @@
     border-radius: 10px;
     box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
     // height: 250px;
+    margin-bottom: 30px;
     .group-card-header{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
         h1{
             padding: 10px 0px;
             margin: 0;
@@ -16,46 +21,55 @@
             font-weight: 600;
             color: var.$secondary-color;
         }
+        .group-actions{
+            font-size: 22px;
+            color: #999;
+            .group-edit-btn{
+                margin-right: 10px;
+                &:hover{
+                    cursor: pointer;
+                    color: var.$success-color;
+                }
+                &:active{
+                    color: darken(var.$success-color, 10%);
+                }
+            }
+            .group-remove-btn{
+                &:hover{
+                    cursor: pointer;
+                    color: var.$danger-color;
+                }
+                &:active{
+                    color: darken(var.$danger-color, 10%);
+                }
+            }
+        }
     }
     .group-card-body{
         height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        font-weight: 300;
+        // font-weight: 300;
         .group-info{
             height: 100%;
             font-size: 24px;
-            padding: 10px 0px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            .group-next-classes{
-                p{
-                    display: flex;
-                    align-items: center;
-                    margin: 0;
-                    padding: 0;
-                    color: #666;
-                    font-weight: 400;
-                    font-size: 20px;
-                    svg{
-                        margin-right: 5px;
-                    }
-                }
+            // padding: 0px 0px 10px;
+            font-weight: 400;
+            .group-desc{
+                margin: 0;
+                padding-bottom: 10px;
+                color: #333;
             }
-            .group-numbers{
+            .group-next-classes{
                 display: flex;
-                // padding: 15px 0px;
-                span{
-                    display: flex;
-                    align-items: center;
-                    svg{
-                        margin-right: 5px;
-                    }
-                    &:first-child{
-                        margin-right: 30px;
-                    }
+                align-items: center;
+                margin: 0;
+                padding-bottom: 10px;
+                color: #666;
+                font-size: 20px;
+                svg{
+                    margin-right: 5px;
                 }
             }
         }
@@ -83,12 +97,23 @@
                         font-family: var.$default-font;
                         text-transform: uppercase;
                         font-weight: 500;
+                        // color: #333;
                         .MuiBadge-root{
                             .MuiBadge-badge{
                                 translate: (15px 0px);
                             }
                         }
+                        .group-numbers-chip{
+                            background-color: var.$info-color;
+                            color: #fff;
+                            font-size: 14px;
+                            padding: 4px 8px;
+                            border-radius: 12px;
+                        }
                     }
+                }
+                .MuiAccordionDetails-root{
+                    padding: 0px 15px;
                 }
             }
         }

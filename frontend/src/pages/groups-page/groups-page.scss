@@ -3,11 +3,9 @@
 .groups-page{
     height: 100%;
     .groups-page-content{
-        display: grid;
-        column-gap: 30px;
-        row-gap: 30px;
+        display: flex;
+        flex-direction: column;
         overflow-y: visible;
-        // grid-template-columns: auto auto auto auto;
         .group-add{
             display: flex;
             align-items: center;

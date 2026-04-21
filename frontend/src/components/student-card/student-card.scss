@@ -33,7 +33,7 @@
             h1{
                 margin:0;
                 padding: 0;
-                font-size: 18px;
+                font-size: 20px;
                 color: var.$secondary-color;
                 font-weight: 600;
             }
@@ -42,7 +42,7 @@
                 padding: 0;
                 font-weight: 400;
                 color: #666;
-                font-size: 16px;
+                font-size: 18px;
             }
         }
         .student-desc{
@@ -50,7 +50,7 @@
             padding: 0px 10px;
             p{
                 margin: 0;
-                font-size: 18px;
+                font-size: 20px;
             }
         }
     }
@@ -69,6 +69,10 @@
                 color: #fff;
                 padding: 5px 10px;
                 background-color: #848d94;
+                &:hover{
+                    background-color: var.$info-color;
+                    cursor: pointer;
+                }
             }
         }
     }

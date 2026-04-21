@@ -252,7 +252,7 @@ const MockData = {
         {
             "nazwa": "Programowanie Webowe – Grupa B",
             "liczba_przedmiotow": 4,
-            "liczba_studentow": 24,
+            "liczba_studentow": 0,
             "najblizsze_zajecia": "Wtorek 10:15",
             "opis": "Zajęcia obejmują HTML, CSS, JavaScript oraz nowoczesne frameworki frontendowe i backendowe."
         },
@@ -273,7 +273,7 @@ const MockData = {
         {
             "nazwa": "Sztuczna Inteligencja – Grupa E",
             "liczba_przedmiotow": 5,
-            "liczba_studentow": 18,
+            "liczba_studentow": 0,
             "najblizsze_zajecia": "Piątek 11:30",
             "opis": "Grupa zajmuje się algorytmami uczenia maszynowego i analizą danych."
         },
@@ -308,7 +308,7 @@ const MockData = {
         {
             "nazwa": "Grafika Komputerowa – Grupa J",
             "liczba_przedmiotow": 3,
-            "liczba_studentow": 17,
+            "liczba_studentow": 0,
             "najblizsze_zajecia": "Piątek 9:00",
             "opis": "Studenci uczą się projektowania graficznego, modelowania 3D oraz pracy z narzędziami graficznymi."
         }

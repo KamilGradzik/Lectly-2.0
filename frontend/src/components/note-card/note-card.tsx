@@ -30,10 +30,10 @@ const NoteCard = ({title,content,createdAt}:props):JSX.Element => {
                         {formatedDate}
                     </span>
                     <span className="note-card-action-buttons">
-                        <Tooltip title="Edit note">
+                        <Tooltip title="Edit Note">
                             <FaEdit className="edit-btn"/>
                         </Tooltip>
-                        <Tooltip title="Remove note">
+                        <Tooltip title="Remove Note">
                             <FaTrash className="remove-btn"/>
                         </Tooltip>
                         
