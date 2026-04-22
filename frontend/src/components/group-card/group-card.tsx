@@ -22,10 +22,14 @@ const GroupCard = ({title, desc, subjectsCount, studentsCount, nextClass}:props)
                 <h1>{title}</h1>
                 <span className="group-actions">
                     <Tooltip title="Edit Group">
-                        <FaEdit className="group-edit-btn"/>
+                        <Button className="group-edit-btn">
+                            <FaEdit />
+                        </Button>
                     </Tooltip>
                     <Tooltip title="Remove Group">
-                        <FaTrash className="group-remove-btn"/>
+                        <Button className="group-remove-btn">
+                            <FaTrash/>
+                        </Button>
                     </Tooltip>
                 </span>
             </div>
@@ -40,6 +44,9 @@ const GroupCard = ({title, desc, subjectsCount, studentsCount, nextClass}:props)
                             <span>Students {studentsCount > 0 ? <span className="group-numbers-chip">{studentsCount}</span> : <></>}</span>
                         </AccordionSummary>
                         <AccordionDetails>
+                            <Button className="group-attach-btn" variant="outlined">
+                                Attach Student
+                            </Button>
                             <List>
                                 {MockData.MockStudents.map((x, i) => {
                                 return(
@@ -58,6 +65,9 @@ const GroupCard = ({title, desc, subjectsCount, studentsCount, nextClass}:props)
                         </AccordionSummary>
                         <AccordionDetails>
                             <List>
+                                <Button className="group-attach-btn" variant="outlined">
+                                    Attach subject
+                                </Button>
                                 {MockData.MockGroups.map((x, i) => {
                                 return(
                                     <ListItem>

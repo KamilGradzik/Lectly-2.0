@@ -7,7 +7,6 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
-    // height: 250px;
     margin-bottom: 30px;
     .group-card-header{
         display: flex;
@@ -15,32 +14,24 @@
         justify-content: space-between;
         align-items: center;
         h1{
-            padding: 10px 0px;
+            padding: 10px 0px 5px 0px;
             margin: 0;
             font-size: 28px;
             font-weight: 600;
             color: var.$secondary-color;
         }
         .group-actions{
-            font-size: 22px;
-            color: #999;
-            .group-edit-btn{
-                margin-right: 10px;
-                &:hover{
-                    cursor: pointer;
+            button{
+                font-size: 22px;
+                color: #999;
+                min-width: unset;
+                background-color: unset;
+                padding:6px;
+                &.group-edit-btn:hover{
                     color: var.$success-color;
                 }
-                &:active{
-                    color: darken(var.$success-color, 10%);
-                }
-            }
-            .group-remove-btn{
-                &:hover{
-                    cursor: pointer;
+                &.group-remove-btn:hover{
                     color: var.$danger-color;
-                }
-                &:active{
-                    color: darken(var.$danger-color, 10%);
                 }
             }
         }
@@ -50,12 +41,10 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        // font-weight: 300;
         .group-info{
             height: 100%;
             font-size: 24px;
-            // padding: 0px 0px 10px;
-            font-weight: 400;
+            font-weight: 300;
             .group-desc{
                 margin: 0;
                 padding-bottom: 10px;
@@ -65,9 +54,10 @@
                 display: flex;
                 align-items: center;
                 margin: 0;
-                padding-bottom: 10px;
+                padding: 10px 0px;
                 color: #666;
                 font-size: 20px;
+                font-weight: 400;
                 svg{
                     margin-right: 5px;
                 }
@@ -97,23 +87,52 @@
                         font-family: var.$default-font;
                         text-transform: uppercase;
                         font-weight: 500;
-                        // color: #333;
-                        .MuiBadge-root{
-                            .MuiBadge-badge{
-                                translate: (15px 0px);
+                        span{
+                            display: flex;
+                            align-items: center;
+                            flex-direction: row;
+                            font-size: 18px;
+                            .group-numbers-chip{
+                                margin-left: 5px;
+                                display: flex;
+                                background-color: #848d94;
+                                color: #fff;
+                                font-size: 13px;
+                                padding: 2px 8px;
+                                border-radius: 12px;
                             }
-                        }
-                        .group-numbers-chip{
-                            background-color: var.$info-color;
-                            color: #fff;
-                            font-size: 14px;
-                            padding: 4px 8px;
-                            border-radius: 12px;
                         }
                     }
                 }
                 .MuiAccordionDetails-root{
                     padding: 0px 15px;
+                    .group-attach-btn{
+                        color: var.$secondary-color;
+                        border: solid 2px var.$secondary-color;
+                        width: 100%;
+                        margin: 8px 0px;
+                        padding: 8px 16px;
+                    }
+                    .MuiList-root{
+                        .MuiListItem-root{
+                            &:hover{
+                                background-color: darken(#fff, 5%);
+                                cursor: pointer;
+                            }
+                            .MuiListItemIcon-root{
+                                min-width: unset;
+                                button{
+                                    min-width: unset;
+                                    color: #999;
+                                    background-color: unset;
+                                    padding: 8px;
+                                    &:hover{
+                                        color: var.$danger-color;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
