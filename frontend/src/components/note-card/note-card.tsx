@@ -1,8 +1,8 @@
 import { JSX } from "react"
 import "./note-card.scss"
+import { format } from "date-fns";
 import { FaTrash } from "react-icons/fa6"
 import { FaEdit } from "react-icons/fa"
-import moment from "moment"
 import { Tooltip } from "@mui/material"
 
 interface props{
@@ -14,7 +14,7 @@ interface props{
 
 const NoteCard = ({title,content,createdAt}:props):JSX.Element => {
 
-    const formatedDate:string = moment(new Date(createdAt)).format("Do MMM YYYY");
+    const formatedDate:string = format(new Date(createdAt), 'do MMM yyyy')
 
     return(
         <div className="note-card">

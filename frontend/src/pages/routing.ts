@@ -8,6 +8,7 @@ import NotesPage from "../pages/notes-page/notes-page";
 import SubjectsPage from "../pages/subjects-page/subjects-page";
 import StudentsPage from "../pages/students-page/students-page";
 import GroupsPage from "../pages/groups-page/groups-page";
+import CalendarPage from "./calendar-page/calendar-page";
 
 
 
@@ -23,7 +24,7 @@ const Routing = createBrowserRouter([
             {Component:AppLayout, children:[
                 {path: "dashboard"},
                 {path: "class-schedule"},
-                {path: "calendar"},
+                {path: "calendar", Component: CalendarPage},
                 {path: "class-groups", Component: GroupsPage},
                 {path: "students", Component: StudentsPage},
                 {path: "subjects", Component: SubjectsPage},
