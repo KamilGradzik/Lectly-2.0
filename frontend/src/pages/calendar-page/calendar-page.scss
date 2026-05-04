@@ -1,13 +1,81 @@
+@use "../../styles//variables.scss" as var;
+
 .calendar-page{
+    .calendar-date-picker{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        padding-bottom: 20px;
+        button{
+            color: #666;
+            font-size: 32px;
+            padding: 6px;
+            min-width: unset;
+            &:hover{
+                color: #333;
+                background-color: unset;
+            }
+        }
+    }
     .calendar{
         // .calendar-header{
             display: grid;
             grid-template-columns: auto auto auto auto auto auto auto;
+            row-gap: 20px;
+            column-gap: 20px;
         // }
         // .calendar-days{
         //     display: grid;
         //     grid-template-columns: auto auto auto auto auto auto auto;
         //     grid-template-rows: auto auto auto auto auto auto;
         // }
+        .calendar-header-day{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size:  36px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var.$secondary-color;
+        }
+        .calendar-day-wrapper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 36px;
+            font-weight: 300;
+            .calendar-day{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 70px;
+                height: 70px;
+                border: solid 2px var.$primary-color;
+                border-radius: 100%;
+                color: #333;
+                &:hover{
+                    color: #666;
+                    cursor: pointer;
+                    border-color: #666;
+                }
+                &.current-day{
+                    color: var.$danger-color;
+                    &.selected-day{
+                        color: var.$primary-color;
+                        background-color: var.$danger-color;
+                        border-color: var.$danger-color;
+                    }
+                    &:hover{
+                        cursor: pointer;
+                        border-color: var.$danger-color;
+                    }
+                }
+                &.selected-day{
+                    background-color: #666;
+                    color: var.$primary-color;
+                    border-color: #666;
+                }
+            }
+        }
     }
 }
