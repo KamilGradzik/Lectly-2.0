@@ -312,6 +312,78 @@ const MockData = {
             "najblizsze_zajecia": "Piątek 9:00",
             "opis": "Studenci uczą się projektowania graficznego, modelowania 3D oraz pracy z narzędziami graficznymi."
         }
+    ],
+    "MockCalendarEvents":[
+        {
+            "nazwa": "Warsztaty React dla początkujących",
+            "opis": "Praktyczne warsztaty wprowadzające do Reacta, obejmujące komponenty, stan i podstawy budowy aplikacji frontendowych.",
+            "data_poczatkowa": "2026-06-10T09:00:00",
+            "data_koncowa": "2026-06-10T15:00:00",
+            "typ": 2
+        },
+        {
+            "nazwa": "Konferencja IT Future 2026",
+            "opis": "Konferencja technologiczna skupiająca się na trendach w IT, sztucznej inteligencji i rozwoju oprogramowania.",
+            "data_poczatkowa": "2026-07-05T10:00:00",
+            "data_koncowa": "2026-07-06T17:00:00",
+            "typ": 4
+        },
+        {
+            "nazwa": "Hackathon 24h Coding Challenge",
+            "opis": "24-godzinny hackathon dla studentów i programistów, mający na celu stworzenie innowacyjnych projektów.",
+            "data_poczatkowa": "2026-08-01T12:00:00",
+            "data_koncowa": "2026-08-02T12:00:00",
+            "typ": 1
+        },
+        {
+            "nazwa": "Szkolenie z baz danych SQL",
+            "opis": "Szkolenie obejmujące projektowanie baz danych oraz zaawansowane zapytania SQL.",
+            "data_poczatkowa": "2026-06-20T08:30:00",
+            "data_koncowa": "2026-06-20T14:30:00",
+            "typ": 0
+        },
+        {
+            "nazwa": "Webinar DevOps w praktyce",
+            "opis": "Spotkanie online poświęcone automatyzacji procesów i narzędziom DevOps.",
+            "data_poczatkowa": "2026-06-15T18:00:00",
+            "data_koncowa": "2026-06-15T20:00:00",
+            "typ": 3
+        },
+        {
+            "nazwa": "Spotkanie koła naukowego AI",
+            "opis": "Regularne spotkanie członków koła naukowego zajmującego się sztuczną inteligencją.",
+            "data_poczatkowa": "2026-06-12T16:00:00",
+            "data_koncowa": "2026-06-12T18:00:00",
+            "typ": 5
+        },
+        {
+            "nazwa": "Warsztaty UX/UI Design",
+            "opis": "Warsztaty dotyczące projektowania interfejsów użytkownika i doświadczeń użytkownika.",
+            "data_poczatkowa": "2026-06-25T09:30:00",
+            "data_koncowa": "2026-06-25T15:30:00",
+            "typ": 2
+        },
+        {
+            "nazwa": "Prezentacja projektów semestralnych",
+            "opis": "Prezentacja projektów przygotowanych przez studentów w trakcie semestru.",
+            "data_poczatkowa": "2026-06-30T10:00:00",
+            "data_koncowa": "2026-06-30T13:00:00",
+            "typ": 1
+        },
+        {
+            "nazwa": "Szkolenie z cyberbezpieczeństwa",
+            "opis": "Szkolenie obejmujące podstawy bezpieczeństwa systemów oraz ochrony danych.",
+            "data_poczatkowa": "2026-07-10T08:00:00",
+            "data_koncowa": "2026-07-10T14:00:00",
+            "typ": 4
+        },
+        {
+            "nazwa": "Meetup programistów JavaScript",
+            "opis": "Spotkanie społeczności programistów JavaScript z prezentacjami i networkingiem.",
+            "data_poczatkowa": "2026-06-18T17:30:00",
+            "data_koncowa": "2026-06-18T20:30:00",
+            "typ": 0
+        }
     ]
 }   
 

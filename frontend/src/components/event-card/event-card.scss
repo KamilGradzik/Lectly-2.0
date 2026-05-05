@@ -1,0 +1,94 @@
+@use "../../styles//variables.scss" as var;
+
+.calendar-event-card{
+    background-color: #fff;
+    padding: 20px 20px 20px 10px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
+    border-left: 10px solid #fff;
+    margin-bottom: 30px;
+    &:last-child{
+        margin-bottom: 0;
+    }
+    &.exam{
+        border-color: #D32F2F;
+    }
+    &.meeting{
+        border-color: #1976D2;
+    }
+    &.fieldtrip{
+        border-color: #388E3C;
+    }
+    &.event{
+        border-color: #F57C00;
+    }
+    &.deadline{
+        border-color: #7B1FA2;
+    }
+    &.other{
+        border-color: #455A64;
+    }
+    .event-type{
+        margin: 0;
+        font-size: 20px;
+        text-transform: uppercase;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &.exam{
+            color: #D32F2F;
+        }
+        &.meeting{
+            color: #1976D2;
+        }
+        &.fieldtrip{
+            color: #388E3C;
+        }
+        &.event{
+            color: #F57C00;
+        }
+        &.deadline{
+            color: #7B1FA2;
+        }
+        &.other{
+            color: #455A64;
+        }
+        .event-actions{
+            button{
+                color: #999;
+                font-size: 18px;
+                min-width: unset;
+                padding: 6px;
+                &:hover{
+                    background-color: unset;
+                }
+                &.edit-event-btn:hover{
+                    color: var.$success-color;
+                }
+                &.remove-event-btn:hover{
+                    color: var.$danger-color;
+                }
+            }
+        }
+    }
+    .event-title{
+        font-weight: 600;
+        font-size: 28px;
+        margin: 0;
+    }
+    .event-dates{
+        font-weight: 300;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        padding: 6px;
+        // background-color: ;
+        width: fit-content;
+        // color: #fff;
+        border-radius: 12px;
+        .event-date{
+            padding: 0px 5px;
+        }
+    }
+}

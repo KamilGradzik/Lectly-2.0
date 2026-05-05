@@ -6,6 +6,8 @@ import { addMonths, subDays, lastDayOfMonth, getISODay, format, subMonths } from
 import "./calendar-page.scss";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa6";
 import { Badge, Button } from "@mui/material";
+import MockData from "../../assets/mock-data";
+import EventCard from "../../components/event-card/event-card";
 
 const CalendarPage = ():JSX.Element => {
     const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -87,6 +89,15 @@ const CalendarPage = ():JSX.Element => {
                         })
                     }
                 {/* </div> */}
+            </div>
+            <div className="calendar-events">
+                {
+                    MockData.MockCalendarEvents.map((x,i) => {
+                        return(
+                            <EventCard name={x.nazwa} beginDate={new Date(x.data_poczatkowa)} endDate={new Date(x.data_koncowa)} type={x.typ} />
+                        )
+                    })
+                }
             </div>  
         </div>
     )
