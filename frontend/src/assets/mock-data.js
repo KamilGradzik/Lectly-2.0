@@ -384,7 +384,19 @@ const MockData = {
             "data_koncowa": "2026-06-18T20:30:00",
             "typ": 0
         }
-    ]
+    ],
+    "MockCalendarIndicators":[
+        { "data": "2026-05-01T08:23:00", "liczba_wydarzen": 3 },
+        { "data": "2026-05-03T14:45:00", "liczba_wydarzen": 1 },
+        { "data": "2026-05-05T19:12:00", "liczba_wydarzen": 4 },
+        { "data": "2026-05-08T07:30:00", "liczba_wydarzen": 2 },
+        { "data": "2026-05-11T11:55:00", "liczba_wydarzen": 5 },
+        { "data": "2026-05-14T16:08:00", "liczba_wydarzen": 0 },
+        { "data": "2026-05-18T09:41:00", "liczba_wydarzen": 6 },
+        { "data": "2026-05-21T13:27:00", "liczba_wydarzen": 2 },
+        { "data": "2026-05-25T18:03:00", "liczba_wydarzen": 3 },
+        { "data": "2026-05-29T10:49:00", "liczba_wydarzen": 1 }
+    ]   
 }   
 
 export default MockData;

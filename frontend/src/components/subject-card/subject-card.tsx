@@ -1,7 +1,7 @@
 import { JSX } from "react"
 import "./subject-card.scss"
-import { FaEdit, } from "react-icons/fa"
-import { FaClock, FaGraduationCap, FaTrash, FaUsers } from "react-icons/fa6"
+import { FaEdit, FaInfoCircle, } from "react-icons/fa"
+import { FaClock, FaGraduationCap, FaInfo, FaTrash, FaUsers } from "react-icons/fa6"
 import { Button, Tooltip } from "@mui/material"
 
 interface props{
@@ -32,17 +32,23 @@ const SubjectCard = ({title, groupsCount, studentsCount, nextClass}:props):JSX.E
                     </div>
                     
                 </div>
-                <div className="subject-card-footer">
-                    <Button>details</Button>
-                    <div className="subject-card-actions">
-                        <Tooltip title="Edit Subject">
-                            <FaEdit className="edit-btn"/>
-                        </Tooltip>
-                        <Tooltip title="Remove Subject" >
-                            <FaTrash className="remove-btn"/>
-                        </Tooltip>
+                <div className="subject-card-actions">
+                    <Tooltip title="Subject Details">
+                        <Button className="info-btn">
+                            <FaInfoCircle />
+                        </Button>
+                    </Tooltip>
+                    <Tooltip title="Edit Subject">
+                        <Button className="edit-btn">
+                            <FaEdit/>
+                        </Button>
                         
-                    </div>
+                    </Tooltip>
+                    <Tooltip title="Remove Subject" >
+                        <Button className="remove-btn">
+                            <FaTrash />
+                        </Button>
+                    </Tooltip>
                 </div>
             </div>
         </div>

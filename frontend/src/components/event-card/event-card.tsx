@@ -2,9 +2,10 @@ import { JSX } from "react";
 import "./event-card.scss";
 import EvenType from "../../utils/EventType";
 import { format } from "date-fns";
-import { FaArrowRight, FaCalendar, FaRegCalendar, FaRegClock, FaTrash } from "react-icons/fa6";
+import { FaRegCalendar, FaRegClock, FaTrash } from "react-icons/fa6";
+import { IoIosArrowRoundForward } from "react-icons/io"
 import { Button, Tooltip } from "@mui/material";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaLongArrowAltRight } from "react-icons/fa";
 
 interface props{
     name:string,
@@ -39,21 +40,23 @@ const EventCard = ({name, beginDate, endDate, type}:props):JSX.Element => {
                 {
                     new Date(beginDate).setHours(0,0,0,0) !== new Date(endDate).setHours(0,0,0,0) 
                     ? 
-                        <div>
+                        <div className="event-date-range">
                             <FaRegCalendar />
                             <span className="event-date">{format(beginDate, 'dd/MM/yyyy  HH:mm')}</span>
+                            <IoIosArrowRoundForward  />
                             <span className="event-date">{format(endDate, 'dd/MM/yyyy  HH:mm')}</span> 
                         </div>
                     : 
                     <>
-                        <div>
+                        <div className="event-date-range">
                             <FaRegCalendar />
                             <span className="event-date">{format(beginDate, 'dd/MM/yyyy')}</span>
                         </div>
-                        <div>
+                        <div className="event-date-range">
                             <FaRegClock />
-                            <span className="event-time">{format(beginDate, 'HH:mm')}</span>
-                            <span className="event-time">{format(endDate, 'HH:mm')}</span>
+                            <span className="event-date">{format(beginDate, 'HH:mm')}</span>
+                            <IoIosArrowRoundForward  />
+                            <span className="event-date">{format(endDate, 'HH:mm')}</span>
                         </div>
                         
                     </>

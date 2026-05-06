@@ -36,7 +36,6 @@ const NoteCard = ({title,content,createdAt}:props):JSX.Element => {
                         <Tooltip title="Remove Note">
                             <FaTrash className="remove-btn"/>
                         </Tooltip>
-                        
                     </span>
                 </div>
             </div>

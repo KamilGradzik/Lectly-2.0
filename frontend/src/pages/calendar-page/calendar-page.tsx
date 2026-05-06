@@ -2,7 +2,7 @@ import { JSX, useEffect, useState } from "react";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { addMonths, subDays, lastDayOfMonth, getISODay, format, subMonths } from "date-fns";
+import { addMonths, subDays, lastDayOfMonth, getISODay, format, subMonths, setDate } from "date-fns";
 import "./calendar-page.scss";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa6";
 import { Badge, Button } from "@mui/material";
@@ -11,6 +11,7 @@ import EventCard from "../../components/event-card/event-card";
 
 const CalendarPage = ():JSX.Element => {
     const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    const dates = MockData.MockCalendarIndicators;
     const getMonthDays = (date:Date):number[] => {
         var days = [];
         var diff = getISODay(subDays(date, date.getDate() - 1))
@@ -18,19 +19,19 @@ const CalendarPage = ():JSX.Element => {
             i !== 0 && days.push(i);
         return days;
     }
-    const clickPlus = () => {
+    const clickPlus = ():void => {
         setCurrentDate(addMonths(currentDate, 1))
         setMonthDays(getMonthDays(addMonths(currentDate, 1)));
         setSelectedDay(addMonths(currentDate, 1).setHours(0,0,0,0) !== new Date().setHours(0, 0, 0, 0) ? 1 : new Date().getDate())
     }
     
-    const clickMinus = () => {
+    const clickMinus = ():void => {
         setCurrentDate(subMonths(currentDate, 1))
         setMonthDays(getMonthDays(subMonths(currentDate, 1)));
         setSelectedDay(subMonths(currentDate, 1).setHours(0,0,0,0) !== new Date().setHours(0, 0, 0, 0) ? 1 : new Date().getDate())
     }
 
-    const changeDate = (newDate?:Date | null) => {
+    const changeDate = (newDate:Date | null):void => {
         if(newDate != null)
         {
             setCurrentDate(newDate);
@@ -39,9 +40,18 @@ const CalendarPage = ():JSX.Element => {
         }
     }
 
-    const selectDay = (day:number) => {
+    const selectDay = (day:number):void => {
         setSelectedDay(day)
-        console.log(day);
+        console.log(containsEvents(day))
+    }
+
+    const containsEvents = (day:number):boolean => {
+        var testDate = setDate(currentDate, day)
+        var existingDate = dates.find(x =>
+            new Date(x.data).setHours(0,0,0,0) === testDate.setHours(0,0,0,0))
+        if (existingDate)
+            return true;
+        else return false;
     }
 
     const [currentDate, setCurrentDate] = useState<Date>(new Date());
@@ -56,7 +66,7 @@ const CalendarPage = ():JSX.Element => {
                 <DatePicker value={currentDate} 
                     openTo="month"
                     views={['year', 'month']}
-                    onChange={(oldVal) => {changeDate(oldVal)}}
+                    onChange={(dateValue) => {changeDate(dateValue)}}
                 />
                 </LocalizationProvider>
                 <Button onClick={() => {clickPlus()}}><FaCaretRight /></Button>
@@ -82,6 +92,7 @@ const CalendarPage = ():JSX.Element => {
                                                 ${(selectedDay === x ? 'selected-day' : '')}`} onClick={() => selectDay(x)}>
                                                 {x}
                                             </span>
+                                            <span className={`events-indicator ${containsEvents(x) ? '' : 'hidden'}`}></span>
                                     </div>
                                 )
                             else
@@ -94,10 +105,11 @@ const CalendarPage = ():JSX.Element => {
                 {
                     MockData.MockCalendarEvents.map((x,i) => {
                         return(
-                            <EventCard name={x.nazwa} beginDate={new Date(x.data_poczatkowa)} endDate={new Date(x.data_koncowa)} type={x.typ} />
+                            <EventCard key={i} name={x.nazwa} beginDate={new Date(x.data_poczatkowa)} endDate={new Date(x.data_koncowa)} type={x.typ} />
                         )
                     })
                 }
+                {/* <h3 className="no-events-msg">No events on this day!</h3> */}
             </div>  
         </div>
     )

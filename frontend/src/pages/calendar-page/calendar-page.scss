@@ -35,10 +35,12 @@
         }
         .calendar-day-wrapper{
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             font-size: 36px;
             font-weight: 300;
+            padding: 20px;
             .calendar-day{
                 display: flex;
                 justify-content: center;
@@ -71,9 +73,27 @@
                     border-color: #666;
                 }
             }
+            .events-indicator{
+                width: 8px;
+                height: 8px;
+                background-color: var.$info-color;
+                border-radius: 100%;
+                margin: 4px;
+                &.hidden{
+                    background-color: unset;
+                }
+            }
         }
     }
     .calendar-events{
         padding-top: 20px;
+        .no-events-msg{
+            color: #888;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 300;
+            letter-spacing: .2em;
+            font-size: 64px;
+        }
     }
 }
