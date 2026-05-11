@@ -1,11 +1,11 @@
 import { JSX, useEffect, useState } from "react";
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DatePicker } from '@mui/x-date-pickers';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { addMonths, subDays, lastDayOfMonth, getISODay, format, subMonths, setDate } from "date-fns";
+import { addMonths, subDays, lastDayOfMonth, getISODay, subMonths, setDate } from "date-fns";
 import "./calendar-page.scss";
-import { FaCaretLeft, FaCaretRight } from "react-icons/fa6";
-import { Badge, Button } from "@mui/material";
+import { FaCaretLeft, FaCaretRight, FaPlus } from "react-icons/fa6";
+import { Button, FormControl, InputLabel, MenuItem, ModalSlots, Select } from "@mui/material";
 import MockData from "../../assets/mock-data";
 import EventCard from "../../components/event-card/event-card";
 
@@ -19,13 +19,13 @@ const CalendarPage = ():JSX.Element => {
             i !== 0 && days.push(i);
         return days;
     }
-    const clickPlus = ():void => {
+    const clickNext = ():void => {
         setCurrentDate(addMonths(currentDate, 1))
         setMonthDays(getMonthDays(addMonths(currentDate, 1)));
         setSelectedDay(addMonths(currentDate, 1).setHours(0,0,0,0) !== new Date().setHours(0, 0, 0, 0) ? 1 : new Date().getDate())
     }
     
-    const clickMinus = ():void => {
+    const clickPrevious = ():void => {
         setCurrentDate(subMonths(currentDate, 1))
         setMonthDays(getMonthDays(subMonths(currentDate, 1)));
         setSelectedDay(subMonths(currentDate, 1).setHours(0,0,0,0) !== new Date().setHours(0, 0, 0, 0) ? 1 : new Date().getDate())
@@ -51,25 +51,39 @@ const CalendarPage = ():JSX.Element => {
             new Date(x.data).setHours(0,0,0,0) === testDate.setHours(0,0,0,0))
         if (existingDate)
             return true;
-        else return false;
+        return false;
     }
 
     const [currentDate, setCurrentDate] = useState<Date>(new Date());
     const [monthDays, setMonthDays] = useState<number[]>(getMonthDays(currentDate))
     const [selectedDay, setSelectedDay] = useState<number>(new Date().getDate());
+    const [pickerOpen, setPickerOpen] = useState<boolean>(false)
+    
+    const testFun = () => {
+        // console.log("Cipka")
+        setPickerOpen(!pickerOpen);
+    }
     
     return(
         <div className="calendar-page">
             <div className="calendar-date-picker">
-                <Button onClick={() => {clickMinus()}}><FaCaretLeft /></Button>
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                <DatePicker value={currentDate} 
-                    openTo="month"
-                    views={['year', 'month']}
-                    onChange={(dateValue) => {changeDate(dateValue)}}
-                />
-                </LocalizationProvider>
-                <Button onClick={() => {clickPlus()}}><FaCaretRight /></Button>
+                <Button onClick={() => {clickPrevious()}}><FaCaretLeft /></Button>
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <DatePicker value={currentDate}
+                            openTo="month"
+                            views={['year', 'month']}
+                            onChange={(dateValue) => {changeDate(dateValue); setPickerOpen(false)}}
+                            open={pickerOpen}
+                            slots={{openPickerButton: () => null}}
+                            slotProps={{
+                                popper:{placement: "bottom", modifiers: [{name:"offset", options:{offset:[0,8]}}]},
+                                textField:{onClick: testFun}
+                            }}
+                            onOpen={() => {setPickerOpen(true)}}
+                            onClose={() => {setPickerOpen(false)}}
+                        />
+                    </LocalizationProvider>
+                <Button onClick={() => {clickNext()}}><FaCaretRight /></Button>
             </div>
             <div className="calendar">
                 {/* <div className="calendar-header"> */}
@@ -100,6 +114,23 @@ const CalendarPage = ():JSX.Element => {
                         })
                     }
                 {/* </div> */}
+            </div>
+            <div className="calendar-actions">
+                <div className="action-wrapper">
+                    <FormControl fullWidth>
+                        <InputLabel>Event Type</InputLabel>
+                        <Select label="Event type">
+                            <MenuItem value={0}>Exam</MenuItem>
+                            <MenuItem value={1}>Meeting</MenuItem>
+                            <MenuItem value={2}>Field Trip</MenuItem>
+                            <MenuItem value={3}>Event</MenuItem>
+                            <MenuItem value={4}>Deadline</MenuItem>
+                        </Select>
+                    </FormControl> 
+                </div>
+                <div className="action-wrapper">
+                    <Button className="add-event-btn">Add <FaPlus/></Button>
+                </div>
             </div>
             <div className="calendar-events">
                 {

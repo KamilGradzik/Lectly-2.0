@@ -6,9 +6,40 @@
         align-items: center;
         justify-content: space-evenly;
         padding-bottom: 20px;
+            .MuiFormControl-root{
+                .MuiPickersInputBase-root{
+                    .MuiPickersSectionList-root{
+                        min-width: 400px;
+                        font-size: 48px;
+                        font-weight: 300;
+                        align-items: center;
+                        justify-content: center;
+                        text-transform: uppercase;
+                        .MuiPickersSectionList-section{
+                            .MuiPickersSectionList-sectionContent::selection{
+                                background: transparent;
+                            }
+                        }
+                    }
+                    cursor: pointer;
+                    &:hover{
+                        fieldset{
+                            cursor: pointer;
+                            border-bottom: solid 2px;
+                            color: #666;
+                        }
+                    }
+                    fieldset{
+                        border: none;
+                        outline: none;
+                        border-radius: 0;
+                    }
+                }
+            }
+        
         button{
             color: #666;
-            font-size: 32px;
+            font-size: 48px;
             padding: 6px;
             min-width: unset;
             &:hover{
@@ -82,6 +113,29 @@
                 &.hidden{
                     background-color: unset;
                 }
+            }
+        }
+    }
+    .calendar-actions{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        padding-top: 20px;
+        .action-wrapper{
+            width: 50%;
+            &:first-child{
+                padding-right: 10px;
+            }
+            &:last-child{
+                padding-left: 10px;
+            }
+            .add-event-btn{
+                width: 100%;
+                height: 100%;
+                background-color: var.$secondary-color;
+                color: var.$primary-color;
+                display: flex;
+                align-items: center;
             }
         }
     }
