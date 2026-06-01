@@ -396,7 +396,126 @@ const MockData = {
         { "data": "2026-05-21T13:27:00", "liczba_wydarzen": 2 },
         { "data": "2026-05-25T18:03:00", "liczba_wydarzen": 3 },
         { "data": "2026-05-29T10:49:00", "liczba_wydarzen": 1 }
-    ]   
+    ],
+    "MockScheduleEntries":[
+        {
+            "Id": 1,
+            "Dzien": 1,
+            "Poczatek": "08:00:00",
+            "Koniec": "09:30:00",
+            "Classroom": "A101",
+            "Nazwaprzedmiotu": "Matematyka",
+            "Grupa": "INF-1A"
+        },
+        {
+            "Id": 2,
+            "Dzien": 1,
+            "Poczatek": "09:45:00",
+            "Koniec": "11:15:00",
+            "Classroom": "LAB-01",
+            "Nazwaprzedmiotu": "Programowanie C#",
+            "Grupa": "INF-1A"
+        },
+        {
+            "Id": 3,
+            "Dzien": 2,
+            "Poczatek": "08:00:00",
+            "Koniec": "09:30:00",
+            "Classroom": "B201",
+            "Nazwaprzedmiotu": "Bazy Danych",
+            "Grupa": "INF-1A"
+        },
+        {
+            "Id": 4,
+            "Dzien": 2,
+            "Poczatek": "09:45:00",
+            "Koniec": "11:15:00",
+            "Classroom": "B202",
+            "Nazwaprzedmiotu": "Język Angielski",
+            "Grupa": "INF-1A"
+        },
+        {
+            "Id": 5,
+            "Dzien": 3,
+            "Poczatek": "08:00:00",
+            "Koniec": "09:30:00",
+            "Classroom": "C301",
+            "Nazwaprzedmiotu": "Sieci Komputerowe",
+            "Grupa": "INF-1A"
+        },
+        {
+            "Id": 6,
+            "Dzien": 3,
+            "Poczatek": "09:45:00",
+            "Koniec": "11:15:00",
+            "Classroom": "C302",
+            "Nazwaprzedmiotu": "Systemy Operacyjne",
+            "Grupa": "INF-1A"
+        },
+        {
+            "Id": 7,
+            "Dzien": 4,
+            "Poczatek": "08:00:00",
+            "Koniec": "09:30:00",
+            "Classroom": "D401",
+            "Nazwaprzedmiotu": "Algorytmy i Struktury Danych",
+            "Grupa": "INF-1A"
+        },
+        {
+            "Id": 8,
+            "Dzien": 4,
+            "Poczatek": "09:45:00",
+            "Koniec": "11:15:00",
+            "Classroom": "LAB-02",
+            "Nazwaprzedmiotu": "Projekt Programistyczny",
+            "Grupa": "INF-1A"
+        },
+        {
+            "Id": 9,
+            "Dzien": 5,
+            "Poczatek": "08:00:00",
+            "Koniec": "09:30:00",
+            "Classroom": "E501",
+            "Nazwaprzedmiotu": "Inżynieria Oprogramowania",
+            "Grupa": "INF-1A"
+        },
+        {
+            "Id": 10,
+            "Dzien": 5,
+            "Poczatek": "09:45:00",
+            "Koniec": "11:15:00",
+            "Classroom": "E502",
+            "Nazwaprzedmiotu": "Statystyka",
+            "Grupa": "INF-1A"
+        },
+        {
+            "Id": 11,
+            "Dzien": 6,
+            "Poczatek": "10:00:00",
+            "Koniec": "11:30:00",
+            "Classroom": "S101",
+            "Nazwaprzedmiotu": "Warsztaty Techniczne",
+            "Grupa": "INF-1A"
+        },
+        {
+            "Id": 12,
+            "Dzien": 0,
+            "Poczatek": "12:00:00",
+            "Koniec": "13:30:00",
+            "Classroom": "ONLINE",
+            "Nazwaprzedmiotu": "Konsultacje",
+            "Grupa": "INF-1A"
+        },
+        {
+            "Id": 13,
+            "Dzien": 1,
+            "Poczatek": "12:00:00",
+            "Koniec": "14:30:00",
+            "Classroom": "A101",
+            "Nazwaprzedmiotu": "Matematyka",
+            "Grupa": "INF-1C"
+        },
+    ]
 }   
 
 export default MockData;

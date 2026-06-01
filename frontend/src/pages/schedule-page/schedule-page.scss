@@ -1,0 +1,35 @@
+@use "../../styles/variables.scss" as var;
+
+.schedule-page{
+    height: 100%;
+    .schedule{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 0px 15px;
+        .schedule-day{
+            display: flex;
+            min-height: calc(100% / 7);
+            flex-direction: column;
+            &:not(:last-child){
+                border-bottom: solid 1px rgba(0, 0, 0, .2);
+            }
+            .schedule-day-name{
+                // width: 10%;
+                // padding: 15px;
+                // display: flex;
+                // align-items: center;
+                // justify-content: center;
+                h2{
+                    text-transform: uppercase;
+                    font-weight: 400;
+                    color: var.$secondary-color;
+                    margin: 10px 0px;
+                }
+            }
+            .schedule-day-entries{
+
+            }
+        }
+    }
+}
