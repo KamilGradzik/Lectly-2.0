@@ -28,7 +28,7 @@ const StudentCard = ({studentCode, firstName, lastName, additionalInfo, studentG
             <div className="student-groups">
                 {studentGroups.map((x, i) => {
                     return(
-                        <span className="group-badge">{x}</span>
+                        <span key={i} className="group-badge">{x}</span>
                     )
                 })}
             </div>

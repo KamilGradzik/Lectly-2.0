@@ -2,6 +2,9 @@
 
 .schedule-page{
     height: 100%;
+    .schedule-actions{
+        padding: 0px 15px;
+    }
     .schedule{
         height: 100%;
         display: flex;
@@ -9,7 +12,7 @@
         padding: 0px 15px;
         .schedule-day{
             display: flex;
-            min-height: calc(100% / 7);
+            // min-height: calc(100% / 7);
             flex-direction: column;
             &:not(:last-child){
                 border-bottom: solid 1px rgba(0, 0, 0, .2);
@@ -24,11 +27,14 @@
                     text-transform: uppercase;
                     font-weight: 400;
                     color: var.$secondary-color;
-                    margin: 10px 0px;
+                    margin: 0px;
+                    padding: 15px 0px;
                 }
             }
             .schedule-day-entries{
-
+                display: flex;
+                flex-direction: row;
+                padding-bottom: 30px;
             }
         }
     }
