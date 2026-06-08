@@ -2,20 +2,69 @@
 
 .schedule-page{
     height: 100%;
+    padding: 0px 15px;
     .schedule-actions{
-        padding: 0px 15px;
+        display: flex;
+        flex-direction: row;
+        .MuiInputBase-root{
+            display: flex;
+            width: fit-content;
+            align-items: center;
+            flex-direction: row;
+            padding-bottom: 5px;
+            box-sizing: border-box;
+            width: 50%;
+            line-height: unset;
+            background-color: #fff;
+            padding: 10px 15px;
+            margin-right: 10px;
+            .MuiSelect-select{
+                padding: 0;
+                min-height: unset;
+                // font-size: 28px;
+                text-transform: uppercase;
+            }
+            svg{
+                position: initial;
+            }
+            input{
+                display: none;
+            }
+            &:hover{
+                fieldset{
+                    border-color: var.$secondary-color;
+                }
+            }
+            &.Mui-focused{
+                    fieldset{
+                        border-color: var.$secondary-color;
+                        border-width: 2px;
+                    }
+            }
+            // fieldset{
+            //     outline: unset;
+            //     border: unset;  
+            // }
+        }
+        button{
+            margin-left: 10px;
+            width: 50%;
+            // font-size: 32px;
+            background-color: var.$secondary-color;
+            color: #fff;
+        }
     }
     .schedule{
-        height: 100%;
+        // height: 100%;
         display: flex;
         flex-direction: column;
-        padding: 0px 15px;
         .schedule-day{
             display: flex;
-            // min-height: calc(100% / 7);
+            margin: 15px 0px;
             flex-direction: column;
             &:not(:last-child){
                 border-bottom: solid 1px rgba(0, 0, 0, .2);
+                // padding-bottom: 15px;
             }
             .schedule-day-name{
                 // width: 10%;
@@ -23,18 +72,26 @@
                 // display: flex;
                 // align-items: center;
                 // justify-content: center;
-                h2{
+                h1{
                     text-transform: uppercase;
                     font-weight: 400;
-                    color: var.$secondary-color;
+                    // color: var.$secondary-color;
                     margin: 0px;
                     padding: 15px 0px;
                 }
             }
             .schedule-day-entries{
                 display: flex;
-                flex-direction: row;
-                padding-bottom: 30px;
+                width: 100%;
+                flex-direction: column;
+                .empty-day-entries{
+                    color: #999;
+                    text-transform: uppercase;
+                    font-weight: 300;
+                    margin-top: 0;
+                    font-size: 24px;
+                    // text-align: center;
+                }
             }
         }
     }

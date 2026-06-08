@@ -398,24 +398,24 @@ const MockData = {
         { "data": "2026-05-29T10:49:00", "liczba_wydarzen": 1 }
     ],
     "MockScheduleEntries":[
-        {
-            "Id": 1,
-            "Dzien": 1,
-            "Poczatek": "08:00:00",
-            "Koniec": "09:30:00",
-            "Classroom": "A101",
-            "Nazwaprzedmiotu": "Matematyka",
-            "Grupa": "INF-1A"
-        },
-        {
-            "Id": 2,
-            "Dzien": 1,
-            "Poczatek": "09:45:00",
-            "Koniec": "11:15:00",
-            "Classroom": "LAB-01",
-            "Nazwaprzedmiotu": "Programowanie C#",
-            "Grupa": "INF-1A"
-        },
+        // {
+        //     "Id": 1,
+        //     "Dzien": 1,
+        //     "Poczatek": "08:00:00",
+        //     "Koniec": "09:30:00",
+        //     "Classroom": "A101",
+        //     "Nazwaprzedmiotu": "Matematyka",
+        //     "Grupa": "INF-1A"
+        // },
+        // {
+        //     "Id": 2,
+        //     "Dzien": 1,
+        //     "Poczatek": "09:45:00",
+        //     "Koniec": "11:15:00",
+        //     "Classroom": "LAB-01",
+        //     "Nazwaprzedmiotu": "Programowanie C#",
+        //     "Grupa": "INF-1A"
+        // },
         {
             "Id": 3,
             "Dzien": 2,
@@ -497,24 +497,24 @@ const MockData = {
             "Nazwaprzedmiotu": "Warsztaty Techniczne",
             "Grupa": "INF-1A"
         },
-        {
-            "Id": 12,
-            "Dzien": 0,
-            "Poczatek": "12:00:00",
-            "Koniec": "13:30:00",
-            "Classroom": "ONLINE",
-            "Nazwaprzedmiotu": "Konsultacje",
-            "Grupa": "INF-1A"
-        },
-        {
-            "Id": 13,
-            "Dzien": 1,
-            "Poczatek": "12:00:00",
-            "Koniec": "14:30:00",
-            "Classroom": "A101",
-            "Nazwaprzedmiotu": "Matematyka",
-            "Grupa": "INF-1C"
-        },
+        // {
+        //     "Id": 12,
+        //     "Dzien": 0,
+        //     "Poczatek": "12:00:00",
+        //     "Koniec": "13:30:00",
+        //     "Classroom": "ONLINE",
+        //     "Nazwaprzedmiotu": "Konsultacje",
+        //     "Grupa": "INF-1A"
+        // },
+        // {
+        //     "Id": 13,
+        //     "Dzien": 1,
+        //     "Poczatek": "12:00:00",
+        //     "Koniec": "14:30:00",
+        //     "Classroom": "A101",
+        //     "Nazwaprzedmiotu": "Matematyka",
+        //     "Grupa": "INF-1C"
+        // },
     ]
 }   
 
