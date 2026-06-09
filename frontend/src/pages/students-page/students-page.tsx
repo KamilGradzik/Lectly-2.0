@@ -21,7 +21,7 @@ const StudentsPage = ():JSX.Element => {
     return(
         <div className="students-page">
             <div className="students-page-header">
-                <TextField label="Search" variant="outlined" slotProps={{
+                <TextField placeholder="Search..." variant="outlined" slotProps={{
                     input:{ endAdornment:(
                         <InputAdornment position="end">
                             <FaMagnifyingGlass />

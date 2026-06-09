@@ -1,6 +1,6 @@
 import { JSX } from "react";
 import "./student-card.scss";
-import { Tooltip } from "@mui/material";
+import { Button, Tooltip } from "@mui/material";
 import { FaCircleInfo, FaEllipsisVertical, FaInfo, FaTrash } from "react-icons/fa6";
 import { FaEdit } from "react-icons/fa";
 
@@ -34,13 +34,19 @@ const StudentCard = ({studentCode, firstName, lastName, additionalInfo, studentG
             </div>
             <div className="student-actions">
                 <Tooltip title="Student Details">
-                    <FaCircleInfo className="details-btn"/>
+                    <Button className="student-details-btn">
+                        <FaCircleInfo />
+                    </Button>
                 </Tooltip>
                 <Tooltip title="Edit Student">
-                    <FaEdit className="edit-btn"/>
+                    <Button className="student-edit-btn">
+                        <FaEdit />
+                    </Button>
                 </Tooltip> 
                 <Tooltip title="Remove Student">
-                    <FaTrash className="remove-btn"/>
+                    <Button className="student-remove-btn">
+                        <FaTrash />
+                    </Button>
                 </Tooltip>
             </div>
         </div>

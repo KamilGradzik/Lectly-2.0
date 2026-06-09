@@ -3,7 +3,7 @@ import "./note-card.scss"
 import { format } from "date-fns";
 import { FaTrash } from "react-icons/fa6"
 import { FaEdit } from "react-icons/fa"
-import { Tooltip } from "@mui/material"
+import { Button, Tooltip } from "@mui/material"
 
 interface props{
     title:string,
@@ -31,10 +31,14 @@ const NoteCard = ({title,content,createdAt}:props):JSX.Element => {
                     </span>
                     <span className="note-card-action-buttons">
                         <Tooltip title="Edit Note">
-                            <FaEdit className="edit-btn"/>
+                            <Button className="note-edit-btn">
+                                <FaEdit />
+                            </Button>
                         </Tooltip>
                         <Tooltip title="Remove Note">
-                            <FaTrash className="remove-btn"/>
+                            <Button className="note-remove-btn">
+                                <FaTrash />
+                            </Button>
                         </Tooltip>
                     </span>
                 </div>

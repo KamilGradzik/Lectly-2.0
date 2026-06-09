@@ -80,37 +80,24 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        font-size: 20px;
         padding: 0px 10px;
-        svg{
+        button{
+            font-size: 20px;
             color: #999;
-            &.details-btn{
-                &:hover{
-                    cursor: pointer;
-                    color: var.$info-color;
-                }
-                &:active{
-                    color: darken(var.$info-color, 10%);
-                }
+            min-width: unset;
+            background-color: unset;
+            padding:6px;
+            &:not(:first-of-type){
+                margin-left: 5px;
             }
-            &.edit-btn{
-                margin: 0px 10px;
-                &:hover{
-                    cursor: pointer;
-                    color: var.$success-color;
-                }
-                &:active{
-                    color: darken(var.$success-color, 10%);
-                }
+            &.student-details-btn:hover{
+                color: var.$info-color;
             }
-            &.remove-btn{
-                &:hover{
-                    cursor: pointer;
-                    color: var.$danger-color;
-                }
-                &:active{
-                    color: darken(var.$danger-color, 10%);
-                }
+            &.student-edit-btn:hover{
+                color: var.$success-color;
+            }
+            &.student-remove-btn:hover{
+                color: var.$danger-color;
             }
         }
     }

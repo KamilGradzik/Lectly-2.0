@@ -2,6 +2,68 @@
 
 .groups-page{
     height: 100%;
+    .groups-page-actions{
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 20px;
+        .action-wrapper{
+            &:first-child{
+                padding-right: 10px;
+            }
+            &:last-child{
+                padding-left: 10px;
+            }
+            &.search-group{
+                width: 90%;
+                .MuiFormControl-root{
+                    width: 100%;
+                        
+                    label{
+                        color: #999;
+                        // text-transform: c;
+                    }
+                    .MuiInputBase-root{  
+                        background-color: #fff;      
+                        fieldset{
+                            border-color: #aaa;
+                        }                   
+                        &:hover{
+                            fieldset{
+                                border-color: var.$secondary-color;
+                            }
+                        }
+                        &.Mui-focused{
+                            fieldset{
+                                border-color: var.$secondary-color;
+                                border-width: 2px;
+                            }
+                        }
+                        input{
+                            color: var.$primary-font-color;
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+            &.add-group{
+                width: 10%;
+                .add-group-btn{
+                    width: 100%;
+                    height: 100%;
+                    background-color: var.$secondary-color;
+                    color: var.$primary-color;
+                    display: flex;
+                    align-items: center;
+                    &:hover{
+                        background-color: var.$secondary-color-accent;
+                    }
+                    svg{
+                        margin-left: 5px;
+                    }
+                }
+            }
+        }
+    }
     .groups-page-content{
         display: flex;
         flex-direction: column;

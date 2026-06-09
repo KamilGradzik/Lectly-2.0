@@ -4,10 +4,14 @@
     background-color: #fff;
     border-radius: 10px;
     padding: 20px;
+    padding-left: 10px;
     margin-bottom: 25px;
+    border-left: solid 10px #fff;
     box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
     width: 100%;
-    // max-width: 320px;
+    &:hover{
+        border-color: var.$secondary-color;
+    }
     .schedule-entry-header{
         display: flex;
         align-items: center;
@@ -15,14 +19,14 @@
         margin-bottom: 20px;
         .schedule-entry-title{
             color: var.$secondary-color;
-            font-size: 24px;
+            font-size: 28px;
             margin: 0;
             font-weight: 600;
         }
         .schedule-entry-actions{
             button{
                 color: #999;
-                font-size: 18px;
+                font-size: 22px;
                 min-width: unset;
                 padding: 6px;
                 &:hover{
@@ -38,9 +42,8 @@
         }
     }
     .schedule-entry-details{
-        // padding: 0px 10px;
         p{
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 300;
             margin: 10px 0px;
             padding: 0;

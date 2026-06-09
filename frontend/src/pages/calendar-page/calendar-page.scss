@@ -136,6 +136,40 @@
                 color: var.$primary-color;
                 display: flex;
                 align-items: center;
+                &:hover{
+                        background-color: var.$secondary-color-accent;
+                }
+                svg{
+                    margin-left: 5px;
+                }
+            }
+            .MuiFormControl-root{
+                width: 100%;
+                
+                label{
+                    color: #999;
+                }
+                .MuiInputBase-root{  
+                    background-color: #fff;      
+                    fieldset{
+                        border-color: #aaa;
+                    }                   
+                    &:hover{
+                        fieldset{
+                            border-color: var.$secondary-color;
+                        }
+                    }
+                    &.Mui-focused{
+                        fieldset{
+                            border-color: var.$secondary-color;
+                            border-width: 2px;
+                        }
+                    }
+                    input{
+                        color: var.$primary-font-color;
+                        font-size: 18px;
+                    }
+                }
             }
         }
     }

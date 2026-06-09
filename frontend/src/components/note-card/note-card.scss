@@ -11,13 +11,13 @@
         h1{
             margin: 0;
             padding: 15px 0px;
-            font-size: 18px;
+            font-size: 24px;
             color: var.$secondary-color;
             font-weight: 600;
         }
     }
     .note-card-body{
-        font-size: 18px;
+        font-size: 20px;
         color: #666;
         font-weight: 300;
         display: flex;
@@ -26,7 +26,7 @@
         justify-content: space-between;
         height: 100%;
         .note-card-content{
-            padding: 15px 0px;
+            padding-bottom: 15px;
         }
         .note-card-footer{
             display: inline-flex;
@@ -34,34 +34,51 @@
             justify-content: space-between;
             width: 100%;
             padding: 15px 0px;
+            font-size: 18px;
             border-top: solid 1px rgba(0, 0, 0, 0.25);
             .note-card-action-buttons{
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
-                svg{
-                    margin-left: 10px;
+                button{
                     font-size: 18px;
                     color: #999;
-                    align-items: center;
-                    justify-content: center;
-                    &.edit-btn{
-                        &:hover{
-                            color: var.$success-color;
-                        }
-                        &:active{
-                            color: darken(var.$success-color, 10%);
-                        }
+                    min-width: unset;
+                    background-color: unset;
+                    padding:6px;
+                    &.note-edit-btn:hover{
+                        color: var.$success-color;
                     }
-                    &.remove-btn{
-                        &:hover{
-                            color: var.$danger-color;
-                        }
-                        &:active{
-                            color: darken(var.$danger-color, 10%);
-                        }
+                    &.note-remove-btn:hover{
+                        color: var.$danger-color;
+                    }
+                    &:first-of-type{
+                        margin-right: 5px;
                     }
                 }
+                // svg{
+                //     margin-left: 10px;
+                //     font-size: 18px;
+                //     color: #999;
+                //     align-items: center;
+                //     justify-content: center;
+                //     &.edit-btn{
+                //         &:hover{
+                //             color: var.$success-color;
+                //         }
+                //         &:active{
+                //             color: darken(var.$success-color, 10%);
+                //         }
+                //     }
+                //     &.remove-btn{
+                //         &:hover{
+                //             color: var.$danger-color;
+                //         }
+                //         &:active{
+                //             color: darken(var.$danger-color, 10%);
+                //         }
+                //     }
+                // }
             }
         }
     }

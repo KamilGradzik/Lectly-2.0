@@ -3,7 +3,7 @@ import WeekDays from "../../utils/WeekDay";
 import MockData from "../../assets/mock-data";
 import "./schedule-page.scss";
 import ScheduleCard from "../../components/schedule-card/schedule-card";
-import { Button, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import { Button, FormControl, FormControlLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import { FaPlus } from "react-icons/fa6";
 
 const SchedulePage = ():JSX.Element => {
@@ -12,15 +12,21 @@ const SchedulePage = ():JSX.Element => {
     return(
         <div className="schedule-page">
             <div className="schedule-actions">
-                <Select value={selectedDay} onChange={(event:SelectChangeEvent) => {setSelectedDay(event.target.value.toString())}}>
-                    {WeekDays.map((x,i) => {
-                        return(
-                            <MenuItem key={i} value={x.DayNumber}>{x.DayName}</MenuItem>
-                        )
-                    })}
-                    <MenuItem value={7}>Entire Week</MenuItem>
-                </Select>
-                <Button>Schedule <FaPlus /></Button>
+                <div className="action-wrapper">
+                    <FormControl fullWidth>
+                        <Select value={selectedDay} onChange={(event:SelectChangeEvent) => {setSelectedDay(event.target.value.toString())}} title="Day of week">
+                            {WeekDays.map((x,i) => {
+                                return(
+                                    <MenuItem key={i} value={x.DayNumber}>{x.DayName}</MenuItem>
+                                )
+                            })}
+                            <MenuItem value={7}>Entire Week</MenuItem>
+                        </Select>
+                    </FormControl>
+                </div>
+                <div className="action-wrapper">
+                    <Button className="schedule-classes-btn">Schedule <FaPlus /></Button>
+                </div>
             </div>
             <div className="schedule">
                 {
@@ -63,6 +69,9 @@ const SchedulePage = ():JSX.Element => {
                     </>
                     :
                     <div className="schedule-day">
+                        <div className="schedule-day-name">
+                            <h1>{WeekDays.filter(x => x.DayNumber === parseInt(selectedDay))[0].DayName}</h1>
+                        </div>
                         <div className="schedule-day-entries">
                             {
                                 (() => {
@@ -81,7 +90,7 @@ const SchedulePage = ():JSX.Element => {
                                                 Group={entry.Grupa}
                                             />
                                         )) 
-                                        : <h3 className="empty-day-entries">No scheduled classes for {weekDay[0].DayName}!</h3>
+                                        : <h3 className="empty-day-entries">No scheduled classes!</h3>
                                     })
                                 ()
                             }                       
