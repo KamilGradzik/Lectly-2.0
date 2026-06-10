@@ -1,0 +1,82 @@
+@use "../../styles//variables.scss" as var;
+
+.dashboard-page{
+    height: 100%;
+    .dashboard-header{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 50px;
+        .welcome-text{
+            margin: 0;
+            font-size: 38px;
+            font-weight: 600;
+            text-transform: uppercase;
+            a{
+                color: unset;
+                &:hover{
+                    color: lighten(var.$secondary-color, 5%);
+                }
+            }
+        }
+        .current-date{
+            font-size: 32px;
+            font-weight: 300;
+        }
+    }
+    .dashboard-content{
+        .general-statistics{
+            width: 100%;
+            background-color: #fff;
+            display: flex;
+            flex-direction: row;
+            // padding: 20px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
+            margin-bottom: 50px;
+            .statistic-item{
+                width: calc(100% / 3);
+                display: flex;
+                flex-direction: column;
+                color: unset;
+                padding: 20px;
+                &:active{
+                    background-color: #fff;
+                }
+                &:hover{
+                    background-color: darken(#fff, 5%);
+                }
+                .statistic-title{
+                    display: flex;
+                    align-items: center;
+                    color: var.$secondary-color;
+                    font-size: 28px;
+                    margin: 0;
+                    font-weight: 600;
+                    margin-bottom: 10px;
+                    svg{
+                        margin-right: 10px;
+                    }
+                }
+                .statistic-content{
+                    margin: 0;
+                    font-weight: 300;
+                    color: #444;
+                    font-size: 28px;
+                }
+            }
+        }
+        .class-schedule{
+            // .schedule-entries{
+            //     max-height: 520px;
+            // // padding: 20px;
+            //     overflow-y:hidden;
+            //     &:hover{
+            //         overflow-y: auto;
+            //     }
+                
+            // }
+        }
+    }
+}

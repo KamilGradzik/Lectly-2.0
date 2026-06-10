@@ -76,8 +76,7 @@ const SchedulePage = ():JSX.Element => {
                             {
                                 (() => {
                                     const dayEntries = MockData.MockScheduleEntries.filter(x => x.Dzien === parseInt(selectedDay))
-                                    const weekDay = WeekDays.filter(x => x.DayNumber === parseInt(selectedDay))
-
+                                    
                                     return dayEntries.length > 0 
                                         ? dayEntries.map((entry) => (
                                             <ScheduleCard
