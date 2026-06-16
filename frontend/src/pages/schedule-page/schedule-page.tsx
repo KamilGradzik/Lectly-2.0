@@ -56,6 +56,7 @@ const SchedulePage = ():JSX.Element => {
                                                             Subject={entry.Nazwaprzedmiotu}
                                                             Classroom={entry.Classroom}
                                                             Group={entry.Grupa}
+                                                            Readonly={false}
                                                     />)
                                                 })
                                                 :
@@ -87,6 +88,7 @@ const SchedulePage = ():JSX.Element => {
                                                 Subject={entry.Nazwaprzedmiotu}
                                                 Classroom={entry.Classroom}
                                                 Group={entry.Grupa}
+                                                Readonly={false}
                                             />
                                         )) 
                                         : <h3 className="empty-day-entries">No scheduled classes!</h3>

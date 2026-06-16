@@ -51,7 +51,7 @@
                     display: flex;
                     align-items: center;
                     color: var.$secondary-color;
-                    font-size: 28px;
+                    font-size: 32px;
                     margin: 0;
                     font-weight: 600;
                     margin-bottom: 10px;
@@ -63,20 +63,61 @@
                     margin: 0;
                     font-weight: 300;
                     color: #444;
-                    font-size: 28px;
+                    font-size: 30px;
                 }
             }
         }
         .class-schedule{
-            // .schedule-entries{
-            //     max-height: 520px;
-            // // padding: 20px;
-            //     overflow-y:hidden;
-            //     &:hover{
-            //         overflow-y: auto;
-            //     }
-                
-            // }
+            h2{
+                margin: 0;
+                text-transform: uppercase;
+                font-size: 32px;
+            }
+            .empty-day-entries{
+                color: #999;
+                text-transform: uppercase;
+                font-weight: 300;
+                margin: 15px 0px;
+                font-size: 30px;
+            }
+            .class-schedule-carousel{
+                display: flex;
+                flex-direction: row;
+                overflow: hidden;
+                padding: 10px 0px 20px 0px;
+                margin-top: 10px;
+                .schedule-entries{
+                    transition: transform 0.4s ease;
+                    height: 200px;
+                    flex: 1;
+                    .schedule-entry-card:hover{
+                        border-color: #fff !important;
+                    }
+                }
+                .carousel-pagination{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    padding-left: 10px;
+                    .carousel-pagination-indicators{
+                        display: flex;
+                        flex-direction: column;
+                        .dot-indicator{
+                            width: 12px;
+                            height: 12px;
+                            margin: 2px 0px;
+                            background: unset;
+                            outline: none;
+                            border: solid 1px #666;
+                            border-radius: 100%;
+                            &.active{
+                                background-color: #999;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

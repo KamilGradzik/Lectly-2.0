@@ -12,19 +12,25 @@ interface props{
     Classroom:string,
     Subject:string,
     Group:string,
+    Readonly:boolean
 }
 
-const ScheduleCard = ({DayOfWeek, StartTime, EndTime, Classroom, Subject, Group}:props):JSX.Element => {
+const ScheduleCard = ({DayOfWeek, StartTime, EndTime, Classroom, Subject, Group, Readonly}:props):JSX.Element => {
     const startTime:string = StartTime.substring(0, 5)
     const endTime:string = EndTime.substring(0, 5)
     return(
         <div className="schedule-entry-card">
             <div className="schedule-entry-header">
                 <h2 className="schedule-entry-title">{Subject}</h2>
-                <div className="schedule-entry-actions">
-                    <Tooltip title="Edit Classes"><Button className="edit-class-btn"><FaEdit /></Button></Tooltip>
-                    <Tooltip title="Remove Classes"><Button className="remove-class-btn"><FaTrash /></Button></Tooltip>
-                </div>
+                {
+                    !Readonly ? 
+                        <div className="schedule-entry-actions">
+                            <Tooltip title="Edit Classes"><Button className="edit-class-btn"><FaEdit /></Button></Tooltip>
+                            <Tooltip title="Remove Classes"><Button className="remove-class-btn"><FaTrash /></Button></Tooltip>
+                        </div>
+                    :
+                    <></>
+                }
             </div>
             <div className="schedule-entry-details">
                 <p className="schedule-entry-timespan"><FaClock />{startTime} <IoIosArrowRoundForward /> {endTime}</p>

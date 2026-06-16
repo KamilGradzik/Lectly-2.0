@@ -1,9 +1,9 @@
-import { JSX } from "react";
+import { JSX, useState } from "react";
 import "./dashboard-page.scss";
 import { compareDesc, format } from "date-fns";
 import { Link, NavigateFunction, useNavigate } from "react-router";
 import { Button } from "@mui/material";
-import { FaGraduationCap, FaPenRuler, FaUsers } from "react-icons/fa6";
+import { FaAngleDown, FaAngleUp, FaArrowUp, FaGraduationCap, FaPenRuler, FaUsers } from "react-icons/fa6";
 import MockData from "../../assets/mock-data";
 import WeekDays from "../../utils/WeekDay";
 import ScheduleCard from "../../components/schedule-card/schedule-card";
@@ -18,6 +18,20 @@ const DashboardPage = ():JSX.Element => {
         else if(compareDesc(currentDate, new Date().setHours(16,59,59,999)) === 1)
             return "Good Afternoon"
         return "Good Evening"
+    }   
+
+    const [index, setIndex] = useState<number>(0);
+
+    const handleCarouselWheelEvent = (e:WheelEvent) => {
+        // e.preventDefault();
+        if(e.deltaY > 0 && index < dayEntries.length - 1){
+            setIndex(index + 1)
+            console.log('scroll down')
+        }
+        else if(e.deltaY < 0 && index > 0){
+            setIndex(index - 1)
+            console.log('scroll up')
+        }
     }
 
     return(
@@ -45,32 +59,48 @@ const DashboardPage = ():JSX.Element => {
                     </Button> */}
                 </div>
                 <div className="class-schedule">
-                    <h2>Today's class schedule</h2>
-                    <div className="schedule-entries">
-                        {
-                            (() => {
-                                const dayEntries = MockData.MockScheduleEntries.filter(x => x.Dzien === currentDate.getDay())
-
-                                return dayEntries.length > 0 
-                                    ? dayEntries.map((entry) => (
-                                        <ScheduleCard
-                                            key={entry.Id}
-                                            DayOfWeek={entry.Dzien}
-                                            StartTime={entry.Poczatek}
-                                            EndTime={entry.Koniec}
-                                            Subject={entry.Nazwaprzedmiotu}
-                                            Classroom={entry.Classroom}
-                                            Group={entry.Grupa}
-                                        />
-                                    )) 
-                                    : <h3 className="empty-day-entries">No scheduled classes for today!</h3>
-                                })
-                            ()
-                        }
-                    </div>
-                    <div>
-
-                    </div>
+                    <h2>Today's Classes</h2>
+                    {
+                        dayEntries.length > 0 
+                        ?
+                        <div className="class-schedule-carousel" onWheel={(e:any) => {handleCarouselWheelEvent(e)}}>
+                            <div className="schedule-entries" style ={{transform:`translateY(-${index * 225}px)`}}>
+                                {
+                                    dayEntries.map((entry) => {
+                                        return(
+                                            <ScheduleCard
+                                                key={entry.Id}
+                                                DayOfWeek={entry.Dzien}
+                                                StartTime={entry.Poczatek}
+                                                EndTime={entry.Koniec}
+                                                Subject={entry.Nazwaprzedmiotu}
+                                                Classroom={entry.Classroom}
+                                                Group={entry.Grupa}
+                                                Readonly
+                                            />
+                                        )
+                                    })
+                                }
+                            </div>
+                            <div className="carousel-pagination">
+                                <FaAngleUp />
+                                <div className="carousel-pagination-indicators">
+                                {
+                                    dayEntries.map((_, i) => {
+                                        return(
+                                            <button 
+                                                className={`dot-indicator ${i === index ? 'active' : ''}`}
+                                            />
+                                        )
+                                    })
+                                }
+                                </div>
+                                <FaAngleDown />
+                            </div>
+                        </div>
+                        :
+                        <h3 className="empty-day-entries">No scheduled classes for today!</h3>
+                    }
                 </div>
             </div>
         </div>
