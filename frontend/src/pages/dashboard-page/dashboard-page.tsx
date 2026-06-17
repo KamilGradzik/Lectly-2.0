@@ -12,7 +12,7 @@ const DashboardPage = ():JSX.Element => {
     const navigate:NavigateFunction = useNavigate();
     const currentDate = new Date();
     const dayEntries = MockData.MockScheduleEntries.filter(x => x.Dzien === currentDate.getDay())
-    const GreetingsByTime = ():string => {
+    const greetingsByTime = ():string => {
         if(compareDesc(currentDate, new Date().setHours(5,0,0,0)) === -1 && compareDesc(currentDate, new Date().setHours(11,59,59,999)) === 1)
             return "Good Morning"
         else if(compareDesc(currentDate, new Date().setHours(16,59,59,999)) === 1)
@@ -21,23 +21,60 @@ const DashboardPage = ():JSX.Element => {
     }   
 
     const [index, setIndex] = useState<number>(0);
-
-    const handleCarouselWheelEvent = (e:WheelEvent) => {
-        // e.preventDefault();
-        if(e.deltaY > 0 && index < dayEntries.length - 1){
-            setIndex(index + 1)
-            console.log('scroll down')
-        }
-        else if(e.deltaY < 0 && index > 0){
+    const [carouselLock, setCarouselLock] = useState<boolean>(false)
+    const handleCarouselWheelEvent = (e:React.WheelEvent) => {
+        e.preventDefault();
+        if(carouselLock) return
+        
+        if(e.deltaY > 0 && index > 0){
+            //Scroll Down
             setIndex(index - 1)
-            console.log('scroll up')
+            setCarouselLock(true)
         }
+        else if(e.deltaY < 0 && index < dayEntries.length - 1){
+            //Scroll Up
+            setIndex(index + 1)
+            setCarouselLock(true);
+        }
+        
+        setTimeout(() => {
+            setCarouselLock(false)
+        }, 400)
     }
+
+    const handleCarouselArrowClick = (direction:string) => {
+        if(carouselLock) return
+
+        if(direction === "upwards" && index > 0){
+            setIndex(index - 1)
+            setCarouselLock(true);
+        }
+        else if(direction === "downwards" && index < dayEntries.length - 1){
+            setIndex(index + 1)
+            setCarouselLock(true);
+        }
+
+        setTimeout(() => {
+            setCarouselLock(false)
+        }, 400)
+    }
+
+    const maxDots = 5;
+
+    let start = Math.max(0, index - Math.floor(maxDots / 2));
+    let end = start + maxDots;
+
+    if (end > dayEntries.length) {
+        end = dayEntries.length;
+        start = Math.max(0, end - maxDots);
+    }
+
+    const visibleDots = dayEntries.slice(start, end);
 
     return(
         <div className="dashboard-page">
             <div className="dashboard-header">
-                <h1 className="welcome-text">{GreetingsByTime()}, <Link to="/profile">Jan Nowak</Link>!</h1>
+                <h1 className="welcome-text">{greetingsByTime()}, <Link to="/profile">Jan Nowak</Link>!</h1>
                 <span className="current-date">{format(new Date(), 'do MMM yyyy, EEEE')}</span>
             </div>
             <div className="dashboard-content">
@@ -63,8 +100,8 @@ const DashboardPage = ():JSX.Element => {
                     {
                         dayEntries.length > 0 
                         ?
-                        <div className="class-schedule-carousel" onWheel={(e:any) => {handleCarouselWheelEvent(e)}}>
-                            <div className="schedule-entries" style ={{transform:`translateY(-${index * 225}px)`}}>
+                        <div className="class-schedule-carousel" onWheel={(e:React.WheelEvent) => {handleCarouselWheelEvent(e)}}>
+                            <div className="carousel-panels" style ={{transform:`translateY(-${index * 225}px)`}}>
                                 {
                                     dayEntries.map((entry) => {
                                         return(
@@ -83,19 +120,21 @@ const DashboardPage = ():JSX.Element => {
                                 }
                             </div>
                             <div className="carousel-pagination">
-                                <FaAngleUp />
+                                <Button disabled={index === 0 ? true : false} className="carousel-pagination-btn" onClick={() => handleCarouselArrowClick("upwards")}><FaAngleUp /></Button>
                                 <div className="carousel-pagination-indicators">
                                 {
-                                    dayEntries.map((_, i) => {
+                                    visibleDots.map((_, i) => {
+                                        const actualIndex = start + i;
                                         return(
                                             <button 
-                                                className={`dot-indicator ${i === index ? 'active' : ''}`}
+                                                className={`dot-indicator ${actualIndex === index ? 'active' : ''}`}
+                                                // style={{}}
                                             />
                                         )
                                     })
                                 }
                                 </div>
-                                <FaAngleDown />
+                                <Button disabled={index === dayEntries.length - 1 ? true : false} className="carousel-pagination-btn" onClick={() => handleCarouselArrowClick("downwards")}><FaAngleDown /></Button>
                             </div>
                         </div>
                         :

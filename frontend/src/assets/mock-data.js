@@ -506,15 +506,61 @@ const MockData = {
         //     "Nazwaprzedmiotu": "Konsultacje",
         //     "Grupa": "INF-1A"
         // },
-        // {
-        //     "Id": 13,
-        //     "Dzien": 1,
-        //     "Poczatek": "12:00:00",
-        //     "Koniec": "14:30:00",
-        //     "Classroom": "A101",
-        //     "Nazwaprzedmiotu": "Matematyka",
-        //     "Grupa": "INF-1C"
-        // },
+        {
+            "Id": 13,
+            "Dzien": 3,
+            "Poczatek": "12:00:00",
+            "Koniec": "14:30:00",
+            "Classroom": "A101",
+            "Nazwaprzedmiotu": "Matematyka",
+            "Grupa": "INF-1C"
+        },
+        {
+            "Id": 14,
+            "Dzien": 3,
+            "Poczatek": "12:00:00",
+            "Koniec": "14:30:00",
+            "Classroom": "A101",
+            "Nazwaprzedmiotu": "Matematyka",
+            "Grupa": "INF-1C"
+        },
+        {
+            "Id": 15,
+            "Dzien": 3,
+            "Poczatek": "12:00:00",
+            "Koniec": "14:30:00",
+            "Classroom": "A101",
+            "Nazwaprzedmiotu": "Matematyka",
+            "Grupa": "INF-1C"
+        },
+        {
+            "Id": 16,
+            "Dzien": 3,
+            "Poczatek": "12:00:00",
+            "Koniec": "14:30:00",
+            "Classroom": "A101",
+            "Nazwaprzedmiotu": "Matematyka",
+            "Grupa": "INF-1C"
+        },
+        {
+            "Id": 17,
+            "Dzien": 3,
+            "Poczatek": "12:00:00",
+            "Koniec": "14:30:00",
+            "Classroom": "A101",
+            "Nazwaprzedmiotu": "Matematyka",
+            "Grupa": "INF-1C"
+        },
+        {
+            "Id": 18,
+            "Dzien": 3,
+            "Poczatek": "12:00:00",
+            "Koniec": "14:30:00",
+            "Classroom": "A101",
+            "Nazwaprzedmiotu": "Matematyka",
+            "Grupa": "INF-1C"
+        },
+        
     ]
 }   
 
