@@ -80,61 +80,6 @@
                 margin: 15px 0px;
                 font-size: 30px;
             }
-            .class-schedule-carousel{
-                display: flex;
-                flex-direction: row;
-                overflow: hidden;
-                padding: 10px 0px 20px 0px;
-                margin-top: 10px;
-                .carousel-panels{
-                    transition: transform 0.4s ease;
-                    height: 200px;
-                    flex: 1;
-                    .schedule-entry-card:hover{
-                        border-color: #fff !important;
-                    }
-                }
-                .carousel-pagination{
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    flex-direction: column;
-                    padding-left: 10px;
-                    .carousel-pagination-indicators{
-                        display: flex;
-                        flex-direction: column;
-                        // transition: transform .3s ease;
-                        .dot-indicator{
-                            width: 10px;
-                            height: 10px;
-                            margin: 2px 0px;
-                            background: unset;
-                            outline: none;
-                            border: solid 1px #999;
-                            border-radius: 100%;
-                            transition: all .3s ease;
-                            &.active{
-                                background-color: #bbb;
-                            }
-                        }
-                    }
-                    .carousel-pagination-btn{
-                        margin: 0;
-                        padding: 2px;
-                        min-width: unset;
-                        color: #666;
-                        svg{
-                            width: 14;
-                            height: 14;
-                            
-                        }
-                        &:disabled{
-                            color: #999;
-                            opacity: 50%;
-                        }
-                    }
-                }
-            }
         }
     }
 }
