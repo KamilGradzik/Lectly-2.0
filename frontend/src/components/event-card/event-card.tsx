@@ -2,16 +2,17 @@ import { JSX } from "react";
 import "./event-card.scss";
 import EvenType from "../../utils/EventType";
 import { format } from "date-fns";
-import { FaRegCalendar, FaRegClock, FaTrash } from "react-icons/fa6";
+import { FaRegClock, FaTrash } from "react-icons/fa6";
 import { IoIosArrowRoundForward } from "react-icons/io"
 import { Button, Tooltip } from "@mui/material";
-import { FaEdit, FaLongArrowAltRight } from "react-icons/fa";
+import { FaEdit, FaLongArrowAltRight, FaRegCalendar, FaRegCalendarAlt } from "react-icons/fa";
 
 interface props{
     name:string,
     beginDate:Date,
     endDate:Date,
-    type:EvenType
+    type:EvenType,
+    Readonly?:boolean
 }
 
 const parseEventType = (type:EvenType):string => {
@@ -20,32 +21,46 @@ const parseEventType = (type:EvenType):string => {
     return EvenType[type];
 }
 
-const EventCard = ({name, beginDate, endDate, type}:props):JSX.Element => {
+const EventCard = ({name, beginDate, endDate, type, Readonly = false}:props):JSX.Element => {
     return(
         <div className={`calendar-event-card ${EvenType[type].toLocaleLowerCase()}`}>
             <p className={`event-type ${EvenType[type].toLocaleLowerCase()}`}>
-                {parseEventType(type)} 
-                <span className="event-actions">
-                    <Tooltip title="Edit Event">
-                        <Button className="edit-event-btn"><FaEdit /></Button>
-                    </Tooltip>
-                    <Tooltip title="Remove Event">
-                        <Button className="remove-event-btn"><FaTrash /></Button>
-                    </Tooltip>
-                    
-                </span>
+                {parseEventType(type)}
+                {
+                    !Readonly 
+                    ?
+                    <span className="event-actions">
+                        <Tooltip title="Edit Event">
+                            <Button className="edit-event-btn"><FaEdit /></Button>
+                        </Tooltip>
+                        <Tooltip title="Remove Event">
+                            <Button className="remove-event-btn"><FaTrash /></Button>
+                        </Tooltip>
+                    </span>
+                    :
+                    <></>
+                }
             </p>
             <h1 className="event-title">{name}</h1>
             <div className="event-dates">
                 {
                     new Date(beginDate).setHours(0,0,0,0) !== new Date(endDate).setHours(0,0,0,0) 
                     ? 
-                        <div className="event-date-range">
-                            <FaRegCalendar />
-                            <span className="event-date">{format(beginDate, 'dd/MM/yyyy  HH:mm')}</span>
-                            <IoIosArrowRoundForward  />
-                            <span className="event-date">{format(endDate, 'dd/MM/yyyy  HH:mm')}</span> 
-                        </div>
+                    <>  
+                        <Tooltip describeChild placement="right" title="Start Date">
+                            <div className="event-date-range">
+                                <FaRegCalendar />
+                                <span className="event-date">{format(beginDate, 'dd/MM/yyyy  HH:mm')}</span>
+                            </div>
+                        </Tooltip>
+                        <Tooltip describeChild placement="right" title="End Date">
+                            <div className="event-date-range">
+                                <FaRegCalendarAlt />
+                                <span className="event-date">{format(endDate, 'dd/MM/yyyy  HH:mm')}</span>
+                            </div>
+                        </Tooltip>
+                    </>
+                        
                     : 
                     <>
                         <div className="event-date-range">

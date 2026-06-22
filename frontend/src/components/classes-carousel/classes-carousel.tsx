@@ -6,7 +6,7 @@ import MockData from "../../assets/mock-data";
 import "./classes-carousel.scss";
 
 const ClassesCarousel = ():JSX.Element => {
-    const scheduleEntries = MockData.MockScheduleEntries.filter(x => x.Dzien === 3)
+    const scheduleEntries = MockData.MockScheduleEntries.filter(x => x.Dzien === 2)
     const [index, setIndex] = useState<number>(0);
     const [carouselLock, setCarouselLock] = useState<boolean>(false)
     const [animate, setAnimate] = useState<boolean>(false)
@@ -118,7 +118,9 @@ const ClassesCarousel = ():JSX.Element => {
                 </div>
             </div>
             :
-            <h3 className="empty-day-entries">No scheduled classes for today!</h3>
+            <div className="empty-section-entries">
+                <h3>No scheduled classes for today!</h3>
+            </div>
         }
         </>
     )

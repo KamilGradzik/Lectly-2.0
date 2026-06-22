@@ -6,10 +6,12 @@ import { Button, Divider } from "@mui/material";
 import { FaGraduationCap, FaPenRuler, FaUsers } from "react-icons/fa6";
 import ClassesCarousel from "../../components/classes-carousel/classes-carousel";
 import QuickActions from "../../components/quick-actions/quick-actions";
-import EventsCarousel from "../../components/events-carousel/events-carousel";
 import NotesCarousel from "../../components/notes-carousel/notes-carousel";
+import MockData from "../../assets/mock-data";
+import EventCard from "../../components/event-card/event-card";
 
 const DashboardPage = ():JSX.Element => {
+    const events = MockData.MockCalendarEvents.slice(0,5)
     const navigate:NavigateFunction = useNavigate();
     const currentDate = new Date();
     
@@ -46,13 +48,27 @@ const DashboardPage = ():JSX.Element => {
                     <Divider />
                     <QuickActions />
                 </div>
-                <div className="class-schedule">
-                    <h2>Today's Classes</h2>
+                <div className="class-schedule-section">
+                    <h2 className="section-title">Today's Classes</h2>
                     <ClassesCarousel />
                 </div>
-                <div className="event-notes-wrapper">
-                    <EventsCarousel />
-                    <NotesCarousel />
+                <div className="events-notes-section">
+                    <div className="section-content">
+                        <h2 className="section-title">upcoming events</h2>
+                        <div className="upcomming-events">
+                            {
+                                events.map((event, i) => {
+                                    return(
+                                        <EventCard name={event.nazwa} beginDate={new Date(event.data_poczatkowa)} endDate={new Date(event.data_koncowa)} type={event.typ} Readonly/>
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
+                    <div className="section-content">
+                        <h2 className="section-title">recent notes</h2>
+                        <NotesCarousel />
+                    </div>
                 </div>
             </div>
         </div>

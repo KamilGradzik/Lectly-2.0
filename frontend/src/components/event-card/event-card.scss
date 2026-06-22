@@ -92,6 +92,7 @@
         .event-date-range{
             display: flex;
             align-items: center;
+            width: fit-content;
             &:nth-child(2){
                 margin-top: 10px;
             }
