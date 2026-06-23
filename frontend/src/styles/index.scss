@@ -23,7 +23,7 @@ body{
             width: 100%;
             display: flex;
             .app-content{
-                overflow: scroll;
+                overflow-y: scroll;
                 width: 100%;
                 padding: 20px;
             }

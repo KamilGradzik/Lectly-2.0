@@ -1,0 +1,56 @@
+.notes-carousel{
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .carousel-panels-wrapper{
+        display: flex;
+        .carousel-slider{
+            width: 600px;
+            height: 600px;
+            overflow: hidden;
+            padding: 20px;
+        
+        .carousel-panels{
+            display: flex;
+            flex-direction: row;
+            // background-color: red;
+            transition: transform 0.4s ease;
+            .content-panel{
+                min-width: 560px;
+                min-height: 560px;
+                .note-card{
+                    height: 100%;
+                }
+                &.hidden{
+                    .note-card{
+                        box-shadow: none;
+                    }
+                }
+                &:not(:last-child){
+                        margin-right: 25px;
+                }
+            }
+        }
+        }
+    }
+    .carousel-panels-indicators{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .panel-indicator{
+            width: 12px;
+            height: 12px;
+            margin: 0px 2px;
+            background: unset;
+            outline: none;
+            border: solid 1px #999;
+            border-radius: 100%;
+            transition: all .3s ease;
+            &.active{
+                background-color: #bbb;
+            }
+        }
+    }
+}

@@ -4,8 +4,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { addMonths, subDays, lastDayOfMonth, getISODay, subMonths, setDate } from "date-fns";
 import "./calendar-page.scss";
-import { FaCaretLeft, FaCaretRight, FaPlus } from "react-icons/fa6";
-import { Button, FormControl, InputLabel, MenuItem, ModalSlots, Select } from "@mui/material";
+import { FaAngleLeft, FaAngleRight, FaPlus } from "react-icons/fa6";
+import { Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import MockData from "../../assets/mock-data";
 import EventCard from "../../components/event-card/event-card";
 
@@ -59,31 +59,26 @@ const CalendarPage = ():JSX.Element => {
     const [selectedDay, setSelectedDay] = useState<number>(new Date().getDate());
     const [pickerOpen, setPickerOpen] = useState<boolean>(false)
     
-    const testFun = () => {
-        // console.log("Cipka")
-        setPickerOpen(!pickerOpen);
-    }
-    
     return(
         <div className="calendar-page">
             <div className="calendar-date-picker">
-                <Button onClick={() => {clickPrevious()}}><FaCaretLeft /></Button>
+                <Button onClick={() => {clickPrevious()}}><FaAngleLeft /></Button>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DatePicker value={currentDate}
                             openTo="month"
                             views={['year', 'month']}
-                            onChange={(dateValue) => {changeDate(dateValue); setPickerOpen(false)}}
+                            onChange={(dateValue) => {changeDate(dateValue)}}
                             open={pickerOpen}
                             slots={{openPickerButton: () => null}}
                             slotProps={{
                                 popper:{placement: "bottom", modifiers: [{name:"offset", options:{offset:[0,8]}}]},
-                                textField:{onClick: testFun}
+                                textField:{onClick: () => {setPickerOpen(!pickerOpen)}}
                             }}
                             onOpen={() => {setPickerOpen(true)}}
                             onClose={() => {setPickerOpen(false)}}
                         />
                     </LocalizationProvider>
-                <Button onClick={() => {clickNext()}}><FaCaretRight /></Button>
+                <Button onClick={() => {clickNext()}}><FaAngleRight /></Button>
             </div>
             <div className="calendar">
                 {/* <div className="calendar-header"> */}

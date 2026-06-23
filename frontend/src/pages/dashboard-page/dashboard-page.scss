@@ -102,6 +102,7 @@
         .events-notes-section{
             display: flex;
             flex-direction: row;
+            margin-bottom: 100px;
             .section-content{
                 width: 50%;
                 &:last-child{
@@ -109,19 +110,19 @@
                 }
                 .section-title{
                     margin: 0;
-                    // margin-bottom: 20px;
+                    margin-bottom: 10px;
                     text-transform: uppercase;
                     color: #999;
                     font-size: 32px;
                 }
                 .upcomming-events{
-                    height: 500px;
+                    height: 650px;
                     overflow-y: hidden;
-                    padding: 20px;
-                    padding-left: 0px;
+                    padding: 10px 28px 20px 0px;
                     &:hover{
                         overflow-y: scroll;
                     }
+                            
                 }
             }
         }
