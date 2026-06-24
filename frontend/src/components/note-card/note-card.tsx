@@ -8,11 +8,12 @@ import { Button, Tooltip } from "@mui/material"
 interface props{
     title:string,
     content:string,
-    createdAt:string
+    createdAt:string,
+    Readonly?:boolean,
 }
 
 
-const NoteCard = ({title,content,createdAt}:props):JSX.Element => {
+const NoteCard = ({title,content,createdAt, Readonly = false}:props):JSX.Element => {
 
     const formatedDate:string = format(new Date(createdAt), 'do MMM yyyy')
 
@@ -29,18 +30,24 @@ const NoteCard = ({title,content,createdAt}:props):JSX.Element => {
                     <span className="note-card-date">
                         {formatedDate}
                     </span>
-                    <span className="note-card-action-buttons">
-                        <Tooltip title="Edit Note">
-                            <Button className="note-edit-btn">
-                                <FaEdit />
-                            </Button>
-                        </Tooltip>
-                        <Tooltip title="Remove Note">
-                            <Button className="note-remove-btn">
-                                <FaTrash />
-                            </Button>
-                        </Tooltip>
-                    </span>
+                    {
+                        !Readonly 
+                        ?
+                        <span className="note-card-action-buttons">
+                            <Tooltip title="Edit Note">
+                                <Button className="note-edit-btn">
+                                    <FaEdit />
+                                </Button>
+                            </Tooltip>
+                            <Tooltip title="Remove Note">
+                                <Button className="note-remove-btn">
+                                    <FaTrash />
+                                </Button>
+                            </Tooltip>
+                        </span>
+                        :
+                        <></>
+                    }
                 </div>
             </div>
         </div>

@@ -6,9 +6,9 @@ import { Button, Divider } from "@mui/material";
 import { FaGraduationCap, FaPenRuler, FaUsers } from "react-icons/fa6";
 import ClassesCarousel from "../../components/classes-carousel/classes-carousel";
 import QuickActions from "../../components/quick-actions/quick-actions";
-import NotesCarousel from "../../components/notes-carousel/notes-carousel";
 import MockData from "../../assets/mock-data";
 import EventCard from "../../components/event-card/event-card";
+import DashboardCarousel from "../../components/dashboard-carousel/dashboard-carousel";
 
 const DashboardPage = ():JSX.Element => {
     const events = MockData.MockCalendarEvents.slice(0,5)
@@ -54,8 +54,8 @@ const DashboardPage = ():JSX.Element => {
                 </div>
                 <div className="events-notes-section">
                     <div className="section-content">
-                        <h2 className="section-title">upcoming events</h2>
-                        <div className="upcomming-events">
+                        {/* <h2 className="section-title">upcoming events</h2> */}
+                        {/* <div className="upcomming-events">
                             {
                                 events.map((event, i) => {
                                     return(
@@ -63,11 +63,12 @@ const DashboardPage = ():JSX.Element => {
                                     )
                                 })
                             }
-                        </div>
+                        </div> */}
+                        <DashboardCarousel type={0} title={"Upcoming events"} />
                     </div>
                     <div className="section-content">
-                        <h2 className="section-title">recent notes</h2>
-                        <NotesCarousel />
+                        {/* <h2 className="section-title">recent notes</h2> */}
+                        <DashboardCarousel type={1} title={"Recent notes"}/>
                     </div>
                 </div>
             </div>
